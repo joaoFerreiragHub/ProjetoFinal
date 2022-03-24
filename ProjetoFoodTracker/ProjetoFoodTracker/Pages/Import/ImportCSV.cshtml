@@ -1,0 +1,15 @@
+﻿@page
+@model ProjetoFoodTracker.Data.Import.IndexModel
+@{
+}
+
+
+  <div>
+      <h4>Import File to Database</h4>
+    <form asp-action="Import" asp-controller="ImportCSV" enctype="multipart/form-data" method="post">
+        <input type="file" name="file"/>
+        <button type="submit">Submit</button>
+    </form>
+  </div>
+ 
+    
