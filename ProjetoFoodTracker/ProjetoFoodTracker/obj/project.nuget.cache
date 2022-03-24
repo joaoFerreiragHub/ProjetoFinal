@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0JKfugwmh2q4ooCfx/ZAJUktL6+g9EsfToNhpR+r5UMwS6jIicRZcdFJWHWtRC0BNkgJ8w+W0AgB9jcfT3N53Q==",
+  "dgSpecHash": "uWFPgwG4xuqGp95jEHA0R3Ks4/Hm1c9Pq+kG3L3HFrVbxfjm7RGKuU/P84QtrTqEJDL+H9o0YwhlAKzFAqtT+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\ProjetoFoodTracker.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gar_e\\.nuget\\packages\\csvhelper\\27.2.1\\csvhelper.27.2.1.nupkg.sha512",
     "C:\\Users\\gar_e\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gar_e\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\gar_e\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
