@@ -4,7 +4,7 @@ namespace ProjetoFoodTracker.Data.Entities
 {
     public class Favorites
     {
-        public int Id { get; set; }
+        public int FavoritesId { get; set; }
 
         //FK
         public string FoodId { get; set; }

@@ -3,11 +3,11 @@
     public class Food
     {
         public string  FoodName{ get; set; }
-        public int Id { get; set; }
+        public int FoodId { get; set; }
 
         //Fk
         public string ActionId{ get; set; }
-        public Action Action { get; set; }
+        public Actions Action { get; set; }
 
         public string CategoryId { get; set; }
         public Category Category { get; set; } 

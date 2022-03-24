@@ -1,8 +1,8 @@
 ﻿namespace ProjetoFoodTracker.Data.Entities
 {
-    public class Action
+    public class Actions
     {
-        public int Id { get; set; }
+        public int ActionId { get; set; }
         public string ActionName { get; set; }
     }
 }
