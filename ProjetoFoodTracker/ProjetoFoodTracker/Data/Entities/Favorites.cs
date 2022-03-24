@@ -11,6 +11,6 @@ namespace ProjetoFoodTracker.Data.Entities
         public Food Food { get; set; }
 
         public string UserId { get; set; }
-        public IdentityUser IdentityUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }
