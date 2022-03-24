@@ -26,24 +26,39 @@ namespace ProjetoFoodTracker.Data
             modelBuilder.Entity<ApplicationUser>().Property(e => e.LastName).IsRequired(true);
 
             modelBuilder.Entity<Blacklist>().HasKey(b => b.BlacklistId);
-            
+
             modelBuilder.Entity<Favorites>().HasKey(f => f.FavoritesId);
 
-            modelBuilder.Entity<Category>().HasKey(c =>c.CategoryId);
+            modelBuilder.Entity<Category>().HasKey(c => c.CategoryId);
             modelBuilder.Entity<Category>().Property(c => c.CategoryName).IsRequired(true);
 
             modelBuilder.Entity<Food>().HasKey(o => o.FoodId);
             modelBuilder.Entity<Food>().Property(o => o.FoodName).IsRequired(true);
-       
+
 
             modelBuilder.Entity<Meals>().HasKey(m => m.MealsId);
 
             //Composite Keys
 
-            modelBuilder.Entity<FoodAction>().HasKey(z => new { z.FoodId, z.ActionId});
-            modelBuilder.Entity<FoodCategory>().HasKey(z => new { z.FoodId, z.CategoryId});
+            modelBuilder.Entity<FoodAction>()
+                .HasOne(f => f.Food)
+                .WithMany(fa => fa.FoodAction)
+                .HasForeignKey(fi => fi.FoodId);
 
+            modelBuilder.Entity<FoodAction>()
+                .HasOne(a => a.Actions)
+                .WithMany(fa => fa.FoodAction)
+                .HasForeignKey(ai => ai.ActionId);
 
+            modelBuilder.Entity<FoodCategory>()
+                .HasOne(f => f.Food)
+                .WithMany(fa => fa.FoodCategory)
+                .HasForeignKey(fi => fi.FoodId);
+
+            modelBuilder.Entity<FoodCategory>()
+                .HasOne(a => a.Category)
+                .WithMany(fa => fa.FoodCategory)
+                .HasForeignKey(ai => ai.CategoryId);
 
 
         }
