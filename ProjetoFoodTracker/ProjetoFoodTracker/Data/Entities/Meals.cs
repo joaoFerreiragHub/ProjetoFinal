@@ -1,4 +1,6 @@
-﻿namespace ProjetoFoodTracker.Data.Entities
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace ProjetoFoodTracker.Data.Entities
 {
     public class Meals
     {
@@ -8,5 +10,8 @@
         //FK
         public string FoodId { get; set; }
         public Food Food { get; set; }
+
+        public string UserId { get; set; }
+        public IdentityUser IdentityUser { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -13,9 +14,6 @@ namespace ProjetoFoodTracker.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Book>().Property(p => p.CountryCode).HasMaxLength(5);
-            modelBuilder.Entity<Country>().Property(p => p.Code).HasMaxLength(5);
-            modelBuilder.Entity<Book>().HasIndex(p => p.ISBN);
         }
     }
 }
