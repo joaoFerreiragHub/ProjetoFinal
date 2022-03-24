@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoFoodTracker.Migrations
 {
-    public partial class first : Migration
+    public partial class dbSets5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,7 +67,7 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
@@ -76,11 +76,11 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.CategoryId);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Food",
+                name: "Foods",
                 columns: table => new
                 {
                     FoodId = table.Column<int>(type: "int", nullable: false)
@@ -89,7 +89,7 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Food", x => x.FoodId);
+                    table.PrimaryKey("PK_Foods", x => x.FoodId);
                 });
 
             migrationBuilder.CreateTable(
@@ -219,9 +219,9 @@ namespace ProjetoFoodTracker.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blacklist_Food_FoodId1",
+                        name: "FK_Blacklist_Foods_FoodId1",
                         column: x => x.FoodId1,
-                        principalTable: "Food",
+                        principalTable: "Foods",
                         principalColumn: "FoodId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -247,9 +247,9 @@ namespace ProjetoFoodTracker.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Favorites_Food_FoodId1",
+                        name: "FK_Favorites_Foods_FoodId1",
                         column: x => x.FoodId1,
-                        principalTable: "Food",
+                        principalTable: "Foods",
                         principalColumn: "FoodId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -273,9 +273,9 @@ namespace ProjetoFoodTracker.Migrations
                         principalColumn: "ActionId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FoodAction_Food_FoodId",
+                        name: "FK_FoodAction_Foods_FoodId",
                         column: x => x.FoodId,
-                        principalTable: "Food",
+                        principalTable: "Foods",
                         principalColumn: "FoodId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -293,15 +293,15 @@ namespace ProjetoFoodTracker.Migrations
                 {
                     table.PrimaryKey("PK_FoodCategory", x => x.FoodCategoryId);
                     table.ForeignKey(
-                        name: "FK_FoodCategory_Category_CategoryId",
+                        name: "FK_FoodCategory_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FoodCategory_Food_FoodId",
+                        name: "FK_FoodCategory_Foods_FoodId",
                         column: x => x.FoodId,
-                        principalTable: "Food",
+                        principalTable: "Foods",
                         principalColumn: "FoodId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -327,9 +327,9 @@ namespace ProjetoFoodTracker.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Meals_Food_FoodId1",
+                        name: "FK_Meals_Foods_FoodId1",
                         column: x => x.FoodId1,
-                        principalTable: "Food",
+                        principalTable: "Foods",
                         principalColumn: "FoodId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -463,13 +463,13 @@ namespace ProjetoFoodTracker.Migrations
                 name: "Actions");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Food");
+                name: "Foods");
         }
     }
 }

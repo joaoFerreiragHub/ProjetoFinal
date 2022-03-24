@@ -304,7 +304,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Favorites", b =>
@@ -353,7 +353,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("FoodId");
 
-                    b.ToTable("Food");
+                    b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodAction", b =>

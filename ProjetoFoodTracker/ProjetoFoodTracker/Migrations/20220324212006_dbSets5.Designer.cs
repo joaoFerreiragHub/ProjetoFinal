@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220324151217_first")]
-    partial class first
+    [Migration("20220324212006_dbSets5")]
+    partial class dbSets5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -306,7 +306,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Favorites", b =>
@@ -355,7 +355,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("FoodId");
 
-                    b.ToTable("Food");
+                    b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodAction", b =>
