@@ -24,11 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <None Include="wwwroot\File\Alimentos.csv" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\File\Alimentos.csv" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

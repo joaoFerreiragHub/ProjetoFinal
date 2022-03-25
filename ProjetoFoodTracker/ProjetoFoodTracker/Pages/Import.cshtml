@@ -1,0 +1,17 @@
+﻿@page
+@model ProjetoFoodTracker.Pages.ImportModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="UploadFile" asp-controller="Import" method="post" enctype="multipart/form-data">
+           <div class="for-group">
+               <label>Upload file</label>
+               <input id="file" name="file" class="form-control" type="file"/>
+               <br />
+               <button type="submit" class="btn btn-success">Upload File</button>
+           </div>
+        </form>
+    </div>
+</div>
