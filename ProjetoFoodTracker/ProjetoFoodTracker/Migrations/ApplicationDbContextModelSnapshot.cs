@@ -347,11 +347,20 @@ namespace ProjetoFoodTracker.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodId"), 1L, 1);
 
+                    b.Property<string>("CategoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("FoodName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FoodId");
+
+                    b.HasIndex("CategoryId1");
 
                     b.ToTable("Foods");
                 });
@@ -522,6 +531,17 @@ namespace ProjetoFoodTracker.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Food");
+                });
+
+            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>
+                {
+                    b.HasOne("ProjetoFoodTracker.Data.Entities.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodAction", b =>

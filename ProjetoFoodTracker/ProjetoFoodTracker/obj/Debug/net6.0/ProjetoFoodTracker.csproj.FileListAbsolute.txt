@@ -1,12 +1,3 @@
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.csproj.AssemblyReference.cache
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.AssemblyInfoInputs.cache
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.AssemblyInfo.cs
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.csproj.CoreCompileInputs.cache
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.RazorAssemblyInfo.cache
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.RazorAssemblyInfo.cs
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\appsettings.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.staticwebassets.runtime.json
@@ -262,6 +253,15 @@ C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\Proje
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.csproj.AssemblyReference.cache
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.AssemblyInfoInputs.cache
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.AssemblyInfo.cs
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.csproj.CoreCompileInputs.cache
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.RazorAssemblyInfo.cache
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.RazorAssemblyInfo.cs
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
@@ -273,3 +273,5 @@ C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\Proje
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.pdb
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.genruntimeconfig.cache
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ref\ProjetoFoodTracker.dll
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\DotNetEd.CoreAdmin.dll
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\Mvc.Grid.Core.dll

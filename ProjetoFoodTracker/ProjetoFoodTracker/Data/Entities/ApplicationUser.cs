@@ -10,6 +10,8 @@ namespace ProjetoFoodTracker.Data.Entities
         public decimal? Weight { get; set; }
         public DateTime? DateOfBirth { get; set; }
 
+
+
         public List<FoodMeals> FoodMeals{ get; set; }
 
     }

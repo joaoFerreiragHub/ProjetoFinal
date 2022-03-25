@@ -17,6 +17,7 @@ namespace ProjetoFoodTracker.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Actions> Actions { get; set; }
 
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
