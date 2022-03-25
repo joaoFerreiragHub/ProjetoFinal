@@ -34,8 +34,8 @@ namespace ProjetoFoodTracker.Pages
             {
                  await FileUploadService.UploadFileAsync(file); 
             }
-            
-           FileUploadService.UploadtoDb(file);
+
+            FileUploadService.UploadtoDb(file);
         }
 
         //public void OnPost(IFormFile file)

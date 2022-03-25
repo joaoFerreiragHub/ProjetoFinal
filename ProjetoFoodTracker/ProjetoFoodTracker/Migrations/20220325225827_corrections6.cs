@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoFoodTracker.Migrations
 {
-    public partial class corrections4 : Migration
+    public partial class corrections6 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -320,6 +320,8 @@ namespace ProjetoFoodTracker.Migrations
                 {
                     MealsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    MealStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MealEnded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FoodId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FoodId1 = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),

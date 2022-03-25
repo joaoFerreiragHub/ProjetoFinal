@@ -1,3 +1,5 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProjetoFoodTracker.Data;
@@ -7,7 +9,7 @@ using ProjetoFoodTracker.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IFileUploadService, LocalFileUploadService>();
-builder.Services.AddCoreAdmin();
+//builder.Services.AddCoreAdmin();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -16,12 +18,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddRazorPages();
 
 
+
 var app = builder.Build();
+
+
+  
 
 
 // Configure the HTTP request pipeline.
@@ -44,8 +51,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+
 app.MapRazorPages();
 
-app.UseCoreAdminCustomUrl("MyAdmin");
+//app.UseCoreAdminCustomUrl("MyAdmin");
 
 app.Run();

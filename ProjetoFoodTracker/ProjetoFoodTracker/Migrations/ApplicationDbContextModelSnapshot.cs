@@ -431,6 +431,12 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId1")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("MealEnded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MealStart")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

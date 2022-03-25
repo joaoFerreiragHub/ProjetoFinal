@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220325165532_corrections4")]
-    partial class corrections4
+    [Migration("20220325225827_corrections6")]
+    partial class corrections6
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -432,6 +432,12 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.Property<int>("FoodId1")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("MealEnded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MealStart")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .IsRequired()

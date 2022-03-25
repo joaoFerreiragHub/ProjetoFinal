@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProjetoFoodTracker.Data.Entities;
-
+using ProjetoFoodTracker.Services;
 
 namespace ProjetoFoodTracker.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -18,6 +21,11 @@ namespace ProjetoFoodTracker.Data
         public DbSet<Actions> Actions { get; set; }
 
         public DbSet<ApplicationUser> applicationUsers { get; set; }
+
+        public void Initalize()
+        {
+            throw new NotImplementedException();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
