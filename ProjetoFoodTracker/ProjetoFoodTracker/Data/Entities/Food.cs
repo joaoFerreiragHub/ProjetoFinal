@@ -6,6 +6,6 @@
         public int FoodId { get; set; }
 
         public List<FoodAction> FoodAction { get; set; }
-        public List<FoodCategory> FoodCategory { get; set; }
+        public List<FoodMeals> FoodMeals { get; set; }
     }
 }

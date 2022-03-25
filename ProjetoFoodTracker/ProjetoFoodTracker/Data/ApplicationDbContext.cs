@@ -56,15 +56,15 @@ namespace ProjetoFoodTracker.Data
                 .WithMany(fa => fa.FoodAction)
                 .HasForeignKey(ai => ai.ActionId);
 
-            modelBuilder.Entity<FoodCategory>()
+            modelBuilder.Entity<FoodMeals>()
                 .HasOne(f => f.Food)
-                .WithMany(fa => fa.FoodCategory)
+                .WithMany(fM => fM.FoodMeals)
                 .HasForeignKey(fi => fi.FoodId);
 
-            modelBuilder.Entity<FoodCategory>()
-                .HasOne(a => a.Category)
-                .WithMany(fa => fa.FoodCategory)
-                .HasForeignKey(ai => ai.CategoryId);
+            modelBuilder.Entity<FoodMeals>()
+                .HasOne(a => a.ApplicationUser)
+                .WithMany(fa => fa.FoodMeals)
+                .HasForeignKey(ai => ai.UserId);
 
 
         }

@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220324212006_dbSets5")]
-    partial class dbSets5
+    [Migration("20220325115305_corrections2")]
+    partial class corrections2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -381,27 +381,28 @@ namespace ProjetoFoodTracker.Migrations
                     b.ToTable("FoodAction");
                 });
 
-            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodCategory", b =>
+            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodMeals", b =>
                 {
-                    b.Property<int>("FoodCategoryId")
+                    b.Property<int>("FoodMealsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodCategoryId"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodMealsId"), 1L, 1);
 
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
-                    b.HasKey("FoodCategoryId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("CategoryId");
+                    b.HasKey("FoodMealsId");
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("FoodCategory");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FoodMeals");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Meals", b =>
@@ -544,21 +545,21 @@ namespace ProjetoFoodTracker.Migrations
                     b.Navigation("Food");
                 });
 
-            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodCategory", b =>
+            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodMeals", b =>
                 {
-                    b.HasOne("ProjetoFoodTracker.Data.Entities.Category", "Category")
-                        .WithMany("FoodCategory")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ProjetoFoodTracker.Data.Entities.Food", "Food")
-                        .WithMany("FoodCategory")
+                        .WithMany("FoodMeals")
                         .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.HasOne("ProjetoFoodTracker.Data.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("FoodMeals")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Food");
                 });
@@ -587,16 +588,16 @@ namespace ProjetoFoodTracker.Migrations
                     b.Navigation("FoodAction");
                 });
 
-            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Category", b =>
+            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.ApplicationUser", b =>
                 {
-                    b.Navigation("FoodCategory");
+                    b.Navigation("FoodMeals");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>
                 {
                     b.Navigation("FoodAction");
 
-                    b.Navigation("FoodCategory");
+                    b.Navigation("FoodMeals");
                 });
 #pragma warning restore 612, 618
         }
