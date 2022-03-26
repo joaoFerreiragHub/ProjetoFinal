@@ -26,6 +26,7 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -33,6 +34,7 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
+ 
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
@@ -40,6 +42,7 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
             _userStore = userStore;
+      
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
@@ -122,7 +125,6 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-
 
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);

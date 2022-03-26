@@ -13,9 +13,9 @@ namespace ProjetoFoodTracker.Pages.MyActions
 {
     public class CreateModel : PageModel
     {
-        private readonly ProjetoFoodTracker.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(ProjetoFoodTracker.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -31,6 +31,7 @@ namespace ProjetoFoodTracker.Pages.MyActions
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            
             if (!ModelState.IsValid)
             {
                 return Page();

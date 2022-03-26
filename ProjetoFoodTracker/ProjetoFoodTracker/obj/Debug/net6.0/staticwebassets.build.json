@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gNbHD1C3p2Ef/Kg9tsVPNkwp2cOPQQhSa5jU5WqfQBI=",
+  "Hash": "auoF9vpaMxALUdXUiKaIHoVDwQ5AjEbIDvZB8+EUaeA=",
   "Source": "ProjetoFoodTracker",
   "BasePath": "_content/ProjetoFoodTracker",
   "Mode": "Default",
@@ -1715,6 +1715,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\File\\Alimentos.csv"
+    },
+    {
+      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\file",
+      "SourceId": "ProjetoFoodTracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
+      "BasePath": "_content/ProjetoFoodTracker",
+      "RelativePath": "File/file",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\File\\file"
     },
     {
       "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\js\\site.js",

@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model ProjetoFoodTracker.Pages.ImportModel
 
 
@@ -11,5 +12,20 @@
                <button type="submit" class="btn-primary btn-primary">Upload</button>
            </div>
         </form>
+    </div>
+        <div class="col-md-12">
+        <form asp-action="UploadFileAsync" asp-controller="Import" method="post" enctype="multipart/form-data">
+           <div class="for-group">
+               <label class="form-label">Save file Locally</label>
+               <input name="file" type="file" class="form-control"/>
+               <button type="submit" class="btn-primary btn-primary">Upload</button>
+           </div>
+        </form>
+    </div>
+    <div>
+        @if (string.IsNullOrWhiteSpace(Model.Filepath))
+        {
+            <img src="@Model.Filepath" alt="Alternate Text"/> 
+        }     
     </div>
 </div>

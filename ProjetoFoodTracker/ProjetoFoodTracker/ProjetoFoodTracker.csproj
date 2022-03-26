@@ -29,4 +29,8 @@
     <None Include="wwwroot\File\Alimentos.csv" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Admin\" />
+  </ItemGroup>
+
 </Project>
