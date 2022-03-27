@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoFoodTracker.Migrations
 {
-    public partial class lets : Migration
+    public partial class admin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

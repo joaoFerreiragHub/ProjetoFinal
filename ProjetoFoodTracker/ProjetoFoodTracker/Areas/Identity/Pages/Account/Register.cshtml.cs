@@ -159,20 +159,17 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
                         await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
                     }
 
-                    if (!_db.Users.Any(x => x.UserName == "Admin"))
+                    // categories.FirstOrDefault(x => x.Id = food.Category).Id
+                    //if (!_db.Users.Any(x => x.UserName == "Admin"))
+                    if (user.UserName == "Admin@admin.com")
                     {
-                        // Create User
-                        var admin = new ApplicationUser { UserName = "Admin", Email = "Admin@gmail.com" };
-                        await _userManager.CreateAsync(user, "Pa$$W0rD!");
-
-                        await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
-
+                        await _userManager.AddToRoleAsync(user, SD.AdminEndUser);
                     }
                     else
                     {
                         await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
                     }
-                    
+
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
