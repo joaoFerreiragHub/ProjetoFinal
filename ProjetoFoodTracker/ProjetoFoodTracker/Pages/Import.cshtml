@@ -1,24 +1,29 @@
 ﻿@page
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model ProjetoFoodTracker.Pages.ImportModel
-
+@using ProjetoFoodTracker.Data.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="UploadFile" asp-controller="Import" method="post" enctype="multipart/form-data">
+                                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+        <form asp-page-handler="UploadtoDb" asp-route-sessioncount="10" method="post" enctype="multipart/form-data">
            <div class="for-group">
                <label class="form-label">Upload file</label>
                <input name="file" type="file" class="form-control"/>
                <button type="submit" class="btn-primary btn-primary">Upload</button>
            </div>
         </form>
+                        }
     </div>
         <div class="col-md-12">
-        <form asp-action="UploadFileAsync" asp-controller="Import" method="post" enctype="multipart/form-data">
+        <form asp-page-handler="LocalSave" asp-route-sessioncount="30" method="post" enctype="multipart/form-data">
            <div class="for-group">
                <label class="form-label">Save file Locally</label>
-               <input name="file" type="file" class="form-control"/>
-               <button type="submit" class="btn-primary btn-primary">Upload</button>
+               <input name="ufile" type="file" class="form-control"/>
+               <button type="submit" class="btn-primary btn-primary" asp-page-handler="LocalSave">Upload</button>
            </div>
         </form>
     </div>

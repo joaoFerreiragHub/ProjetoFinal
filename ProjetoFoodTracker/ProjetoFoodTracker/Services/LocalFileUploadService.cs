@@ -17,11 +17,11 @@ namespace ProjetoFoodTracker.Services
             _environment = environment;
         }
 
-        public async Task<string> UploadFileAsync(IFormFile file)
+        public async Task<string> UploadFileAsync(IFormFile ufile)
         {
-            var filePath = Path.Combine(_environment.ContentRootPath, @"wwwroot\File\", file.Name);
+            var filePath = Path.Combine(_environment.ContentRootPath, @"wwwroot\File\", ufile.Name);
             using var fileStream = new FileStream(filePath, FileMode.Create);
-            await file.CopyToAsync(fileStream);
+            await ufile.CopyToAsync(fileStream);
             return filePath;
         }
 

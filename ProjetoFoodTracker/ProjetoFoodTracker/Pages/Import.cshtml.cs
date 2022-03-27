@@ -14,13 +14,13 @@ namespace ProjetoFoodTracker.Pages
     {
         private readonly ApplicationDbContext _ctx;
         private readonly IFileUploadService _fileUploadService;
-
-     
+  
         public ImportModel(ApplicationDbContext ctx, IFileUploadService fileUploadService)
         {
             _ctx = ctx;
             _fileUploadService = fileUploadService;
         }
+
 
         public IFileUploadService FileUploadService { get; set; }
         public string Filepath;
@@ -28,54 +28,18 @@ namespace ProjetoFoodTracker.Pages
         {
 
         }
-        public async void OnPost(IFormFile file)
+        public async void OnPostUploadtoDb(IFormFile file)
         {
-            //if (file != null)
-            //{
-            //    Filepath = await _fileUploadService.UploadFileAsync(file); 
-            //}
-
            _fileUploadService.UploadtoDb(file);
         }
+        public async void OnPostLocalSave(IFormFile ufile, int sessionCount)
+        {
+            if (ufile != null)
+            {
+                Filepath = await _fileUploadService.UploadFileAsync(ufile);
+            }
 
+        }
 
-        //public void OnPost(IFormFile file)
-        //{
-        //    RedirectToAction("Index");
-
-        //    if (file?.Length > 0)
-        //    {
-        //        var stream = file.OpenReadStream();
-
-        //        try
-        //        {
-        //            using (var reader = new StreamReader(stream))
-        //            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
-        //            {
-        //                var datesInCsv = new List<Food>();
-        //                CsvConfiguration config = new CsvConfiguration(CultureInfo.InvariantCulture);
-        //                config.Delimiter = ";";
-        //                var parsedCsv = new CsvParser(reader, config);
-        //            }
-
-        //            //while (csvReader.Read())
-        //            //{
-        //            //    csvReader.Context.RegisterClassMap<FoodsMap>();
-        //            //    List<Food> foods = new List<Food>();
-        //            //    var foodRecords = csvReader.GetRecord<Food>().ToString().Split(',');
-        //            //    foreach (var foodRecord in foodRecords)
-        //            //        _ctx.Foods.Add(foodRecord, typeof(Food));
-        //            //}
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            Console.WriteLine(ex.Message);
-        //        }
-
-        //        RedirectToAction("Index");
-        //    }
-        //}
     }
 }
