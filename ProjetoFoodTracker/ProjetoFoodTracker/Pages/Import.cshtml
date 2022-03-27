@@ -6,31 +6,44 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <div class="row">
-    <div class="col-md-12">
-                                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                        {
+    <div class="jumbotron">
+        <h1 class="display-4">Bem-vindo!</h1>
+        <p class="lead">Aqui podes carregar ficheiros para ficarem guardados na App!</p>
+        <hr class="my-4">
+    </div>
+
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <p>Se está a ver isto é porque é administrador, nada mau!</p>
         <form asp-page-handler="UploadtoDb" asp-route-sessioncount="10" method="post" enctype="multipart/form-data">
-           <div class="for-group">
-               <label class="form-label">Upload file</label>
-               <input name="file" type="file" class="form-control"/>
-               <button type="submit" class="btn-primary btn-primary">Upload</button>
-           </div>
+            <div class="for-group">
+                <input name="file" type="file" class="form-control" />
+                <br/>
+                <button type="submit" class="btn-primary btn-primary rounded-pill ">Upload</button>
+            </div>
+               <br/>
+                <br/>
         </form>
-                        }
-    </div>
-        <div class="col-md-12">
-        <form asp-page-handler="LocalSave" asp-route-sessioncount="30" method="post" enctype="multipart/form-data">
-           <div class="for-group">
-               <label class="form-label">Save file Locally</label>
-               <input name="ufile" type="file" class="form-control"/>
-               <button type="submit" class="btn-primary btn-primary" asp-page-handler="LocalSave">Upload</button>
-           </div>
-        </form>
-    </div>
-    <div>
-        @if (string.IsNullOrWhiteSpace(Model.Filepath))
-        {
-            <img src="@Model.Filepath" alt="Alternate Text"/> 
-        }     
-    </div>
+     
+    }
+</div>
+<div class="col-md-4">
+    <form asp-page-handler="LocalSave" asp-route-sessioncount="30" method="post" enctype="multipart/form-data">
+        <div class="for-group">
+            <input name="ufile" type="file" class="form-control" />
+            <br />
+            <button type="submit" class="btn-primary btn-primary rounded-pill" asp-page-handler="LocalSave">Save File</button>
+            <br/>
+            <br />
+            <p>Reza a lenda que se for imagem aparece em baixo</p>
+           <p>(P.S: é provável que não funcione)</p>
+        </div>
+    </form>
+    <br />
+</div>
+<div>
+    @if (string.IsNullOrWhiteSpace(Model.Filepath))
+    {
+        <img src="@Model.Filepath" alt="Alternate Text" />
+    }
 </div>
