@@ -19,37 +19,30 @@ namespace ProjetoFoodTracker.Data
         public DbSet<Food> Foods { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Actions> Actions { get; set; }
-
         public DbSet<ApplicationUser> applicationUsers { get; set; }
 
-        public void Initalize()
-        {
-            throw new NotImplementedException();
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            //Primary Keys & Required fields
-            modelBuilder.Entity<Actions>().HasKey(a => a.ActionId);
+            
+            modelBuilder.Entity<Actions>().HasKey(a => a.Id);
             modelBuilder.Entity<Actions>().Property(a => a.ActionName).IsRequired(true);
-
 
             modelBuilder.Entity<ApplicationUser>().HasKey(e => e.Id);
             modelBuilder.Entity<ApplicationUser>().Property(e => e.FirstName).IsRequired(true);
             modelBuilder.Entity<ApplicationUser>().Property(e => e.LastName).IsRequired(true);
 
-            modelBuilder.Entity<Blacklist>().HasKey(b => b.BlacklistId);
+            modelBuilder.Entity<Blacklist>().HasKey(b => b.Id);
 
-            modelBuilder.Entity<Favorites>().HasKey(f => f.FavoritesId);
+            modelBuilder.Entity<Favorites>().HasKey(f => f.Id);
 
-            modelBuilder.Entity<Category>().HasKey(c => c.CategoryId);
+            modelBuilder.Entity<Category>().HasKey(c => c.Id);
             modelBuilder.Entity<Category>().Property(c => c.CategoryName).IsRequired(true);
 
-            modelBuilder.Entity<Food>().HasKey(o => o.FoodId);
+            modelBuilder.Entity<Food>().HasKey(m => m.Id);
             modelBuilder.Entity<Food>().Property(o => o.FoodName).IsRequired(true);
-
 
             modelBuilder.Entity<Meals>().HasKey(m => m.MealsId);
 

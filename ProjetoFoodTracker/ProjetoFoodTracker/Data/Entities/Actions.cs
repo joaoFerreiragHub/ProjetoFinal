@@ -1,9 +1,12 @@
-﻿namespace ProjetoFoodTracker.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjetoFoodTracker.Data.Entities
 {
     public class Actions
     {
-
-        public int ActionId { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
         public string ActionName { get; set; }
 
         public List<FoodAction> FoodAction { get; set; }

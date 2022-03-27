@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoFoodTracker.Data.Entities
 {
     public class Blacklist
     {
-        public int BlacklistId { get; set; }
+        [Key]
+        public int Id { get; set; }
 
 
         //FK
-        public string FoodId { get; set; }
+        public int FoodId { get; set; }
         public Food Food { get; set; }
 
         public string UserId { get; set; }

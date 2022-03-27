@@ -18,7 +18,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
+using ProjetoFoodTracker.Uitlity;
 
 namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
 {
@@ -26,7 +28,8 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _db;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -34,7 +37,8 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
- 
+            RoleManager<IdentityRole> roleManager,
+            ApplicationDbContext db,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
@@ -42,12 +46,12 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
             _userStore = userStore;
-      
+            _db = db;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -117,6 +121,7 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
@@ -144,6 +149,30 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
+                    if (!await _roleManager.RoleExistsAsync(SD.AdminEndUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
+                    }
+
+                    if (!await _roleManager.RoleExistsAsync(SD.CustomerEndUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
+                    }
+
+                    if (!_db.Users.Any(x => x.UserName == "Admin"))
+                    {
+                        // Create User
+                        var admin = new ApplicationUser { UserName = "Admin", Email = "Admin@gmail.com" };
+                        await _userManager.CreateAsync(user, "Pa$$W0rD!");
+
+                        await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
+
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
+                    }
+                    
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
@@ -171,6 +200,7 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
         {
             try
             {
+
                 return Activator.CreateInstance<ApplicationUser>();
             }
             catch

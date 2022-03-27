@@ -5,7 +5,9 @@ namespace ProjetoFoodTracker.Data.Entities
 {
     public class FoodAction
     {
-        public int FoodActionId { get; set; }
+        [Key]
+        public int Id { get; set; }
+
 
         public int FoodId { get; set; }
         public Food Food { get; set; }

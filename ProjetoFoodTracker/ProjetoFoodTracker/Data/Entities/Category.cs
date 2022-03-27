@@ -1,9 +1,14 @@
-﻿namespace ProjetoFoodTracker.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjetoFoodTracker.Data.Entities
 {
     public class Category
     {
-        public int CategoryId { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string CategoryName { get; set; }
 
+
+        public ICollection<Food> Foods { get; set; }
     }
 }

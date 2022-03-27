@@ -30,7 +30,7 @@ namespace ProjetoFoodTracker.Pages.MyCategory
                 return NotFound();
             }
 
-            Category = await _context.Categories.FirstOrDefaultAsync(m => m.CategoryId == id);
+            Category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Category == null)
             {

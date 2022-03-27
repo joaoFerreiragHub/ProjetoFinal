@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220325225827_corrections6")]
-    partial class corrections6
+    [Migration("20220326232602_lets")]
+    partial class lets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,17 +163,17 @@ namespace ProjetoFoodTracker.Migrations
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Actions", b =>
                 {
-                    b.Property<int>("ActionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ActionId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ActionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ActionId");
+                    b.HasKey("Id");
 
                     b.ToTable("Actions");
                 });
@@ -244,8 +244,8 @@ namespace ProjetoFoodTracker.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<decimal?>("Weight")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int?>("Weight")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -262,118 +262,106 @@ namespace ProjetoFoodTracker.Migrations
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Blacklist", b =>
                 {
-                    b.Property<int>("BlacklistId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlacklistId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("FoodId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FoodId1")
+                    b.Property<int>("FoodId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BlacklistId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("FoodId1");
+                    b.HasIndex("FoodId");
 
                     b.ToTable("Blacklist");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Favorites", b =>
                 {
-                    b.Property<int>("FavoritesId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FavoritesId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("FoodId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FoodId1")
+                    b.Property<int>("FoodId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("FavoritesId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("FoodId1");
+                    b.HasIndex("FoodId");
 
                     b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>
                 {
-                    b.Property<int>("FoodId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CategoryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CategoryId1")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("FoodName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("FoodId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodAction", b =>
                 {
-                    b.Property<int>("FoodActionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodActionId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("ActionId")
                         .HasColumnType("int");
@@ -381,7 +369,7 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
-                    b.HasKey("FoodActionId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ActionId");
 
@@ -426,11 +414,7 @@ namespace ProjetoFoodTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("FoodId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FoodId1")
+                    b.Property<int>("FoodId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("MealEnded")
@@ -439,15 +423,11 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<DateTime>("MealStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("MealsId");
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("FoodId1");
+                    b.HasIndex("FoodId");
 
                     b.ToTable("Meals");
                 });
@@ -513,7 +493,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasOne("ProjetoFoodTracker.Data.Entities.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("FoodId1")
+                        .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -532,7 +512,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasOne("ProjetoFoodTracker.Data.Entities.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("FoodId1")
+                        .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -544,8 +524,8 @@ namespace ProjetoFoodTracker.Migrations
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>
                 {
                     b.HasOne("ProjetoFoodTracker.Data.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId1")
+                        .WithMany("Foods")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -600,7 +580,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasOne("ProjetoFoodTracker.Data.Entities.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("FoodId1")
+                        .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -617,6 +597,11 @@ namespace ProjetoFoodTracker.Migrations
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("FoodMeals");
+                });
+
+            modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Category", b =>
+                {
+                    b.Navigation("Foods");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>

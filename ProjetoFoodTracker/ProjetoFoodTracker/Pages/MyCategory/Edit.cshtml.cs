@@ -31,7 +31,7 @@ namespace ProjetoFoodTracker.Pages.MyCategory
                 return NotFound();
             }
 
-            Category = await _context.Categories.FirstOrDefaultAsync(m => m.CategoryId == id);
+            Category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Category == null)
             {
@@ -57,7 +57,7 @@ namespace ProjetoFoodTracker.Pages.MyCategory
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Category.CategoryId))
+                if (!CategoryExists(Category.Id))
                 {
                     return NotFound();
                 }
@@ -72,7 +72,7 @@ namespace ProjetoFoodTracker.Pages.MyCategory
 
         private bool CategoryExists(int id)
         {
-            return _context.Categories.Any(e => e.CategoryId == id);
+            return _context.Categories.Any(e => e.Id == id);
         }
     }
 }

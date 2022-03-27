@@ -30,7 +30,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
                 return NotFound();
             }
 
-            Food = await _context.Foods.FirstOrDefaultAsync(m => m.FoodId == id);
+            Food = await _context.Foods.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Food == null)
             {

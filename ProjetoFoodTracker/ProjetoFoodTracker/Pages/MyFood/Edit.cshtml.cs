@@ -31,7 +31,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
                 return NotFound();
             }
 
-            Food = await _context.Foods.FirstOrDefaultAsync(m => m.FoodId == id);
+            Food = await _context.Foods.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Food == null)
             {
@@ -57,7 +57,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FoodExists(Food.FoodId))
+                if (!FoodExists(Food.Id))
                 {
                     return NotFound();
                 }
@@ -72,7 +72,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
 
         private bool FoodExists(int id)
         {
-            return _context.Foods.Any(e => e.FoodId == id);
+            return _context.Foods.Any(e => e.Id == id);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace ProjetoFoodTracker.Pages.MyActions
                 return NotFound();
             }
 
-            Actions = await _context.Actions.FirstOrDefaultAsync(m => m.ActionId == id);
+            Actions = await _context.Actions.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Actions == null)
             {
