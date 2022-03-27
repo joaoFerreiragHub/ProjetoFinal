@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220327115721_admin")]
-    partial class admin
+    [Migration("20220327160311_admini")]
+    partial class admini
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

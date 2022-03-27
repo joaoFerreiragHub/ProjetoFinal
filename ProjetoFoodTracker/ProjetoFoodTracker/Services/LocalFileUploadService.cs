@@ -29,98 +29,150 @@ namespace ProjetoFoodTracker.Services
         {
             var stream = file.OpenReadStream();
             using (var reader = new StreamReader(stream))
+
             using (CsvReader csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
 
-                //var categoryRecords = new List<Category>();
-                //var ActionsRecords = new List<Actions>();
-                //var foodRecords = new List<Food>();
-                //var csv = csvReader.Read().ToString().Split(',');
-                //csvReader.ReadHeader();
-                //csvReader.Configuration.BadDataFound.Equals(true);
-
-            using (var dr = new CsvDataReader(csvReader))
+                var categoryRecords = new List<Category>();
+                var ActionsRecords = new List<Actions>();
+                var foodRecords = new List<Food>();
+                csvReader.Read().ToString().Split(',');
+                csvReader.ReadHeader();
+                csvReader.Configuration.BadDataFound.Equals(true);
+                while (csvReader.Read())
                 {
-                    var dt = new DataTable();
-                    dt.Columns.Add("Id", typeof(int));
-                    dt.Columns.Add("Categories", typeof(Category));
-                    dt.Columns.Add("Foods", typeof(Food));
-                    dt.Columns.Add("Actions",typeof(Action));
-                    dt.Load(dr);
+                    var catRecords = new Category
+                    {
+                        CategoryName = csvReader.GetField("Categories")
+                    };
+                    categoryRecords.Add(catRecords);
 
-                    List<Category> categoryList = new List<Category>();
-                    categoryList = (from DataRow d in dt.Columns
-                                   select new Category()
-                                   {
-                                      CategoryName = dr["Categories"].ToString(),                            
-                                   }).ToList();
+                    var fRecords = new Food
+                    {
+                        FoodName = csvReader.GetField("Foods"),
+                        Category = catRecords,
+                    };
 
-                    List<Food> foodyList = new List<Food>();
-                    foodyList = (from DataRow d in dt.Columns
-                                    select new Food()
-                                    {
-                                        FoodName = dr["Foods"].ToString(),
-                                        
-                                    }).ToList();
+                    foodRecords.Add(fRecords);
+                    foodRecords.Select(x => x.FoodName).Distinct();
+
+                    var actionsRecords = new Actions
+                    {
+                        ActionName = csvReader.GetField("Actions")
+                    };
+                    ActionsRecords.Add(actionsRecords);
+                    ActionsRecords.Select(x => x.ActionName).Distinct();
 
 
                 }
+                categoryRecords.Select(x => x.CategoryName).Distinct();
+                var uniqueCategories = categoryRecords.GroupBy(p => p.CategoryName)
+                           .Select(grp => grp.First())
+                           .ToArray();
+
+                foreach (var category in uniqueCategories)
+                {
+                    _ctx.Categories.Add(category);
+                    _ctx.SaveChanges();
+
+                }
+                foodRecords.Select(x => x.Category).Distinct();
+                var uniqueFoods = foodRecords.GroupBy(p => p.Category)
+                           .Select(grp => grp.First())
+                           .ToArray();
+                foreach (var food in foodRecords)
+                {                  
+                    _ctx.Foods.Add(food);
+                    _ctx.SaveChanges();
+                }
+
+                foreach (var action in ActionsRecords)
+                    _ctx.Actions.Add(action);
+                _ctx.SaveChanges();
+                //csvReader.Context.RegisterClassMap<MapCategory>();
+                //csvReader.Context.RegisterClassMap<MapActions>();
+                //var foodRecords = new List<Food>();
+                //var categoryRecords = new List<Category>();
+                //var actionsRecords = new List<Actions>();
+                //var isHeader = false;
 
 
 
-
-
-                //    while (csvReader.Read())
+                //while (csvReader.Read())
+                //{
+                //    if (isHeader)
                 //    {
-                //        var catRecords = new Category
-                //        {
-                //            CategoryName = csvReader.GetField("Categories")
-                //        };
-                //        categoryRecords.Add(catRecords);
-
-                //        var fRecords = new Food
-                //        {
-                //            FoodName = csvReader.GetField("Foods")
-                //        };
-
-                //        foodRecords.Add(fRecords);
-                //        foodRecords.Select(x => x.FoodName).Distinct();
-
-                //        var actionsRecords = new Actions
-                //        {
-                //            ActionName = csvReader.GetField("Actions")
-                //        };
-                //        ActionsRecords.Add(actionsRecords);
-                //        ActionsRecords.Select(x => x.ActionName).Distinct();
-
-
-                //    }
-                //    categoryRecords.Select(x => x.CategoryName).Distinct();
-                //    var uniqueCategories = categoryRecords.GroupBy(p => p.CategoryName)
-                //               .Select(grp => grp.First())
-                //               .ToArray();
-                //    foreach (var category in uniqueCategories)
-                //    {
-                //        _ctx.Categories.Add(category);
-                //        _ctx.SaveChanges();
-
-                //    }
-                //    foreach (var food in foodRecords)
-                //    {
-                //        _ctx.Foods.Add(food);
-                //        _ctx.SaveChanges();
+                //        csvReader.ReadHeader();
+                //        isHeader = false;
+                //        continue;
                 //    }
 
-                //    foreach (var action in ActionsRecords)
-                //        _ctx.Actions.Add(action);
-                //    _ctx.SaveChanges();
+                //    switch (csvReader.GetField(0))
+                //    {
+                //        case "Foods":
+                //            foodRecords.Add(csvReader.GetRecord<Food>());
+                //            break;
+                //        case "Categories":
+                //            categoryRecords.Add(csvReader.GetRecord<Category>());
+                //            break;
+                //        case "Actions":
+                //            actionsRecords.Add(csvReader.GetRecord<Actions>());
+                //            break;
+                //        default:
+                //            throw new InvalidOperationException("Unknown record type.");
+                //    }
                 //}
-
             }
         }
 
+
+
+
+
+
+        //using (var dr = new CsvDataReader(csvReader))
+        //    {
+        //        var dt = new DataTable();
+        //        dt.Columns.Add("Id", typeof(int));
+        //        dt.Columns.Add("Categories", typeof(string));
+        //        dt.Columns.Add("Foods", typeof(string));
+        //        dt.Columns.Add("Actions",typeof(string));
+        //        dt.Load(dr);
+
+
+        //        var categoryList = (from DataColumn d in dt.Columns
+        //                       select new Category()
+        //                       {
+        //                          Id = Convert.ToInt32(dr["Id"]),
+        //                          CategoryName = dr["Categories"].ToString(),                                                
+        //                       }).ToList();
+
+        //        List<Food> foodyList = new List<Food>();
+        //        foodyList = (from DataColumn d in dt.Columns
+        //                        select new Food()
+        //                        {
+        //                            Id = Convert.ToInt32(dr["Id"]),
+        //                            CategoryId = Convert.ToInt32(dr["Id"]),
+        //                            FoodName = dr["Foods"].ToString(),
+
+        //                        }).ToList();
+
+        //        List<Actions> ActionsList = new List<Actions>();
+        //        ActionsList = (from DataColumn d in dt.Columns
+        //                     select new Actions()
+        //                     {
+        //                         Id = Convert.ToInt32(dr["Id"]),
+        //                         ActionName = dr["Action"].ToString(),
+
+        //                     }).ToList();
+
     }
+
+
 }
+
+
+
 
 
 

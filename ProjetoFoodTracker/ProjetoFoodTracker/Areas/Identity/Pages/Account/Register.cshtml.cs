@@ -159,8 +159,6 @@ namespace ProjetoFoodTracker.Areas.Identity.Pages.Account
                         await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
                     }
 
-                    // categories.FirstOrDefault(x => x.Id = food.Category).Id
-                    //if (!_db.Users.Any(x => x.UserName == "Admin"))
                     if (user.UserName == "Admin@admin.com")
                     {
                         await _userManager.AddToRoleAsync(user, SD.AdminEndUser);
