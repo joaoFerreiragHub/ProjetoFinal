@@ -50,7 +50,7 @@ namespace ProjetoFoodTracker.Services
                     var fRecords = new Food
                     {
                         FoodName = csvReader.GetField("Foods"),
-                        Category = catRecords,
+                        Category = catRecords
                     };
 
                     foodRecords.Add(fRecords);
@@ -76,12 +76,13 @@ namespace ProjetoFoodTracker.Services
                     _ctx.SaveChanges();
 
                 }
-                foodRecords.Select(x => x.Category).Distinct();
-                var uniqueFoods = foodRecords.GroupBy(p => p.Category)
+                foodRecords.Select(x => x.FoodName).Distinct();
+                var uniqueFoods = foodRecords.GroupBy(p => p.FoodName)
                            .Select(grp => grp.First())
                            .ToArray();
                 foreach (var food in foodRecords)
-                {                  
+                {
+                    
                     _ctx.Foods.Add(food);
                     _ctx.SaveChanges();
                 }
