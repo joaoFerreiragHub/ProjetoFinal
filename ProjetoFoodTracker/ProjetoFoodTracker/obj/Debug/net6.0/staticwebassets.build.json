@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ek4z4qq0PhWO872dWUDlEwoJwYrZkwtOG5skdtO4aO0=",
+  "Hash": "H2DbLKShrUHXiqWPTGV90KZ18EhpW5AUAZUMhz0oeVE=",
   "Source": "ProjetoFoodTracker",
   "BasePath": "_content/ProjetoFoodTracker",
   "Mode": "Default",
@@ -1802,6 +1802,23 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
+      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\css\\teste.css",
+      "SourceId": "ProjetoFoodTracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
+      "BasePath": "_content/ProjetoFoodTracker",
+      "RelativePath": "css/teste.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\teste.css"
+    },
+    {
       "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\favicon.ico",
       "SourceId": "ProjetoFoodTracker",
       "SourceType": "Discovered",
@@ -1885,6 +1902,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\File\\ufile"
+    },
+    {
+      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\js\\scripts.js",
+      "SourceId": "ProjetoFoodTracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
+      "BasePath": "_content/ProjetoFoodTracker",
+      "RelativePath": "js/scripts.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\scripts.js"
     },
     {
       "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\js\\site.js",
