@@ -82,7 +82,7 @@ namespace ProjetoFoodTracker.Services
                            .ToArray();
                 foreach (var food in foodRecords)
                 {
-                    
+
                     _ctx.Foods.Add(food);
                     _ctx.SaveChanges();
                 }
