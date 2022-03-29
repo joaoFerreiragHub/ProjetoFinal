@@ -28,7 +28,7 @@ namespace ProjetoFoodTracker.Services
             return filePath;
         }
 
-       
+
         public void UploadtoDb(/*IFormFile file*/)
         {
 
@@ -41,7 +41,6 @@ namespace ProjetoFoodTracker.Services
                 string[] lines = text[i].Split(',');
                 var categoryName = lines[1].Trim();
                 Category newCategory;
-
                 if (!_ctx.Categories.Any(x => x.CategoryName.Equals(categoryName)))
                 {
                     newCategory = new Category() { CategoryName = categoryName };
@@ -53,16 +52,47 @@ namespace ProjetoFoodTracker.Services
 
                 var food = new Food()
                 { FoodName = lines[0], Category = newCategory };
-                _ctx.Foods.Add(food);
-                _ctx.SaveChanges();
-            };
+
+                for (int j = 1; j < text.Length; j++)
+                {
+                    string[] lins = text[j].Split(',');
+                    string[] column = lins[2].Split('|');
+                    var actionsNames = column[0].Trim();
+                    Actions newAction;
+
+                    for (int k = 0; k < column.Length; k++)
+                    {
+                        if (!_ctx.Actions.Any(x => x.ActionName.Equals(actionsNames)))
+                        {
+                            newAction = new Actions() { ActionName = actionsNames };
+                        }
+                        else
+                        {
+                            newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionsNames));
+                        }
+                        FoodAction foodActions;
+                        Food vaiBuscar;
+                        if (!_ctx.Foods.Any(x => x.FoodName.Equals(food.FoodName)))
+                        {
+                            foodActions = new FoodAction() { Food = food, Actions = newAction };
+                        }
+                        else
+                        {
+                            vaiBuscar = _ctx.Foods.Where(x => x.FoodName == food.FoodName).FirstOrDefault();
+                            //_ctx.Foods.FirstOrDefault(x => x.FoodName.Equals(food)).FoodName;                       
+                            foodActions = new FoodAction() { FoodId = vaiBuscar.Id, Actions = newAction };
+                        }
+
+                        
 
 
-            _ctx.SaveChanges();
+                        _ctx.FoodActions.Add(foodActions);
+                        _ctx.SaveChanges();
+                    }
 
+                }
 
-
-
+            }
         }
     }
 }
