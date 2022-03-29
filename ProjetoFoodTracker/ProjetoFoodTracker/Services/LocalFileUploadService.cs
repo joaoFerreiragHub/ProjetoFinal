@@ -31,67 +31,45 @@ namespace ProjetoFoodTracker.Services
 
         public void UploadtoDb(/*IFormFile file*/)
         {
-
             string path = @"C:\Users\gar_e\Downloads\ProjetoFinal-main (2)\ProjetoFinal-main\ProjetoFoodTracker\ProjetoFoodTracker\wwwroot\File\Alimentus.csv";
-
             string[] text = File.ReadAllLines(path);
 
             for (int i = 1; i < text.Length; i++)
             {
-                string[] lines = text[i].Split(',');
-                var categoryName = lines[1].Trim();
-                Category newCategory;
+                string[] lines = text[i].Split(','), column = lines[2].Split('|'); ;
+                var categoryName = lines[1].Trim();               
+                var actionsNames = column[0].Trim();
+
+                Category newCategory; 
+                Actions newAction; 
+                FoodAction foodActions;
+                Food GetFood;
+
                 if (!_ctx.Categories.Any(x => x.CategoryName.Equals(categoryName)))
-                {
                     newCategory = new Category() { CategoryName = categoryName };
-                }
                 else
-                {
                     newCategory = _ctx.Categories.FirstOrDefault(x => x.CategoryName.Equals(categoryName));
-                }
 
-                var food = new Food()
-                { FoodName = lines[0], Category = newCategory };
+                var food = new Food() { FoodName = lines[0], Category = newCategory };
 
-                for (int j = 1; j < text.Length; j++)
+                for (int k = 0; k < column.Length; k++)
                 {
-                    string[] lins = text[j].Split(',');
-                    string[] column = lins[2].Split('|');
-                    var actionsNames = column[0].Trim();
-                    Actions newAction;
+                    if (!_ctx.Actions.Any(x => x.ActionName.Equals(actionsNames)))
+                        newAction = new Actions() { ActionName = actionsNames };
+                    else
+                        newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionsNames));
 
-                    for (int k = 0; k < column.Length; k++)
+                    if (!_ctx.Foods.Any(x => x.FoodName.Equals(food.FoodName)))
+                        foodActions = new FoodAction() { Food = food, Actions = newAction };
+                    else
                     {
-                        if (!_ctx.Actions.Any(x => x.ActionName.Equals(actionsNames)))
-                        {
-                            newAction = new Actions() { ActionName = actionsNames };
-                        }
-                        else
-                        {
-                            newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionsNames));
-                        }
-                        FoodAction foodActions;
-                        Food vaiBuscar;
-                        if (!_ctx.Foods.Any(x => x.FoodName.Equals(food.FoodName)))
-                        {
-                            foodActions = new FoodAction() { Food = food, Actions = newAction };
-                        }
-                        else
-                        {
-                            vaiBuscar = _ctx.Foods.Where(x => x.FoodName == food.FoodName).FirstOrDefault();
-                            //_ctx.Foods.FirstOrDefault(x => x.FoodName.Equals(food)).FoodName;                       
-                            foodActions = new FoodAction() { FoodId = vaiBuscar.Id, Actions = newAction };
-                        }
-
-                        
-
-
-                        _ctx.FoodActions.Add(foodActions);
-                        _ctx.SaveChanges();
+                        GetFood = _ctx.Foods.Where(x => x.FoodName == food.FoodName).FirstOrDefault();
+                        //_ctx.Foods.FirstOrDefault(x => x.FoodName.Equals(food)).FoodName;                       
+                        foodActions = new FoodAction() { FoodId = GetFood.Id, Actions = newAction };
                     }
-
+                    _ctx.FoodActions.Add(foodActions);
+                    _ctx.SaveChanges();
                 }
-
             }
         }
     }
