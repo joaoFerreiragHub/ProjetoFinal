@@ -206,26 +206,25 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Blacklist",
+                name: "BlackLists",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FoodId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blacklist", x => x.Id);
+                    table.PrimaryKey("PK_BlackLists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Blacklist_AspNetUsers_ApplicationUserId",
+                        name: "FK_BlackLists_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blacklist_Foods_FoodId",
+                        name: "FK_BlackLists_Foods_FoodId",
                         column: x => x.FoodId,
                         principalTable: "Foods",
                         principalColumn: "Id",
@@ -233,26 +232,25 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Favorites",
+                name: "FavoritesSet",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FoodId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Favorites", x => x.Id);
+                    table.PrimaryKey("PK_FavoritesSet", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Favorites_AspNetUsers_ApplicationUserId",
+                        name: "FK_FavoritesSet_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Favorites_Foods_FoodId",
+                        name: "FK_FavoritesSet_Foods_FoodId",
                         column: x => x.FoodId,
                         principalTable: "Foods",
                         principalColumn: "Id",
@@ -260,7 +258,7 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FoodAction",
+                name: "FoodActions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -270,15 +268,15 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FoodAction", x => x.Id);
+                    table.PrimaryKey("PK_FoodActions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FoodAction_Actions_ActionId",
+                        name: "FK_FoodActions_Actions_ActionId",
                         column: x => x.ActionId,
                         principalTable: "Actions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FoodAction_Foods_FoodId",
+                        name: "FK_FoodActions_Foods_FoodId",
                         column: x => x.FoodId,
                         principalTable: "Foods",
                         principalColumn: "Id",
@@ -286,7 +284,7 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FoodMeals",
+                name: "FoodMealsSet",
                 columns: table => new
                 {
                     FoodMealsId = table.Column<int>(type: "int", nullable: false)
@@ -296,15 +294,15 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FoodMeals", x => x.FoodMealsId);
+                    table.PrimaryKey("PK_FoodMealsSet", x => x.FoodMealsId);
                     table.ForeignKey(
-                        name: "FK_FoodMeals_AspNetUsers_UserId",
+                        name: "FK_FoodMealsSet_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FoodMeals_Foods_FoodId",
+                        name: "FK_FoodMealsSet_Foods_FoodId",
                         column: x => x.FoodId,
                         principalTable: "Foods",
                         principalColumn: "Id",
@@ -312,7 +310,7 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Meals",
+                name: "MealsSet",
                 columns: table => new
                 {
                     MealsId = table.Column<int>(type: "int", nullable: false)
@@ -324,15 +322,15 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Meals", x => x.MealsId);
+                    table.PrimaryKey("PK_MealsSet", x => x.MealsId);
                     table.ForeignKey(
-                        name: "FK_Meals_AspNetUsers_ApplicationUserId",
+                        name: "FK_MealsSet_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Meals_Foods_FoodId",
+                        name: "FK_MealsSet_Foods_FoodId",
                         column: x => x.FoodId,
                         principalTable: "Foods",
                         principalColumn: "Id",
@@ -379,43 +377,43 @@ namespace ProjetoFoodTracker.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blacklist_ApplicationUserId",
-                table: "Blacklist",
+                name: "IX_BlackLists_ApplicationUserId",
+                table: "BlackLists",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blacklist_FoodId",
-                table: "Blacklist",
+                name: "IX_BlackLists_FoodId",
+                table: "BlackLists",
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorites_ApplicationUserId",
-                table: "Favorites",
+                name: "IX_FavoritesSet_ApplicationUserId",
+                table: "FavoritesSet",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorites_FoodId",
-                table: "Favorites",
+                name: "IX_FavoritesSet_FoodId",
+                table: "FavoritesSet",
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodAction_ActionId",
-                table: "FoodAction",
+                name: "IX_FoodActions_ActionId",
+                table: "FoodActions",
                 column: "ActionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodAction_FoodId",
-                table: "FoodAction",
+                name: "IX_FoodActions_FoodId",
+                table: "FoodActions",
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodMeals_FoodId",
-                table: "FoodMeals",
+                name: "IX_FoodMealsSet_FoodId",
+                table: "FoodMealsSet",
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodMeals_UserId",
-                table: "FoodMeals",
+                name: "IX_FoodMealsSet_UserId",
+                table: "FoodMealsSet",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -424,13 +422,13 @@ namespace ProjetoFoodTracker.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meals_ApplicationUserId",
-                table: "Meals",
+                name: "IX_MealsSet_ApplicationUserId",
+                table: "MealsSet",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meals_FoodId",
-                table: "Meals",
+                name: "IX_MealsSet_FoodId",
+                table: "MealsSet",
                 column: "FoodId");
         }
 
@@ -452,19 +450,19 @@ namespace ProjetoFoodTracker.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Blacklist");
+                name: "BlackLists");
 
             migrationBuilder.DropTable(
-                name: "Favorites");
+                name: "FavoritesSet");
 
             migrationBuilder.DropTable(
-                name: "FoodAction");
+                name: "FoodActions");
 
             migrationBuilder.DropTable(
-                name: "FoodMeals");
+                name: "FoodMealsSet");
 
             migrationBuilder.DropTable(
-                name: "Meals");
+                name: "MealsSet");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

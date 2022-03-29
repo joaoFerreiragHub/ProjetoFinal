@@ -1,6 +1,8 @@
 ﻿@page
 @model IndexModel
-
+@using ProjetoFoodTracker.Data.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Home page";
 }
@@ -21,20 +23,28 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="Meals">Import</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="Meals">Meals</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Favorites</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Blacklist</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyFood/Index">Manage Foods</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyCategory/Index">Manage Categories</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyActions/Index">Manage Actions</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyUsers/Index">Manage Users</a>
+                }
                 </div>
             </div>
+
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h1 class="mt-4">Simple Sidebar</h1>
-                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                    <h1 class="mt-4">Atualizar aqui</h1>
+                    <p>Pelo menos os que têm menos funcionalidade</p>
                     <p>
                         Make sure to keep all page content within the
                         <code>#page-content-wrapper</code>

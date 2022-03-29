@@ -13,10 +13,10 @@ namespace ProjetoFoodTracker.Data.Entities
 
 
         //FK
-
+        [Required]
         public Food Food { get; set; }
 
-
+        [Required]
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

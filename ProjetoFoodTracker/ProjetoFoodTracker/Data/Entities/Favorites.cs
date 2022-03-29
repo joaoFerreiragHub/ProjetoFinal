@@ -9,10 +9,10 @@ namespace ProjetoFoodTracker.Data.Entities
         public int Id { get; set; }
 
         //FK
-        public int FoodId { get; set; }
+        [Required]
         public Food Food { get; set; }
 
-        public string UserId { get; set; }
+        [Required]
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

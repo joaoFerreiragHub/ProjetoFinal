@@ -273,17 +273,13 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("Blacklist");
+                    b.ToTable("BlackLists");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Category", b =>
@@ -318,17 +314,13 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("Favorites");
+                    b.ToTable("FavoritesSet");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>
@@ -373,7 +365,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("FoodAction");
+                    b.ToTable("FoodActions");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.FoodMeals", b =>
@@ -397,7 +389,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FoodMeals");
+                    b.ToTable("FoodMealsSet");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Meals", b =>
@@ -427,7 +419,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("Meals");
+                    b.ToTable("MealsSet");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

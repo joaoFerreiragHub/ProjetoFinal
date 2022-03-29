@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Admin\**" />
+    <Content Remove="Pages\Admin\**" />
+    <EmbeddedResource Remove="Pages\Admin\**" />
+    <None Remove="Pages\Admin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CoreAdmin" Version="2.5.0" />
     <PackageReference Include="CsvHelper" Version="27.2.1" />
     <PackageReference Include="EPPlus" Version="5.8.8" />
@@ -23,14 +30,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
     <PackageReference Include="System.IO" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\File\Alimentos.csv" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Admin\" />
   </ItemGroup>
 
 </Project>
