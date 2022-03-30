@@ -30,16 +30,16 @@ namespace ProjetoFoodTracker.Pages
         }
         public void OnPostUploadtoDb(IFormFile file)
         {
-           _fileUploadService.UploadtoDb();
+           _fileUploadService.UploadtoDb(file);
         }
-        public async void OnPostLocalSave(IFormFile ufile, int sessionCount)
-        {
-            if (ufile != null)
-            {
-                Filepath = await _fileUploadService.UploadFileAsync(ufile);
-            }
+        //public async void OnPostLocalSave(IFormFile ufile, int sessionCount)
+        //{
+        //    if (ufile != null)
+        //    {
+        //        Filepath = await _fileUploadService.UploadFileAsync(ufile);
+        //    }
 
-        }
+        //}
 
     }
 }

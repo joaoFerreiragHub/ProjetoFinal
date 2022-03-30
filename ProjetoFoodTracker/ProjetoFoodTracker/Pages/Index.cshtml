@@ -22,20 +22,28 @@
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="Meals">Meals</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Favorites</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Blacklist</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
-                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+              @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyFood/Index">Manage Foods</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyCategory/Index">Manage Categories</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyActions/Index">Manage Actions</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyUsers/Index">Manage Users</a>
+
                 }
+                else
+                {
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="Meals">Meals</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="Favorites">Favorites</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Blacklist</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
+
+                }
+                   
+
+
                 </div>
             </div>
 

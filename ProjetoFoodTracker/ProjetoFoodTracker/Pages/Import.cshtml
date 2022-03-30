@@ -27,21 +27,6 @@
      
     }
 </div>
-<div class="col-md-4">
-    <form asp-page-handler="LocalSave" asp-route-sessioncount="30" method="post" enctype="multipart/form-data">
-        <div class="for-group">
-            <input name="ufile" type="file" class="form-control" />
-            <br />
-            <button type="submit" class="btn-primary btn-primary rounded-pill" asp-page-handler="LocalSave">Save File</button>
-            <br/>
-            <br />
-            <p>Reza a lenda que se for imagem aparece em baixo</p>
-           <p>(P.S: é provável que não funcione)</p>
-        </div>
-    </form>
-    <br />
-</div>
-<div>
     @if (string.IsNullOrWhiteSpace(Model.Filepath))
     {
         <img src="@Model.Filepath" alt="Alternate Text" />

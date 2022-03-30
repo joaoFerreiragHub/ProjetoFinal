@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
 using ProjetoFoodTracker.Services;
+using ProjetoFoodTracker.Services.FoodServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IFileUploadService, LocalFileUploadService>();
+builder.Services.AddScoped<IFoodService, FoodService>();
 //builder.Services.AddCoreAdmin();
 
 // Add services to the container.

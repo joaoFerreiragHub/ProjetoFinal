@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RM3qHcrpxTY5nXq4IMUG2fkfIqifIZlVBnaZ9D8cnuI=",
+  "Hash": "GiVaskf+XkSNrQjrp92qPQEjWaErOVINiZOZhwsYdVs=",
   "Source": "ProjetoFoodTracker",
   "BasePath": "_content/ProjetoFoodTracker",
   "Mode": "Default",
@@ -1853,6 +1853,23 @@
       "OriginalItemSpec": "wwwroot\\File\\Alimentus.csv"
     },
     {
+      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\file",
+      "SourceId": "ProjetoFoodTracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
+      "BasePath": "_content/ProjetoFoodTracker",
+      "RelativePath": "File/file",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\File\\file"
+    },
+    {
       "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\pexels-ella-olsson-1640773.jpg",
       "SourceId": "ProjetoFoodTracker",
       "SourceType": "Discovered",
@@ -1885,23 +1902,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\File\\pexels-lukas-1414131.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\ufile",
-      "SourceId": "ProjetoFoodTracker",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
-      "BasePath": "_content/ProjetoFoodTracker",
-      "RelativePath": "File/ufile",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\File\\ufile"
     },
     {
       "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\js\\scripts.js",
