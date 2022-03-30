@@ -1,62 +1,43 @@
-﻿@page
+﻿@page 
 @model ProjetoFoodTracker.Pages.FavoritesModel
 @{
 }
-<h3>Favorites</h3>
-<!-- Main content -->
-<div class="col-lg-16 mb-3">
-    <div class="row text-left mb-5">
-        <div class="col-md-3 mb-3 mb-sm-0">
-            <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" style="width: 100%;">
-                <select class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                    <option> Categories </option>
-                    <option> Fruit </option>
-                    <option> Sweets </option>
-                    <option> Legumes, Nuts and Beans </option>
-                    <option> Vegetables </option>
-                    <option> Seafood </option>
-                    <option> Beverages and Soups </option>
-                    <option> Grains, Seeds and Flours </option>
-                    <option> Dairy </option>
-                    <option> Herbs and Spices </option>
-                    <option> Oils and Sauces </option>
-                    <option> Meats </option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-3 text-lg-right">
-            <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-                <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                    <option> Actions </option>
-                    <option> Angiogenesis Antiangiogenic </option>
-                    <option> Angiogenesis Stimulating</option>
-                    <option> DNA Protection </option>
-                    <option> Regeneration </option>
-                    <option> Immunity</option>
-                    <option> Microbiome </option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-3 text-lg-right">
-            <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-                <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                    <option> Filter By </option>
-                    <option> Favorites </option>
-                    <option> Blacklist </option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="container">
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3">Foods</h1>
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="card-actions float-right">
                             <div class="dropdown show">
+                            </div>
+                            <div class="col-lg-16 mb-3">
+                                <div class="row text-left mb-5">
+                                    <div class="col-md-3 mb-3 mb-sm-0">
+                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" style="width: 100%;">
+                                            @*          <select id="Select1" asp-items="@(new SelectList(Model.displayCategories,"Id","CategoryName"))" class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" data-toggle="select" tabindex="-98">
+                                                <option value="" >Select One</option>
+                                                </select>*@
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-lg-right">
+                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
+                                            @*      <select id="Select2" asp-items="@(new SelectList(Model.displayActions,"Id","ActionName"))" class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
+                                                </select>*@
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-lg-right">
+                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
+                                            <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
+                                                <option> Filter By </option>
+                                                <option> Favorites </option>
+                                                <option> Blacklist </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table class="table table-striped" style="width:100%">
@@ -66,6 +47,8 @@
                                             <th>Category</th>
                                             <th>Actions</th>
                                             <th>Status</th>
+                                            <th>Add</th>
+                                            <th>Remove</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -83,13 +66,20 @@
                                                     @Html.DisplayFor(modelItem => food.Actions.ActionName)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => food.Actions.FoodAction)
+                                                    <a>on favorite/black list</a>
                                                 </td>
                                                 <td>
-                                                    <a asp-page="./Details" asp-route-id="@food.Id">Details</a> |
-                                                    <a asp-page="./Delete" asp-route-id="@food.Id">Delete</a>
+                                                    <form method="post" asp-page-handler="AddFavorite" asp-route-ID="@food.Food.Id">
+                                                        <button type="submit" class="btn btn-primary m-1">Add Favorite</button>                                                        
+                                                    </form>
+                                                </td>
+ 
+                                                <td>
+                                                    @*  <button asp-page="./Details" class="btn btn-primary" asp-route-id="@food.Id">Add To Blacklist</button>
+                                                        <button asp-page="./Details" class="btn btn-danger" asp-route-id="@food.Id">Remove Blacklist</button>*@
                                                 </td>
                                             </tr>
+
                                         }
                                         <tr>
                                             <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>

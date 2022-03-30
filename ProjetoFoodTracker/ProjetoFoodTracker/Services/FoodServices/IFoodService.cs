@@ -4,12 +4,12 @@ namespace ProjetoFoodTracker.Services.FoodServices
 {
     public interface IFoodService
     {
-        List<Food> GetAllFoods();
-        List<FoodAction> GetAllFoodActions();
-        List<Category> GetAllCategories();
-        List<Actions> GetAllActions();
+        Task <List<Food>> GetAllFoods();
+        Task <List<FoodAction>> GetAllFoodActions();
+        Task<List<Category>> GetAllCategories();
+        Task<List<Actions>> GetAllActions();
+        Task AddToFavorites(int ID);
 
-        List<FoodAction> GetActionsByFood();
 
     }
 }
