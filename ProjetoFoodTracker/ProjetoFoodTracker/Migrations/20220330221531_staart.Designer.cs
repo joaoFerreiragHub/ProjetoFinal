@@ -12,7 +12,7 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220330190133_staart")]
+    [Migration("20220330221531_staart")]
     partial class staart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -415,11 +415,24 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Grams")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("MealEnded")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("MealStart")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("Units")
+                        .HasColumnType("int");
 
                     b.HasKey("MealsId");
 

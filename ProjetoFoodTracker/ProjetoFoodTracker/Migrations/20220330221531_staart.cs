@@ -317,6 +317,10 @@ namespace ProjetoFoodTracker.Migrations
                 {
                     MealsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Units = table.Column<int>(type: "int", nullable: true),
+                    Grams = table.Column<int>(type: "int", nullable: true),
+                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MealStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MealEnded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FoodId = table.Column<int>(type: "int", nullable: false),
