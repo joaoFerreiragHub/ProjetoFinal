@@ -63,12 +63,12 @@ namespace ProjetoFoodTracker.Pages
         public void OnPostRemoveFromFavorites(int ID, int sessionCount)
         {
             var userId = _userManager.GetUserId(User);
-            _foodService.AddToBlacklist(ID, userId);
+            _foodService.RemoveFromFavorites(ID, userId);
         }
         public void OnPostRemoveFromBlacklist(int ID, int sessionCount)
         {
             var userId = _userManager.GetUserId(User);
-            _foodService.AddToBlacklist(ID, userId);
+            _foodService.RemoveFromBlacklist(ID, userId);
         }
     }
 }

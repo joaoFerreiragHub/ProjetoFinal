@@ -83,21 +83,14 @@ namespace ProjetoFoodTracker.Services.FoodServices
             var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
             var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
 
-            Favorites newFavorite = new Favorites()
-            {
-                ApplicationUser = user,
-                Food = food,
-                date = DateTime.Now,
-            };
-           
             var checkfave = _ctx.FavoriteList.FirstOrDefault(x => x.Food == food);
             if (checkfave != null)
-                _ctx.SaveChanges();
-            else
             {
-                _ctx.FavoriteList.Remove(newFavorite);
+                _ctx.FavoriteList.Remove(checkfave);
                 _ctx.SaveChanges();
             }
+            else  
+                _ctx.SaveChanges();
         }
 
         public void RemoveFromBlacklist(int ID, string userId)
@@ -105,21 +98,14 @@ namespace ProjetoFoodTracker.Services.FoodServices
             var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
             var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
 
-            Blacklist newblacklist = new Blacklist()
-            {
-                ApplicationUser = user,
-                Food = food,
-                date = DateTime.Now,
-            };
-
             var checkBlack = _ctx.BlackLists.FirstOrDefault(x => x.Food == food);
             if (checkBlack != null)
-                _ctx.SaveChanges();
-            else
             {
-                _ctx.BlackLists.Remove(newblacklist);
+                _ctx.BlackLists.Remove(checkBlack);
                 _ctx.SaveChanges();
             }
+            else
+                 _ctx.SaveChanges();    
         }
     }
 }
