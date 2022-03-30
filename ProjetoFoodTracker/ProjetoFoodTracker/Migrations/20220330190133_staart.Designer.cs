@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220330165031_reset")]
-    partial class reset
+    [Migration("20220330190133_staart")]
+    partial class staart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -275,6 +275,9 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
@@ -316,13 +319,16 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("FavoritesSet");
+                    b.ToTable("FavoriteList");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>

@@ -4,58 +4,123 @@ using ProjetoFoodTracker.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 
 
+
 namespace ProjetoFoodTracker.Services.FoodServices
 {
     public class FoodService : IFoodService
     {
         private readonly ApplicationDbContext _ctx;
-        private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _applicationUser;
 
-
-        public FoodService(ApplicationDbContext ctx, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> applicationUser)
+        public FoodService(ApplicationDbContext ctx)
         {
-            _applicationUser = applicationUser;
             _ctx = ctx;
-
         }
-
-      
-        public async Task AddToFavorites(int ID)
-        {
-            //    var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
-            //    var user = await _applicationUser.GetUserId(User)
-
-            //    Favorites newFavorite = new Favorites()
-            //    {
-            //        newFavorite.Food = food,
-            //        newFavorite.ApplicationUser = _userManager.
-            //    };
-
-            //    if (!_ctx.FavoritesSet.Contains(newFavorite))
-            //        _ctx.FavoritesSet.Add(newFavorite);
-            //    else
-            //        _ctx.FavoritesSet.Update(newFavorite);
-            //    await _ctx.SaveChangesAsync();
-        }
-
-
-
         public async Task<List<Food>> GetAllFoods() => await Task.Run(() => _ctx.Foods.ToList());
         public async Task<List<FoodAction>> GetAllFoodActions() => await Task.Run(() => _ctx.FoodActions.ToList());
         public async Task<List<Category>> GetAllCategories() => await Task.Run(() => _ctx.Categories.ToList());
         public async Task<List<Actions>> GetAllActions() => await Task.Run(() => _ctx.Actions.ToList());
 
+        public void AddToFavorites(int ID, string userId)
+        {
+            var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
+            var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
 
-        //public async Task<List<FoodAction>> GetActionsByFood()
-        //{
-        //    var actions = await Task.Run( ()=> (from food in _ctx.Foods
-        //                   join action in _ctx.FoodActions on food.Id equals action.Id
-        //                   join category in _ctx.Categories on food.Id equals category.Id
-        //                   select action).ToList()
-        //                   );
-        //    return actions;
-        //}
+            Favorites newFavorite = new Favorites()
+            {
+                ApplicationUser = user,
+                Food = food,
+                date = DateTime.Now,
+            };
 
+            var check = _ctx.BlackLists.FirstOrDefault(x => x.Food == food);
+
+            if (_ctx.BlackLists.Contains(check))
+            {
+                _ctx.BlackLists.Remove(check);
+                _ctx.SaveChanges();
+            }
+            var checkfave = _ctx.FavoriteList.FirstOrDefault(x => x.Food == food);
+            if(checkfave != null)
+                _ctx.SaveChanges();
+            else
+            {
+                _ctx.FavoriteList.Add(newFavorite);
+                _ctx.SaveChanges();
+            }
+
+        }
+        public void AddToBlacklist(int ID, string userId)
+        {
+            var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
+            var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
+
+            Blacklist newblacklist = new Blacklist()
+            {
+                ApplicationUser = user,
+                Food = food,
+                date = DateTime.Now,
+            };
+
+            var check = _ctx.FavoriteList.FirstOrDefault(x => x.Food == food);
+
+            if (_ctx.FavoriteList.Contains(check))
+            {
+                _ctx.FavoriteList.Remove(check);
+                _ctx.SaveChanges();
+            }
+            var checkBlack = _ctx.BlackLists.FirstOrDefault(x => x.Food == food);
+            if (checkBlack != null)
+                _ctx.SaveChanges();
+            else
+            {
+                _ctx.BlackLists.Add(newblacklist);
+                _ctx.SaveChanges();
+            }
+        }
+
+        public void RemoveFromFavorites(int ID, string userId)
+        {
+            var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
+            var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
+
+            Favorites newFavorite = new Favorites()
+            {
+                ApplicationUser = user,
+                Food = food,
+                date = DateTime.Now,
+            };
+           
+            var checkfave = _ctx.FavoriteList.FirstOrDefault(x => x.Food == food);
+            if (checkfave != null)
+                _ctx.SaveChanges();
+            else
+            {
+                _ctx.FavoriteList.Remove(newFavorite);
+                _ctx.SaveChanges();
+            }
+        }
+
+        public void RemoveFromBlacklist(int ID, string userId)
+        {
+            var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
+            var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
+
+            Blacklist newblacklist = new Blacklist()
+            {
+                ApplicationUser = user,
+                Food = food,
+                date = DateTime.Now,
+            };
+
+            var checkBlack = _ctx.BlackLists.FirstOrDefault(x => x.Food == food);
+            if (checkBlack != null)
+                _ctx.SaveChanges();
+            else
+            {
+                _ctx.BlackLists.Remove(newblacklist);
+                _ctx.SaveChanges();
+            }
+        }
     }
 }
 

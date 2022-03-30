@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoFoodTracker.Migrations
 {
-    public partial class reset : Migration
+    public partial class staart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -211,6 +211,7 @@ namespace ProjetoFoodTracker.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FoodId = table.Column<int>(type: "int", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -232,25 +233,26 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FavoritesSet",
+                name: "FavoriteList",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FoodId = table.Column<int>(type: "int", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FavoritesSet", x => x.Id);
+                    table.PrimaryKey("PK_FavoriteList", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FavoritesSet_AspNetUsers_ApplicationUserId",
+                        name: "FK_FavoriteList_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FavoritesSet_Foods_FoodId",
+                        name: "FK_FavoriteList_Foods_FoodId",
                         column: x => x.FoodId,
                         principalTable: "Foods",
                         principalColumn: "Id",
@@ -387,13 +389,13 @@ namespace ProjetoFoodTracker.Migrations
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FavoritesSet_ApplicationUserId",
-                table: "FavoritesSet",
+                name: "IX_FavoriteList_ApplicationUserId",
+                table: "FavoriteList",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FavoritesSet_FoodId",
-                table: "FavoritesSet",
+                name: "IX_FavoriteList_FoodId",
+                table: "FavoriteList",
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
@@ -453,7 +455,7 @@ namespace ProjetoFoodTracker.Migrations
                 name: "BlackLists");
 
             migrationBuilder.DropTable(
-                name: "FavoritesSet");
+                name: "FavoriteList");
 
             migrationBuilder.DropTable(
                 name: "FoodActions");

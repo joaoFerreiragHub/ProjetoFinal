@@ -23,9 +23,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IFileUploadService, LocalFileUploadService>();
+
 
 var app = builder.Build();
 

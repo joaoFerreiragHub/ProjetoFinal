@@ -19,7 +19,7 @@ namespace ProjetoFoodTracker.Data
         public DbSet<Food> Foods { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Actions> Actions { get; set; }
-        public DbSet<Favorites> FavoritesSet { get; set; }
+        public DbSet<Favorites> FavoriteList { get; set; }
         public DbSet<Blacklist> BlackLists { get; set; }
         public DbSet<Meals> MealsSet { get; set; }
         public DbSet<FoodAction> FoodActions { get; set; }

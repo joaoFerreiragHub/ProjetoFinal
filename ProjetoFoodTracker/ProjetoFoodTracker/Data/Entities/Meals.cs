@@ -8,6 +8,7 @@ namespace ProjetoFoodTracker.Data.Entities
         [Key]
         public int MealsId { get; set; }
 
+       
         public DateTime MealStart { get; set; }
         public DateTime MealEnded { get; set; }
 

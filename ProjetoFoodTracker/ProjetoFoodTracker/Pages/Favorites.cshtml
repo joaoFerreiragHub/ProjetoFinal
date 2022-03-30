@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page
 @model ProjetoFoodTracker.Pages.FavoritesModel
 @{
 }
@@ -17,15 +17,16 @@
                                 <div class="row text-left mb-5">
                                     <div class="col-md-3 mb-3 mb-sm-0">
                                         <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" style="width: 100%;">
-                                            @*          <select id="Select1" asp-items="@(new SelectList(Model.displayCategories,"Id","CategoryName"))" class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                                                <option value="" >Select One</option>
-                                                </select>*@
+@*                                            <select asp-items="@(new SelectList(Model.displayCategories,"Id","CategoryName"))" class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" data-toggle="select" tabindex="-98">
+                                                <option value=""selected disabled>Select One</option>
+                                            </select>*@
                                         </div>
                                     </div>
                                     <div class="col-md-3 text-lg-right">
                                         <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-                                            @*      <select id="Select2" asp-items="@(new SelectList(Model.displayActions,"Id","ActionName"))" class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                                                </select>*@
+@*                                            <select  asp-items="@(new SelectList(Model.displayActions,"Id","ActionName"))" class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
+                                            <option value="">Select One</option>
+                                            </select>*@
                                         </div>
                                     </div>
                                     <div class="col-md-3 text-lg-right">
@@ -46,7 +47,6 @@
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>Actions</th>
-                                            <th>Status</th>
                                             <th>Add</th>
                                             <th>Remove</th>
                                         </tr>
@@ -66,126 +66,23 @@
                                                     @Html.DisplayFor(modelItem => food.Actions.ActionName)
                                                 </td>
                                                 <td>
-                                                    <a>on favorite/black list</a>
-                                                </td>
-                                                <td>
                                                     <form method="post" asp-page-handler="AddFavorite" asp-route-ID="@food.Food.Id">
-                                                        <button type="submit" class="btn btn-primary m-1">Add Favorite</button>                                                        
+                                                        <button type="submit" class="btn btn-primary m-1">Add to Favorite</button>
+                                                    </form>
+                                                    <form method="post" asp-route-sessioncount="5" asp-page-handler="OnPostRemoveFromFavorites" asp-route-ID="@food.Food.Id">
+                                                        <button type="submit" class="btn btn-danger m-1">Remove Favorite</button>
                                                     </form>
                                                 </td>
- 
                                                 <td>
-                                                    @*  <button asp-page="./Details" class="btn btn-primary" asp-route-id="@food.Id">Add To Blacklist</button>
-                                                        <button asp-page="./Details" class="btn btn-danger" asp-route-id="@food.Id">Remove Blacklist</button>*@
+                                                    <form method="post" asp-route-sessioncount="10" asp-page-handler="AddBlacklist" asp-route-ID="@food.Food.Id">
+                                                        <button type="submit" class="btn btn-danger m-1">Add to Blacklist</button>
+                                                    </form>
+                                                    <form method="post" asp-route-sessioncount="15"asp-page-handler="OnPostRemoveFromBlacklist" asp-route-ID="@food.Food.Id">
+                                                        <button type="submit" class="btn btn-primary m-1">Remove Blacklisted</button>
+                                                    </form>
                                                 </td>
                                             </tr>
-
                                         }
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Garrett Winters</td>
-                                            <td>Good Guys</td>
-                                            <td>garrett@winters.com</td>
-                                            <td><span class="badge bg-success">Favorite</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Ashton Cox</td>
-                                            <td>Levitz Furniture</td>
-                                            <td>ashton@cox.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Sonya Frost</td>
-                                            <td>Child World</td>
-                                            <td>sonya@frost.com</td>
-                                            <td><span class="badge bg-danger">Deleted</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Jena Gaines</td>
-                                            <td>Helping Hand</td>
-                                            <td>jena@gaines.com</td>
-                                            <td><span class="badge bg-warning">Inactive</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar2.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Charde Marshall</td>
-                                            <td>Price Savers</td>
-                                            <td>charde@marshall.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar2.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Haley Kennedy</td>
-                                            <td>Helping Hand</td>
-                                            <td>haley@kennedy.com</td>
-                                            <td><span class="badge bg-danger">Deleted</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar2.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Tatyana Fitzpatrick</td>
-                                            <td>Good Guys</td>
-                                            <td>tatyana@fitzpatrick.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Michael Silva</td>
-                                            <td>Red Robin Stores</td>
-                                            <td>michael@silva.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Angelica Ramos</td>
-                                            <td>The Wiz</td>
-                                            <td>angelica@ramos.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar4.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Jennifer Chang</td>
-                                            <td>Helping Hand</td>
-                                            <td>jennifer@chang.com</td>
-                                            <td><span class="badge bg-warning">Inactive</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar4.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Brenden Wagner</td>
-                                            <td>The Wiz</td>
-                                            <td>brenden@wagner.com</td>
-                                            <td><span class="badge bg-warning">Inactive</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar4.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Fiona Green</td>
-                                            <td>The Sample</td>
-                                            <td>fiona@green.com</td>
-                                            <td><span class="badge bg-warning">Inactive</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar5.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Prescott Bartlett</td>
-                                            <td>The Sample</td>
-                                            <td>prescott@bartlett.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar5.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Gavin Cortez</td>
-                                            <td>Red Robin Stores</td>
-                                            <td>gavin@cortez.com</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar5.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                            <td>Howard Hatfield</td>
-                                            <td>Price Savers</td>
-                                            <td>howard@hatfield.com</td>
-                                            <td><span class="badge bg-warning">Inactive</span></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

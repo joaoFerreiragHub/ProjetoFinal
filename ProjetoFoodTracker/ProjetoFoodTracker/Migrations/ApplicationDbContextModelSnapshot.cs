@@ -273,6 +273,9 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
@@ -314,13 +317,16 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("FavoritesSet");
+                    b.ToTable("FavoriteList");
                 });
 
             modelBuilder.Entity("ProjetoFoodTracker.Data.Entities.Food", b =>

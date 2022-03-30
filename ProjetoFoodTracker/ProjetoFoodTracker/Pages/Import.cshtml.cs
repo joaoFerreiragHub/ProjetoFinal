@@ -1,5 +1,6 @@
 using CsvHelper;
 using CsvHelper.Configuration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjetoFoodTracker.Data;
@@ -14,10 +15,11 @@ namespace ProjetoFoodTracker.Pages
     {
         private readonly ApplicationDbContext _ctx;
         private readonly IFileUploadService _fileUploadService;
-  
-        public ImportModel(ApplicationDbContext ctx, IFileUploadService fileUploadService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public ImportModel(UserManager<ApplicationUser> userManager, ApplicationDbContext ctx, IFileUploadService fileUploadService)
         {
             _ctx = ctx;
+            _userManager = userManager;
             _fileUploadService = fileUploadService;
         }
 

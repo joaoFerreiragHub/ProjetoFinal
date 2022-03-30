@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +12,10 @@ namespace ProjetoFoodTracker.Pages
     {
         private readonly IFoodService _foodService;
         private readonly ApplicationDbContext _ctx;
-        public FavoritesModel(ApplicationDbContext ctx ,IFoodService foodService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public FavoritesModel(UserManager<ApplicationUser> userManager, ApplicationDbContext ctx ,IFoodService foodService)
         {
+            _userManager = userManager;
             _ctx = ctx;
             _foodService = foodService;
         }
@@ -40,8 +43,7 @@ namespace ProjetoFoodTracker.Pages
             Actions = await  _foodService.GetAllActions();
             //FoodActions = await _foodService.GetActionsByFood();
             displayCategories = await _ctx.Categories.ToListAsync();
-            displayActions = await _ctx.Actions.ToListAsync();
-        
+            displayActions = await _ctx.Actions.ToListAsync();        
         }
         public void OnPost()
         {
@@ -49,8 +51,24 @@ namespace ProjetoFoodTracker.Pages
         }
         public void OnPostAddFavorite(int ID)
         {
-            _foodService.AddToFavorites(ID);
+            var userId = _userManager.GetUserId(User);
+            _foodService.AddToFavorites(ID, userId);
+        
         }
-
+        public void OnPostAddBlacklist(int ID, int sessionCount)
+        {
+            var userId = _userManager.GetUserId(User);
+            _foodService.AddToBlacklist(ID, userId);
+        }
+        public void OnPostRemoveFromFavorites(int ID, int sessionCount)
+        {
+            var userId = _userManager.GetUserId(User);
+            _foodService.AddToBlacklist(ID, userId);
+        }
+        public void OnPostRemoveFromBlacklist(int ID, int sessionCount)
+        {
+            var userId = _userManager.GetUserId(User);
+            _foodService.AddToBlacklist(ID, userId);
+        }
     }
 }
