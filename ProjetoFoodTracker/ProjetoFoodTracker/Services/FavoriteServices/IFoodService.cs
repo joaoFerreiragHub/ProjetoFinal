@@ -9,6 +9,8 @@ namespace ProjetoFoodTracker.Services.FoodServices
         Task<List<FoodAction>> GetAllFoodActionsAsync();
         Task<List<Category>> GetAllCategoriesAsync();
         Task<List<Actions>> GetAllActionsAsync();
+        Task<List<Favorites>> GetAllFavoritesAsync();
+        Task<List<Blacklist>> GetAllBlacklistAsync();
         void AddToFavorites(int ID, string userId);
         void AddToBlacklist(int ID, string userId);
         void RemoveFromFavorites(int ID, string userId);

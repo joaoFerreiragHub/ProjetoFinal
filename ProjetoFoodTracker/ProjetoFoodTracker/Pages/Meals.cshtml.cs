@@ -56,10 +56,14 @@ namespace ProjetoFoodTracker.Pages
             var userId = _userManager.GetUserId(User);
             _MealService.RemoveMeal(ID, userId);
         }
-        public void OnPostAddFoodToMeal(int ID, int sessionCount)
+        public async Task<IActionResult> OnPostAddFoodToMeal(int ID, int sessionCount)
         {
-            var userId = _userManager.GetUserId(User);
-            _MealService.RemoveMeal(ID, userId);
+
+           RedirectToAction("FoodToMeals");
+           var userId = _userManager.GetUserId(User);
+           _MealService.RemoveMeal(ID, userId);
+
+            return  RedirectToPage("FoodToMeals");
         }
     }
 }

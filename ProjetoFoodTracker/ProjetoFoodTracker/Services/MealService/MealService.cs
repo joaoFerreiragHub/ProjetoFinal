@@ -1,4 +1,5 @@
-﻿using ProjetoFoodTracker.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
 using ProjetoFoodTracker.Services.FoodServices;
 
@@ -64,7 +65,7 @@ namespace ProjetoFoodTracker.Services.MealService
             throw new NotImplementedException();
         }
 
-        public void AddFoodToMeal(int ID, string userId)
+        public async Task<IActionResult> AddFoodToMeal(int ID, string userId)
         {
             throw new NotImplementedException();
         }
@@ -75,6 +76,16 @@ namespace ProjetoFoodTracker.Services.MealService
         }
 
         public void MealDetails(int ID, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Favorites>> GetAllFavoritesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Blacklist>> GetAllBlacklistAsync()
         {
             throw new NotImplementedException();
         }

@@ -171,16 +171,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/Blacklist.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhY2tsaXN0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/Favorites.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmF2b3JpdGVzLmNzaHRtbA==
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/FavoritesAndBlacklist/Blacklist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmF2b3JpdGVzQW5kQmxhY2tsaXN0XEJsYWNrbGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/FavoritesAndBlacklist/Favorites.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmF2b3JpdGVzQW5kQmxhY2tsaXN0XEZhdm9yaXRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/FavoritesAndBlacklist/ManageFavorites.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmF2b3JpdGVzQW5kQmxhY2tsaXN0XE1hbmFnZUZhdm9yaXRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/FoodToMeals.cshtml]

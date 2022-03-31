@@ -17,25 +17,23 @@
                                 <div class="row text-left mb-5">
                                     <div class="col-md-3 mb-3 mb-sm-0">
                                         <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" style="width: 100%;">
-@*                                            <select asp-items="@(new SelectList(Model.displayCategories,"Id","CategoryName"))" class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                                                <option value=""selected disabled>Select One</option>
-                                            </select>*@
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-lg-right">
-                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-@*                                            <select  asp-items="@(new SelectList(Model.displayActions,"Id","ActionName"))" class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                                            <option value="">Select One</option>
-                                            </select>*@
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-lg-right">
-                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-                                            <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                                                <option> Filter By </option>
-                                                <option> Favorites </option>
-                                                <option> Blacklist </option>
+                                            <select name="categoryId" class="w-100 form-control" asp-items="Model.CategoryOptions">
+                                                <option value="0">Please select</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-lg-right">
+                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
+                                            <select name="actionsId" class="w-100 form-control" asp-items="Model.ActionsOptions">
+                                                <option value="0">Please select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-lg-right">
+                                        <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
+                                            <form asp-page="/FavoritesAndBlacklist/ManageFavorites" class="w-75">
+                                               <button type="submit" class="btn btn-info m-1">Manage List</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -46,14 +44,14 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Category</th>
-                                            <th>Actions</th>
+                                            <th>Date</th>
                                             <th>Add</th>
                                             <th>Remove</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        @foreach (var food in Model.FoodActions)
+                                        @foreach (var food in Model.Blacklisted)
                                         {
                                             <tr>
                                                 <td>
@@ -63,7 +61,7 @@
                                                     @Html.DisplayFor(modelItem => food.Food.Category.CategoryName)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => food.Actions.ActionName)
+                                                    @Html.DisplayFor(modelItem => food.date)
                                                 </td>
                                                 <td>
                                                     <form method="post" asp-page-handler="AddFavorite" asp-route-ID="@food.Food.Id">
@@ -77,7 +75,7 @@
                                                     <form method="post" asp-route-sessioncount="10" asp-page-handler="AddBlacklist" asp-route-ID="@food.Food.Id">
                                                         <button type="submit" class="btn btn-danger m-1">Add to Blacklist</button>
                                                     </form>
-                                                    <form method="post" asp-route-sessioncount="15"asp-page-handler="RemoveFromBlacklist" asp-route-ID="@food.Food.Id">
+                                                    <form method="post" asp-route-sessioncount="15" asp-page-handler="RemoveFromBlacklist" asp-route-ID="@food.Food.Id">
                                                         <button type="submit" class="btn btn-primary m-1">Remove Blacklisted</button>
                                                     </form>
                                                 </td>

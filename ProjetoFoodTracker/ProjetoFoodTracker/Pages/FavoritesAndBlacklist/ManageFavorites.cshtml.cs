@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
@@ -22,7 +23,8 @@ namespace ProjetoFoodTracker.Pages
         public List<Category> Categories { get; set; }
         public List<Food> Foods { get; set; }
         public List<Actions> Actions { get; set; }
-
+        public List<Favorites> Favorites { get; set; }
+        public List<Blacklist> Blacklisted { get; set; }
 
         public IEnumerable<Category> displayCategories { get; set; }
         public IEnumerable<Actions> displayActions { get; set; }
@@ -31,17 +33,32 @@ namespace ProjetoFoodTracker.Pages
         [BindProperty]
         public List<FoodAction> FoodActions { get; set; }
 
+        public List<SelectListItem> CategoryOptions { get; set; }
 
-
+        public List<SelectListItem> ActionsOptions { get; set; }
         public async Task OnGet()
         {
             Foods = await _foodService.GetAllFoodsAsync();        
             Categories = await _foodService.GetAllCategoriesAsync();
             FoodActions = await _foodService.GetAllFoodActionsAsync(); 
             Actions = await  _foodService.GetAllActionsAsync();
-            //FoodActions = await _foodService.GetActionsByFood();
-            displayCategories = await _ctx.Categories.ToListAsync();
-            displayActions = await _ctx.Actions.ToListAsync();        
+            Favorites= await _foodService.GetAllFavoritesAsync();
+            Blacklisted = await _foodService.GetAllBlacklistAsync();
+
+            CategoryOptions = _ctx.Categories.Select(a =>
+                                  new SelectListItem
+                                  { Text = a.CategoryName }).ToList();
+
+            ActionsOptions = _ctx.Actions.Select(a =>
+                                  new SelectListItem
+                                  { Text = a.ActionName}).ToList();
+
+
+        }
+
+        public void OnPost()
+        {
+
         }
         public void OnPostAddFavorite(int ID)
         {
