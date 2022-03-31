@@ -21,10 +21,10 @@ namespace ProjetoFoodTracker.Data
         public DbSet<Actions> Actions { get; set; }
         public DbSet<Favorites> FavoriteList { get; set; }
         public DbSet<Blacklist> BlackLists { get; set; }
-        public DbSet<Meals> MealsSet { get; set; }
+        public DbSet<Meals> MealsList{ get; set; }
         public DbSet<FoodAction> FoodActions { get; set; }
-        public DbSet<FoodMeals> FoodMealsSet { get; set; }
-        public DbSet<ApplicationUser> applicationUsers { get; set; }
+        public DbSet<FoodMeals> FoodMealsList { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -69,9 +69,9 @@ namespace ProjetoFoodTracker.Data
                 .HasForeignKey(fi => fi.FoodId);
 
             modelBuilder.Entity<FoodMeals>()
-                .HasOne(a => a.ApplicationUser)
+                .HasOne(a => a.Meals)
                 .WithMany(fa => fa.FoodMeals)
-                .HasForeignKey(ai => ai.UserId);
+                .HasForeignKey(ai => ai.MealId);
 
 
         }

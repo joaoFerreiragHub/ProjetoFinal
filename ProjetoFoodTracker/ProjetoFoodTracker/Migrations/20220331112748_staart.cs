@@ -80,6 +80,19 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TypePortion",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TypePortion", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -186,6 +199,28 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MealsList",
+                columns: table => new
+                {
+                    MealsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MealStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MealEnded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MealsList", x => x.MealsId);
+                    table.ForeignKey(
+                        name: "FK_MealsList_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Foods",
                 columns: table => new
                 {
@@ -286,59 +321,41 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FoodMealsSet",
+                name: "FoodMealsList",
                 columns: table => new
                 {
-                    FoodMealsId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FoodId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    MealId = table.Column<int>(type: "int", nullable: false),
+                    TypePortionsId = table.Column<int>(type: "int", nullable: false),
+                    Portion = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FoodMealsSet", x => x.FoodMealsId);
+                    table.PrimaryKey("PK_FoodMealsList", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FoodMealsSet_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FoodMealsSet_Foods_FoodId",
-                        column: x => x.FoodId,
-                        principalTable: "Foods",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MealsSet",
-                columns: table => new
-                {
-                    MealsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Units = table.Column<int>(type: "int", nullable: true),
-                    Grams = table.Column<int>(type: "int", nullable: true),
-                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    MealStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MealEnded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FoodId = table.Column<int>(type: "int", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MealsSet", x => x.MealsId);
-                    table.ForeignKey(
-                        name: "FK_MealsSet_AspNetUsers_ApplicationUserId",
+                        name: "FK_FoodMealsList_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_FoodMealsList_Foods_FoodId",
+                        column: x => x.FoodId,
+                        principalTable: "Foods",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MealsSet_Foods_FoodId",
-                        column: x => x.FoodId,
-                        principalTable: "Foods",
+                        name: "FK_FoodMealsList_MealsList_MealId",
+                        column: x => x.MealId,
+                        principalTable: "MealsList",
+                        principalColumn: "MealsId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FoodMealsList_TypePortion_TypePortionsId",
+                        column: x => x.TypePortionsId,
+                        principalTable: "TypePortion",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -413,14 +430,24 @@ namespace ProjetoFoodTracker.Migrations
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodMealsSet_FoodId",
-                table: "FoodMealsSet",
+                name: "IX_FoodMealsList_ApplicationUserId",
+                table: "FoodMealsList",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FoodMealsList_FoodId",
+                table: "FoodMealsList",
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodMealsSet_UserId",
-                table: "FoodMealsSet",
-                column: "UserId");
+                name: "IX_FoodMealsList_MealId",
+                table: "FoodMealsList",
+                column: "MealId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FoodMealsList_TypePortionsId",
+                table: "FoodMealsList",
+                column: "TypePortionsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Foods_CategoryId",
@@ -428,14 +455,9 @@ namespace ProjetoFoodTracker.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MealsSet_ApplicationUserId",
-                table: "MealsSet",
+                name: "IX_MealsList_ApplicationUserId",
+                table: "MealsList",
                 column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MealsSet_FoodId",
-                table: "MealsSet",
-                column: "FoodId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -465,10 +487,7 @@ namespace ProjetoFoodTracker.Migrations
                 name: "FoodActions");
 
             migrationBuilder.DropTable(
-                name: "FoodMealsSet");
-
-            migrationBuilder.DropTable(
-                name: "MealsSet");
+                name: "FoodMealsList");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -477,13 +496,19 @@ namespace ProjetoFoodTracker.Migrations
                 name: "Actions");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Foods");
 
             migrationBuilder.DropTable(
+                name: "MealsList");
+
+            migrationBuilder.DropTable(
+                name: "TypePortion");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

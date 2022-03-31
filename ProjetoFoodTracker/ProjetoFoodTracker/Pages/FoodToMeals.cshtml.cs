@@ -3,11 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ProjetoFoodTracker.Pages
 {
-    public class MyUsersModel : PageModel
+    public class FoodToMealsModel : PageModel
     {
         public void OnGet()
         {
-
         }
     }
 }

@@ -31,23 +31,17 @@ namespace ProjetoFoodTracker.Pages
         [BindProperty]
         public List<FoodAction> FoodActions { get; set; }
 
-        [BindProperty]
-        public Food foodie { get; private set; }
 
 
-        public async Task OnGet(Food food)
+        public async Task OnGet()
         {
-            Foods = await _foodService.GetAllFoods();        
-            Categories = await _foodService.GetAllCategories();
-            FoodActions = await _foodService.GetAllFoodActions(); 
-            Actions = await  _foodService.GetAllActions();
+            Foods = await _foodService.GetAllFoodsAsync();        
+            Categories = await _foodService.GetAllCategoriesAsync();
+            FoodActions = await _foodService.GetAllFoodActionsAsync(); 
+            Actions = await  _foodService.GetAllActionsAsync();
             //FoodActions = await _foodService.GetActionsByFood();
             displayCategories = await _ctx.Categories.ToListAsync();
             displayActions = await _ctx.Actions.ToListAsync();        
-        }
-        public void OnPost()
-        {
-
         }
         public void OnPostAddFavorite(int ID)
         {

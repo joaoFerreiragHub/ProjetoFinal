@@ -9,9 +9,7 @@ namespace ProjetoFoodTracker.Data.Entities
         public int MealsId { get; set; }
 
         public string Name { get; set; }
-        public int? Units { get; set; }
-        public int? Grams { get; set; }  
-        public decimal Quantity { get; set; }
+
                                                
         public DateTime MealStart { get; set; }
         public DateTime MealEnded { get; set; }
@@ -19,9 +17,7 @@ namespace ProjetoFoodTracker.Data.Entities
 
         //FK
         [Required]
-        public Food Food { get; set; }
-
-        [Required]
         public ApplicationUser ApplicationUser { get; set; }
+        public List<FoodMeals> FoodMeals { get; set; }
     }
 }

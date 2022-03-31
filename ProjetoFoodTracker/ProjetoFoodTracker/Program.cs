@@ -6,11 +6,12 @@ using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
 using ProjetoFoodTracker.Services;
 using ProjetoFoodTracker.Services.FoodServices;
+using ProjetoFoodTracker.Services.MealService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IFileUploadService, LocalFileUploadService>();
-builder.Services.AddScoped<IFoodService, FoodService>();
+
 //builder.Services.AddCoreAdmin();
 
 // Add services to the container.
@@ -27,7 +28,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IFileUploadService, LocalFileUploadService>();
-
+builder.Services.AddScoped<IFoodService, FoodService>();
+builder.Services.AddScoped<IMealService, MealService>();
 
 var app = builder.Build();
 
