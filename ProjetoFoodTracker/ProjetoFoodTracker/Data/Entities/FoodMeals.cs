@@ -11,8 +11,7 @@ namespace ProjetoFoodTracker.Data.Entities
         
         public int FoodId { get; set; }
         public Food Food { get; set; }
-
-
+            
         public int MealId { get; set; }
         public Meals Meals { get; set; }
 
@@ -21,7 +20,7 @@ namespace ProjetoFoodTracker.Data.Entities
         public TypePortion TypePortions { get; set; }
 
         [Required]
-        public decimal Portion { get; set; }
+        public decimal Quantity { get; set; }
 
     }
 }

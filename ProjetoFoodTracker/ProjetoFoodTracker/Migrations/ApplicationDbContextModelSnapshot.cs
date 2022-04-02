@@ -391,7 +391,7 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("MealId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Portion")
+                    b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("TypePortionsId")
@@ -453,7 +453,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypePortion");
+                    b.ToTable("portionTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

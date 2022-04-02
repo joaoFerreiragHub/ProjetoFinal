@@ -53,8 +53,9 @@ namespace ProjetoFoodTracker.Pages
                                   new SelectListItem
                                   { Text = a.ActionName}).ToList();
 
-
         }
+
+
 
         public void OnPost()
         {

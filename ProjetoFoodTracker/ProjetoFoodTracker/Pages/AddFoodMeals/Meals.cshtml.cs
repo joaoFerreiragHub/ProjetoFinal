@@ -28,13 +28,15 @@ namespace ProjetoFoodTracker.Pages
         public List<Category> Categories { get; set; }
         public List<Food> Foods { get; set; }
         public List<Actions> Actions { get; set; }
-        public List<Meals> MealList { get; set; }
+        public Meals meals { get; set; }
+
+        public List<FoodMeals> AddDetails { get; set; }
 
         [BindProperty]
-        public Meals Meal { get; set; }
+        public List<Meals> Meal { get; set; } = new List<Meals>();
 
         [BindProperty]
-        public List<FoodMeals> AddFoodsToMeals { get; set; }
+        public List<FoodMeals> AddFoodsToMeals { get; set; } = new List<FoodMeals>();
 
         public async Task OnGet()
         {
@@ -42,28 +44,26 @@ namespace ProjetoFoodTracker.Pages
             Categories = await _foodService.GetAllCategoriesAsync();
             Actions = await _foodService.GetAllActionsAsync();
 
-            MealList = await _MealService.GetAllMealsAsyn();
-            AddFoodsToMeals = await _MealService.GetAllFoodMealsAsyn();
+            Meal = await _MealService.GetAllMealsAsyn();
+            AddDetails = await _MealService.GetAllFoodMealsAsyn();
         }
   
-        public void OnPostAddMeal()
+        public void OnPostAddMeal(Meals meals)
         {
             var userId = _userManager.GetUserId(User);
-            _MealService.AddMeal(Meal, userId);
+            _MealService.AddMeal(meals, userId);
         }
         public void OnPostRemoveMeals(int ID, int sessionCount)
         {
             var userId = _userManager.GetUserId(User);
             _MealService.RemoveMeal(ID, userId);
         }
-        public async Task<IActionResult> OnPostAddFoodToMeal(int ID, int sessionCount)
+        public void OnPostAddFoodToMeal(int ID, int sessionCount)
         {
 
-           RedirectToAction("FoodToMeals");
            var userId = _userManager.GetUserId(User);
            _MealService.RemoveMeal(ID, userId);
 
-            return  RedirectToPage("FoodToMeals");
         }
     }
 }

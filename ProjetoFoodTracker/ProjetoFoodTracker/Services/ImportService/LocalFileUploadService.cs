@@ -28,7 +28,6 @@ namespace ProjetoFoodTracker.Services
             return filePath;
         }
 
-
         public void UploadtoDb(IFormFile file)
         {
             string path = @"C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\wwwroot\File\Alimentus.csv";
@@ -60,16 +59,25 @@ namespace ProjetoFoodTracker.Services
                     {
                         newAction = new Actions() { ActionName = actionName };
                         _ctx.Actions.Add(newAction);
-                        _ctx.SaveChanges();
+                        
                     }
                     else
                         newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionName));
 
                     var newFoodAction= new FoodAction() { Actions = newAction, ActionId = newAction.Id, Food = food, FoodId = food.Id};
                     _ctx.FoodActions.Add(newFoodAction);
-                    _ctx.SaveChanges();
+                    
                 }
+                _ctx.SaveChanges();
             }
+
+            string units = "Units";
+            string grams = "Grams";
+            TypePortion newTypePortion = new TypePortion() { Type = units };
+            TypePortion secondTypePortion = new TypePortion() { Type = grams };
+            _ctx.portionTypes.Add(newTypePortion);
+            _ctx.portionTypes.Add(secondTypePortion);
+            _ctx.SaveChanges();
         }
     }
 }

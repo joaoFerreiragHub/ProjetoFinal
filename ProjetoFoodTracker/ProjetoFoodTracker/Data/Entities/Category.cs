@@ -6,6 +6,8 @@ namespace ProjetoFoodTracker.Data.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        [Display(Name ="Category:")]
         public string CategoryName { get; set; }
 
 

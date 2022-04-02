@@ -22,9 +22,7 @@ namespace ProjetoFoodTracker.Pages
             _userManager = userManager;
             _fileUploadService = fileUploadService;
         }
-
-
-        public IFileUploadService FileUploadService { get; set; }
+      
         public string Filepath;
         public void OnGet()
         {
@@ -34,14 +32,6 @@ namespace ProjetoFoodTracker.Pages
         {
            _fileUploadService.UploadtoDb(file);
         }
-        //public async void OnPostLocalSave(IFormFile ufile, int sessionCount)
-        //{
-        //    if (ufile != null)
-        //    {
-        //        Filepath = await _fileUploadService.UploadFileAsync(ufile);
-        //    }
-
-        //}
 
     }
 }

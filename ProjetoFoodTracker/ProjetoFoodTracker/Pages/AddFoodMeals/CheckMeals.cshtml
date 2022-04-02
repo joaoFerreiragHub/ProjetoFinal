@@ -3,18 +3,6 @@
 @{
 }
 
-<form method="post" asp-page-handler="AddMeal">
-    <label class="col-sm-3 col-form-label">Insert Meal:</label>
-    <br />
-
-    Meal Name: <div class="col-sm-6"><input type="text" class="form-control" asp-for="Meal.Name"></div>
-    Meal Start: <div class="col-sm-6"><input type="datetime-local" class="form-control" asp-for="Meal.MealStart"></div>
-    Meal End: <div class="col-sm-6"><input type="datetime-local" class="form-control" asp-for="Meal.MealEnded"></div>
-    <br />
-    <button type="submit" class="btn btn-primary mr-2">Submeter</button>
-</form>
-<hr />
-<br />
 <div class="container">
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3">My Meals</h1>
@@ -40,7 +28,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var meals in Model.MealList)
+                                        @foreach (var meals in Model.Meal)
                                         {
                                             <tr>
                                                 <td>

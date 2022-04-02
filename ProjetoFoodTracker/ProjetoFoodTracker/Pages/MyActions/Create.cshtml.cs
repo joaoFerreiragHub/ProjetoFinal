@@ -32,10 +32,10 @@ namespace ProjetoFoodTracker.Pages.MyActions
         public async Task<IActionResult> OnPostAsync()
         {
             
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             _context.Actions.Add(Actions);
             await _context.SaveChangesAsync();

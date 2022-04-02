@@ -20,7 +20,6 @@ namespace ProjetoFoodTracker.Pages
             _userManager = userManager;
         }
 
-
         public async Task OnGet()
         {
             

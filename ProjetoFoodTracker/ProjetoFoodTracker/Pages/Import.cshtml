@@ -19,14 +19,15 @@
             <div class="for-group">
                 <input name="file" type="file" class="form-control" />
                 <br/>
-                <button type="submit" class="btn-primary btn-primary rounded-pill ">Upload</button>
+                <button type="submit" class="btn-primary btn-primary rounded-pill ">Import</button>
             </div>
                <br/>
                 <br/>
-        </form>
-     
+        </form>    
     }
 </div>
+
+<div>
     @if (string.IsNullOrWhiteSpace(Model.Filepath))
     {
         <img src="@Model.Filepath" alt="Alternate Text" />

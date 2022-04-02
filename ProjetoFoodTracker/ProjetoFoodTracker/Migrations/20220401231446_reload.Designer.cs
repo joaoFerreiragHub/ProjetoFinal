@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220331112748_staart")]
-    partial class staart
+    [Migration("20220401231446_reload")]
+    partial class reload
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -393,7 +393,7 @@ namespace ProjetoFoodTracker.Migrations
                     b.Property<int>("MealId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Portion")
+                    b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("TypePortionsId")
@@ -455,7 +455,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypePortion");
+                    b.ToTable("portionTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

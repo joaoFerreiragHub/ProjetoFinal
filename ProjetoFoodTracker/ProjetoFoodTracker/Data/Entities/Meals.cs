@@ -7,7 +7,6 @@ namespace ProjetoFoodTracker.Data.Entities
     {
         [Key]
         public int MealsId { get; set; }
-
         public string Name { get; set; }
 
                                                

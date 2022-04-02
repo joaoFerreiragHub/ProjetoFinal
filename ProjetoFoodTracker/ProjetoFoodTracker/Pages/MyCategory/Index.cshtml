@@ -5,11 +5,16 @@
     ViewData["Title"] = "Index";
 }
 
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-              <div class="p-3 mb-2 w-50 bg-primary text-white rounded-pill">  @Html.DisplayNameFor(model => model.Category[0].CategoryName)</div>
+                @Html.DisplayNameFor(model => model.Category[0].CategoryName)
             </th>
             <th></th>
         </tr>
@@ -18,13 +23,12 @@
 @foreach (var item in Model.Category) {
         <tr>
             <td>
-          <div class="p-3 mb-2 w-25 bg-secondary text-white"> @Html.DisplayFor(modelItem => item.CategoryName)</div>   
+                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                <a class="btn btn-primary" asp-page="Create">Create New</a>
-                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
-                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.Id">Details</a> 
-                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

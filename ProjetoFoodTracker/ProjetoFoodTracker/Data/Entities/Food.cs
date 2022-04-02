@@ -6,12 +6,12 @@ namespace ProjetoFoodTracker.Data.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string  FoodName{ get; set; }
 
+        [Display(Name = "Food Name")]
+        public string FoodName { get; set; }
 
-
-       [Required]
-       public int CategoryId { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
 
         public List<FoodAction> FoodAction { get; set; }

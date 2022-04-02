@@ -7,6 +7,11 @@ namespace ProjetoFoodTracker.Services.MealService
     {
         Task<List<Meals>> GetAllMealsAsyn();
         Task<List<FoodMeals>> GetAllFoodMealsAsyn();
+        Task<List<Food>> GetAllFoodsAsync();
+        Task<List<FoodAction>> GetAllFoodActionsAsync();
+        Task<List<Category>> GetAllCategoriesAsync();
+        Task<List<Actions>> GetAllActionsAsync();
+
 
         void AddMeal(Meals meal, string userId);
         void RemoveMeal(int ID, string userId);

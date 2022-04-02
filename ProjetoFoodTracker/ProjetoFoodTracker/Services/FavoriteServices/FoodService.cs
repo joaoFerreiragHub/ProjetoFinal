@@ -15,6 +15,7 @@ namespace ProjetoFoodTracker.Services.FoodServices
         {
             _ctx = ctx;
         }
+        public List<Actions> GetAllActions() => _ctx.Actions.ToList();
         public async Task<List<Food>> GetAllFoodsAsync() => await Task.Run(() => _ctx.Foods.ToList());
         public async Task<List<FoodAction>> GetAllFoodActionsAsync() => await Task.Run(() => _ctx.FoodActions.ToList());
         public async Task<List<Category>> GetAllCategoriesAsync() => await Task.Run(() => _ctx.Categories.ToList());
@@ -50,8 +51,8 @@ namespace ProjetoFoodTracker.Services.FoodServices
                 _ctx.FavoriteList.Add(newFavorite);
                 _ctx.SaveChanges();
             }
-
         }
+
         public void AddToBlacklist(int ID, string userId)
         {
             var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
@@ -109,9 +110,7 @@ namespace ProjetoFoodTracker.Services.FoodServices
             }
             else
                  _ctx.SaveChanges();    
-        }
-
-
+        }     
     }
 }
 

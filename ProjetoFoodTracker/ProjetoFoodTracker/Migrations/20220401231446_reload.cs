@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoFoodTracker.Migrations
 {
-    public partial class staart : Migration
+    public partial class reload : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -80,7 +80,7 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TypePortion",
+                name: "portionTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -89,7 +89,7 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TypePortion", x => x.Id);
+                    table.PrimaryKey("PK_portionTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -329,7 +329,7 @@ namespace ProjetoFoodTracker.Migrations
                     FoodId = table.Column<int>(type: "int", nullable: false),
                     MealId = table.Column<int>(type: "int", nullable: false),
                     TypePortionsId = table.Column<int>(type: "int", nullable: false),
-                    Portion = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -353,9 +353,9 @@ namespace ProjetoFoodTracker.Migrations
                         principalColumn: "MealsId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FoodMealsList_TypePortion_TypePortionsId",
+                        name: "FK_FoodMealsList_portionTypes_TypePortionsId",
                         column: x => x.TypePortionsId,
-                        principalTable: "TypePortion",
+                        principalTable: "portionTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -502,7 +502,7 @@ namespace ProjetoFoodTracker.Migrations
                 name: "MealsList");
 
             migrationBuilder.DropTable(
-                name: "TypePortion");
+                name: "portionTypes");
 
             migrationBuilder.DropTable(
                 name: "Categories");

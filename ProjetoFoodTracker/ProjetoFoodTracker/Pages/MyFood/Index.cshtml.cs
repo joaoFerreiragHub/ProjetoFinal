@@ -24,6 +24,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
 
         public async Task OnGetAsync()
         {
+
             Food = await _context.Foods.ToListAsync();
         }
     }

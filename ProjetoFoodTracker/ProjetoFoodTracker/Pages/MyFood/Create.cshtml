@@ -2,26 +2,43 @@
 @model ProjetoFoodTracker.Pages.MyFood.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add New Foods";
 }
 
-<h1>Create</h1>
+<h1>Add New Foods</h1>
 
-<h4>Food</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" asp-action="PostAsync">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Food.FoodName" class="control-label"></label>
                 <input asp-for="Food.FoodName" class="form-control" />
+                <select class="w-100 form-control" asp-for="Food.Category.CategoryName" asp-items="Model.CategoryOptions">
+                    <option selected>Please select</option>
+                </select>
                 <span asp-validation-for="Food.FoodName" class="text-danger"></span>
+                <td>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <table class="table">
+                <tr>
+                    <th>Actions:</th>
+                </tr>
+                @for (var i = 0; i < Model.actionsList.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            <input id="btn-check" type="checkbox" value="@Model.actionsList[i].ActionName" name="actionsList" />
+                            <label id="lab1" asp-for="actionsList"> @Model.actionsList[i].ActionName</label>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <input type="submit" value="Create" class="btn btn-primary" />
         </form>
+    </div>
+    <div class="form-group">
     </div>
 </div>
 
@@ -30,5 +47,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

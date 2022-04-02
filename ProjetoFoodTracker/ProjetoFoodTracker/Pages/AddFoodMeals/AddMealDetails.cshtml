@@ -1,7 +1,70 @@
 ﻿@page
-@model ProjetoFoodTracker.Pages.FoodToMealsModel
+@model ProjetoFoodTracker.Pages.MealsModel
 @{
 }
+@*<form method="post" asp-page-handler="AddFoodToMeal">
+    <label class="col-sm-3 col-form-label">Insert Meal:</label>
+    <br />
+
+    Foods Name: <div class="col-sm-6"><input type="search" class="form-control" asp-for="AddFoodsToMeals.Food"></div>
+    Units : <div class="col-sm-6"><input type="text" class="form-control" asp-for="AddFoodsToMeals.Units"></div>
+    Grams : <div class="col-sm-6"><input type="text" class="form-control" asp-for="AddFoodsToMeals.Grams"></div>
+    Quantity : <div class="col-sm-6"><input type="text" class="form-control" asp-for="AddFoodsToMeals.Portion"></div>
+    <br />
+    <button type="submit" class="btn btn-primary mr-2">Submeter</button>
+    </form>
+    <hr />
+    <br />*@
+
+
+<div class="container">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3">My Meals</h1>
+        <br />
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-right">
+                            <div class="dropdown show">
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped" style="width:100%">
+                                    <tbody>
+                                        <form method="post" asp-page-handler="AddFoodToMeal">
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Strat Time</th>
+                                                    <th>End Time</th>
+                                                    <th>Add Foods</th>
+                                                    <th>Remove Foods</th>
+                                                    <th>Remove Meal</th>
+                                                    <th>Details</th>
+                                                </tr>
+                                                @for (var i = 0; i < Model.AddFoodsToMeals.Count(); i++)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <input type="hidden" asp-for="AddFoodsToMeals[i].Meals.Name" />
+                                                            @Model.AddFoodsToMeals[i].Meals.Name
+                                                        </td>
+                                                        <td>@Model.AddFoodsToMeals[i].Meals.MealStart.ToShortDateString()</td>
+                                                        <td>@Model.AddFoodsToMeals[i].Meals.MealEnded.ToShortDateString()</td>
+                                                        <input type="text" class="form-control" asp-for="AddFoodsToMeals[i].Food">
+                                                    </tr>
+                                                    <button>Update</button>
+                                                }
+                                            </table>
+                                       </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="container-fluid p-0">
@@ -28,7 +91,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var meals in Model.MealList)
+                                        @foreach (var meals in Model.Meal)
                                         {
                                             <tr>
                                                 <td>
@@ -41,78 +104,7 @@
                                                     @Html.DisplayFor(modelItem => meals.MealEnded)
                                                 </td>
                                                 <td>
-                                                    <form method="post" asp-page-handler="AddFoodToMeal" asp-route-ID="">
-                                                        <button type="submit" class="btn btn-primary m-1">Add Food</button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form method="post" asp-route-sessioncount="5" asp-page-handler="RemoveFoodFromMeal" asp-route-ID="">
-                                                        <button type="submit" class="btn btn-danger m-1">Remove Food</button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form method="post" asp-route-sessioncount="10" asp-page-handler="Remove Meal" asp-route-ID="@*@food.Food.Id*@">
-                                                        <button type="submit" class="btn btn-danger m-1">Remove Meal</button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form method="post" asp-route-sessioncount="10" asp-page-handler="MealDetais" asp-route-ID="@*@food.Food.Id*@">
-                                                        <button type="submit" class="btn btn-info m-1">Meal Details</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<hr />
-<br />
-<div class="container">
-    <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">My Meals</h1>
-        <br />
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <div class="card-actions float-right">
-                            <div class="dropdown show">
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Strat Time</th>
-                                            <th>End Time</th>
-                                            <th>Add Foods</th>
-                                            <th>Remove Foods</th>
-                                            <th>Remove Meal</th>
-                                            <th>Details</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var meals in Model.Foods)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => meals.Food.FoodName)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => meals.Food.Category.CategoryName)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => meals.Actions.ActionName)
-                                                </td>
-                                                <td>
-                                                    <form method="post" asp-page-handler="AddFoodToMeal" asp-route-ID="">
+                                                    <form method="post" asp-page-handler="AddFoodToMeal" asp-route-ID="@meals.MealsId">
                                                         <button type="submit" class="btn btn-primary m-1">Add Food</button>
                                                     </form>
                                                 </td>
