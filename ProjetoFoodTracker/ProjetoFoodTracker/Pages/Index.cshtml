@@ -24,21 +24,20 @@
             <div class="list-group list-group-flush">
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyDashBoards/Dashboard">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyFood/Index">Manage Foods</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyCategory/Index">Manage Categories</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyActions/Index">Manage Actions</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyUsers/Index">Manage Users</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="MyUsers/Users">Manage Users</a>
                 }
                 else
                 {
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/AddFoodMeals/Meals">Meals</a>
-                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/AddFoodMeals/AddMealDetails">Add Details to Meal</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/AddFoodMeals/CheckMeals">Check Meals</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/AddFoodMeals/Meals">Add Meals</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/AddFoodMeals/AddFoodToMeal">Add Food to Meals</a>                   
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Fasting</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/FavoritesAndBlacklist/ManageFavorites">Manage Favorites</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/FavoritesAndBlacklist/Favorites">Favorites</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/FavoritesAndBlacklist/Blacklist">Blacklist</a>                  
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/FavoritesAndBlacklist/Favorites">Check Favorites</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-page="/FavoritesAndBlacklist/Blacklist">Check Blacklist</a>                  
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Daily Goal</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Progress</a>
                 }

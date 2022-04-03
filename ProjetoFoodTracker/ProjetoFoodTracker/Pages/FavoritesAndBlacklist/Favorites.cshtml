@@ -2,10 +2,23 @@
 @model ProjetoFoodTracker.Pages.FavoritesModel
 @{
 }
-
+@if(TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+    <strong>Success! </strong> @TempData["Success"]
+</div>
+    <br />
+}
+@if(TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">
+    <strong>Failed! </strong> @TempData["Failed"]
+</div>
+<br />
+}
 <div class="container">
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Foods</h1>
+        <h1 class="h3 mb-3">Favorites</h1>
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
@@ -31,7 +44,7 @@
                                     </div>
                                     <div class="col-md-3 text-lg-right">
                                         <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-                                            <form asp-page="/FavoritesAndBlacklist/ManageFavorites" class="w-75">
+                                            <form asp-page-handler="ManageList" asp-route-sessioncount="55"  class="w-75">
                                                <button type="submit" class="btn btn-info m-1">Manage List</button>
                                             </form>
                                         </div>

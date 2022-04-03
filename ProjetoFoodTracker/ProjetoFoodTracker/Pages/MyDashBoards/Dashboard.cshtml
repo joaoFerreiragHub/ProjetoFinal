@@ -1,0 +1,51 @@
+﻿@page
+@model ProjetoFoodTracker.Pages.MyDashBoards.DashboardModel
+@{
+}
+
+<div class="container">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3">Dashboard</h1>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-right">
+                            <div class="card-body">
+                                <table class="table table-striped" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Total Cotumers</th>
+                                            <th>Total Meals</th>
+                                            <th>Top 10 Foods</th>
+                                            <th>Top 5 Users</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(model => model.AppUser)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.MealsCount)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.TopFoods)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.TopUsersMeals)
+                                            </td>
+                                        </tr>                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

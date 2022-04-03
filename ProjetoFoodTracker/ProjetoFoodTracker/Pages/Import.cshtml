@@ -15,7 +15,7 @@
     @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
     {
         <p>Se está a ver isto é porque é administrador, nada mau!</p>
-        <form asp-page-handler="UploadtoDb" asp-route-sessioncount="10" method="post" enctype="multipart/form-data">
+        <form asp-page-handler="UploadtoDb" asp-route-sessioncount="10" method="post" >
             <div class="for-group">
                 <input name="file" type="file" class="form-control" />
                 <br/>

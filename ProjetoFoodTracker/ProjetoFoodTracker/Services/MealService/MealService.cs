@@ -13,19 +13,11 @@ namespace ProjetoFoodTracker.Services.MealService
         {
             _ctx = ctx;
         }
-        public void AddMeal(Meals meal,string userId)
+        public void AddMeal(FoodMeals FoodMealsProp, string userId)
         {
-            var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
+            
 
-            Meals newMeal= new Meals()
-            {
-                Name = meal.Name,
-                ApplicationUser = user,
-                MealStart = meal.MealStart,
-                MealEnded = meal.MealEnded,
-                
-            };
-                _ctx.MealsList.Add(newMeal);
+                _ctx.FoodMealsList.Add(FoodMealsProp);
                 _ctx.SaveChanges();            
         }
 

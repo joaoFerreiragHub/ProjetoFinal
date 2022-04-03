@@ -19,14 +19,17 @@
                 <span asp-validation-for="Food.FoodName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <br />
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <form>    
+        <a class="btn btn-danger" type="submit" asp-page="./Index">Back to List</a>
+    </form>
 </div>
 
 @section Scripts {

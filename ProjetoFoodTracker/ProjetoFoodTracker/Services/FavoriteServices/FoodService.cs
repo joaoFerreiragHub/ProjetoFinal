@@ -2,8 +2,7 @@
 using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
 using Microsoft.AspNetCore.Identity;
-
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProjetoFoodTracker.Services.FoodServices
 {
@@ -44,7 +43,7 @@ namespace ProjetoFoodTracker.Services.FoodServices
                 _ctx.SaveChanges();
             }
             var checkfave = _ctx.FavoriteList.FirstOrDefault(x => x.Food == food);
-            if(checkfave != null)
+            if (checkfave != null)
                 _ctx.SaveChanges();
             else
             {
@@ -93,8 +92,8 @@ namespace ProjetoFoodTracker.Services.FoodServices
                 _ctx.FavoriteList.Remove(checkfave);
                 _ctx.SaveChanges();
             }
-            else  
-                _ctx.SaveChanges();
+            else
+            _ctx.SaveChanges();
         }
 
         public void RemoveFromBlacklist(int ID, string userId)
@@ -109,8 +108,8 @@ namespace ProjetoFoodTracker.Services.FoodServices
                 _ctx.SaveChanges();
             }
             else
-                 _ctx.SaveChanges();    
-        }     
+                _ctx.SaveChanges();
+        }
     }
 }
 

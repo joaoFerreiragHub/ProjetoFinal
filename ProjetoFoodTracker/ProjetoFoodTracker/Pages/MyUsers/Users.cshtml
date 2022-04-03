@@ -1,25 +1,29 @@
 ﻿@page
-@model ProjetoFoodTracker.Pages.MyFood.IndexModel
-
+@model ProjetoFoodTracker.Pages.MyUsers.UsersModel
 @{
-    ViewData["Title"] = "Index";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success! </strong> @TempData["Success"]
+    </div>
+    <br />
+}
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Failed! </strong> @TempData["Failed"]
+    </div>
+    <br />
 }
 
-<h1>Manage Foods</h1>
+<h1>Check Users</h1>
 <hr />
 <br />
-<div>
-    <h3>Add new Foods to this list</h3>
-    <br />
-    <form>
-        <button type="submit" class="btn btn-primary m-1" asp-page="Create">Add New Food</button>
-    </form>
-</div>
-<hr />
-<br />
+
 <div class="container">
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Foods</h1>
+        <h1 class="h3 mb-3">Users</h1>
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
@@ -29,32 +33,24 @@
                                 <table class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Foods</th>
-                                            <th>Edit</th>
-                                            <th>Details</th>
+                                            <th>Users</th>
+                                            <th>Email</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model.Food)
+                                        @foreach (var item in Model.AppUser)
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.FoodName)
+                                                    @Html.DisplayFor(modelItem => item.FirstName)
                                                 </td>
                                                 <td>
-                                                    <form>
-                                                        <a class="btn btn-primary m-1" asp-route-id="@item.Id"asp-page="./Edit">Edit</a>
-                                                    </form>
+                                                    @Html.DisplayFor(modelItem => item.Email)
                                                 </td>
                                                 <td>
-                                                    <form>
-                                                        <a type="submit" class="btn btn-info m-1"asp-route-id="@item.Id" asp-page="./Details">Details</a>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form>
-                                                        <a type="submit" class="btn btn-danger m-1"asp-route-id="@item.Id" asp-page="./Delete">Delete</a>
+                                                    <form method="post" asp-route-sessioncount="15" asp-page-handler="DeleteUser" asp-route-ID="@item.Id">
+                                                        <button type="submit" class="btn btn-primary m-1">Remove Blacklisted</button>
                                                     </form>
                                                 </td>
                                             </tr>

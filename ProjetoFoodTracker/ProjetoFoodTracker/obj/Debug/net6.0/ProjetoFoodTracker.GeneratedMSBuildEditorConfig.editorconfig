@@ -171,12 +171,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/AddFoodMeals/AddMealDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRm9vZE1lYWxzXEFkZE1lYWxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/AddFoodMeals/CheckMeals.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRm9vZE1lYWxzXENoZWNrTWVhbHMuY3NodG1s
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/AddFoodMeals/AddFoodToMeal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRm9vZE1lYWxzXEFkZEZvb2RUb01lYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/AddFoodMeals/Meals.cshtml]
@@ -247,6 +243,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlDYXRlZ29yeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/MyDashBoards/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlEYXNoQm9hcmRzXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/MyFood/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlGb29kXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -265,6 +265,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/MyFood/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlGb29kXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/MyUsers/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlVc2Vyc1xVc2Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/Privacy.cshtml]
