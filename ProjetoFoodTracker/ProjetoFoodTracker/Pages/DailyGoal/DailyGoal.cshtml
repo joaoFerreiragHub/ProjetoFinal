@@ -26,13 +26,13 @@
                                         <tbody>
                                             @foreach (var meals in Model.actionOfFoods)
                                             {
-                                                <tr>
+@*                                                <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x=>x.Food.FoodAction == meals.FoodAction).Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Actions)
-                                                    </td>
+                                                        @Html.DisplayFor(modelItem => meals.ActionName)
+                                                    </td>*@
                                              @*       <td>
                                                         @Html.DisplayFor(modelItem => meals.Meals.Name)
                                                     </td>*@
@@ -51,7 +51,7 @@
                                                     <td>
                                                         @Html.DisplayFor(modelItem => meals.Quantity)
                                                     </td>*@
-                                                </tr>
+                                                @*</tr>*@
                                             }
                                         </tbody>
                                     </table>

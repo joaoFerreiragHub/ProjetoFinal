@@ -61,20 +61,20 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
             TypePorts = _ctx.portionTypes.ToList();
             Meal = await _mealService.GetAllMealsAsyn();
             AddDetails = await _mealService.GetAllFoodMealsAsyn();
-            actionOfFoods = GetFoodByAction();
+            //actionOfFoods = GetFoodByAction();
         }
 
-        public List<FoodAction> GetFoodByAction()
-        {
-            var x = (from fm in _ctx.FoodMealsList
-                     join food in _ctx.Foods on fm.FoodId equals food.Id
-                     join actions in _ctx.FoodActions on food.Id equals actions.FoodId
-                     select actions).ToList();
-
-
-            return x;
+        //public List<List<FoodAction>> GetFoodByAction()
+        //{
+        //    var x = (from fm in _ctx.FoodMealsList
+        //             join food in _ctx.FoodActions on fm.FoodId equals food.Id
+        //             join actions in _ctx. on food.Id equals actions.FoodId
+        //             select actions.Food.FoodAction).ToList();
             
-        }
+
+        //    return x;
+            
+        //}
 
     }
 }
