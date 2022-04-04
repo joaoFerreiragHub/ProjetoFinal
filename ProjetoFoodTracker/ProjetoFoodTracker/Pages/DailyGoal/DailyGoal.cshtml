@@ -1,0 +1,70 @@
+﻿@page
+@model ProjetoFoodTracker.Pages.DailyGoal.DailyGoalModel
+@{
+}
+<form method="post">
+    <div class="container">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3">My Meals</h1>
+            <br />
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="card-actions float-right">
+                                <div class="card-body">
+                                    <table class="table table-striped" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Angiogeneses</th>
+                                                <th>Regeneration</th>
+                                                <th>Microbiome</th>
+                                                <th>DNA Protection</th>
+                                                <th>Immunity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var meals in Model.actionOfFoods)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.FoodName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Actions)
+                                                    </td>
+                                             @*       <td>
+                                                        @Html.DisplayFor(modelItem => meals.Meals.Name)
+                                                    </td>*@
+@*                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.FoodAction)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.Category.CategoryName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.FoodAction.FirstOrDefault(x=>x.FoodId == meals.FoodId).Actions.ActionName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.TypePortions.Type)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Quantity)
+                                                    </td>*@
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <tr>
+                                        <td>
+                                    <div>
+                                 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

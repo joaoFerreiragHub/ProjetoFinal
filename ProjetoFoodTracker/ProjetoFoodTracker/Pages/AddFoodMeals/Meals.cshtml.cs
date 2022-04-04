@@ -30,12 +30,14 @@ namespace ProjetoFoodTracker.Pages
 
 
         public List<Category> Categories { get; set; }
+        [BindProperty]
         public List<Food> Foods { get; set; }
         public List<Actions> Actions { get; set; }
         public TypePortion portionsType { get; set; } = new TypePortion();
         public IList<FoodMeals> FoodMeals { get; set; }
         public List<FoodMeals> AddDetails { get; set; } = new List<FoodMeals>();
         public List<TypePortion> TypePorts { get; set; }
+        [BindProperty]
         public List<FoodAction> foodActions { get; set; }
 
 
@@ -132,27 +134,6 @@ namespace ProjetoFoodTracker.Pages
                 return RedirectToPage("./AddFoodToMeal");
             }
         }
-        //public IActionResult OnPostFoodFromMeal(int ID, int sessionCount)
-        //{
-
-        //    var checkMeal = _ctx.MealsList.FirstOrDefault(x => x.MealsId == meals.MealsId);
-        //    var checkportion = _ctx.portionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
-        //    var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.FoodId == ID);
-
-        //    if (checkID.Id != null)
-        //    {
-        //        _ctx.FoodMealsList.Remove(checkID);
-        //        _ctx.SaveChanges();
-
-        //        TempData["Success"] = "Meal Removed!";
-        //        return RedirectToPage("./AddFoodToMeal");
-        //    }
-        //    else
-        //    {
-        //        TempData["Failed"] = "Something Happened";
-        //        return RedirectToPage("./Meals");
-        //    }
-        //}
         public IActionResult OnPostRemoveMeal(int ID,int sessionCount)
         {
             var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.Id == ID);

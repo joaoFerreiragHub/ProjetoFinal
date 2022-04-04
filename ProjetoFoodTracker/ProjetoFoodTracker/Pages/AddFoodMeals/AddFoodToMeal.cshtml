@@ -98,8 +98,8 @@
                                             <div>
                                                 <input type="submit" value="Add Food" class="btn btn-primary" />
                                             </div>
-
-                                        </td>
+                                            <div>
+                                            </div>
                                 </div>
                             </div>
                         </div>
@@ -107,5 +107,48 @@
                 </div>
             </div>
         </div>
+    </div>
 </form>
-
+<br />
+<div class="container">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3">Food and Actions List</h1>
+        <br />
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-right">
+                            <div class="card-body">
+                                <table class="table table-striped" style="width:100%">
+                                    <thead>
+                                    <thead>
+                                        <tr>
+                                            <th>Food</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            @foreach (var meals in Model.foodActions)
+                                            {
+                                            <tr>
+                                                <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.FoodName)
+                                                </td>
+                                                <td>
+                                                        @Html.DisplayFor(modelItem => meals.Actions.ActionName)
+                                                </td>
+                                            </tr>
+                                            }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,22 +11,22 @@ namespace ProjetoFoodTracker.Pages.Fasting
 {
     public class FastingModel : PageModel
     {
-        private readonly IFoodService _foodService;
-        private readonly IMealService _MealService;
+
         private readonly ApplicationDbContext _ctx;
-        private readonly UserManager<ApplicationUser> _userManager;
-        public FastingModel(IFoodService foodService, IMealService MealService, ApplicationDbContext ctx, UserManager<ApplicationUser> userManager)
+
+        public FastingModel(ApplicationDbContext ctx)
         {
-            _foodService = foodService;
-            _MealService = MealService;
             _ctx = ctx;
-            _userManager = userManager;
+
         }
 
         [BindProperty]
-        public List<DateTime> allStarts { get; set; } = new List<DateTime>();
+        public List<TimeSpan> allStarts { get; set; } = new List<TimeSpan>();
+        [BindProperty]
         public List<TimeSpan> allStartz { get; set; } = new List<TimeSpan>();
         public List<DateTime> allEndingsFasting { get; set; } = new List<DateTime>();
+
+
         public void OnGet()
         {
             GetCurrentFast();
@@ -55,6 +55,7 @@ namespace ProjetoFoodTracker.Pages.Fasting
                 TempData["Failed"] = "No Meals registered";
                 return RedirectToPage("./Meals");
             }
+
         }
     }
 }
