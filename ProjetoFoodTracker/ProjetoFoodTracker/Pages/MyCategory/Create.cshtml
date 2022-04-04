@@ -4,7 +4,20 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success! </strong> @TempData["Success"]
+    </div>
+    <br />
+}
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Failed! </strong> @TempData["Failed"]
+    </div>
+    <br />
+}
 <h1>Create</h1>
 
 <h4>Category</h4>

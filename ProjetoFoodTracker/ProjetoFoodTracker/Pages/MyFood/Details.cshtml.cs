@@ -8,7 +8,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyFood
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class DetailsModel : PageModel
     {
         private readonly ApplicationDbContext _context;

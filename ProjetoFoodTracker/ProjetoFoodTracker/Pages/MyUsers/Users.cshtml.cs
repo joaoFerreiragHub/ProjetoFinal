@@ -7,7 +7,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyUsers
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class UsersModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;

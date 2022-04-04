@@ -8,7 +8,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyFood
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -41,7 +41,10 @@ namespace ProjetoFoodTracker.Pages.MyFood
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            _context.Attach(Food).State = EntityState.Modified;
+            var foodCheck = _context.Foods.FirstOrDefault(c => c.FoodName == Food.FoodName);
+            if (foodCheck == null)
+            {
+                _context.Attach(Food).State = EntityState.Modified;
 
             try
             {
@@ -58,9 +61,15 @@ namespace ProjetoFoodTracker.Pages.MyFood
                     throw;
                 }
             }
-
+            TempData["Success"] = "That Food has been updated";
             return RedirectToPage("./Index");
         }
+            else
+            {
+                TempData["Failed"] = "That Food already exists";
+                return RedirectToPage("./Index");
+    }
+}
 
         private bool FoodExists(int id)
         {

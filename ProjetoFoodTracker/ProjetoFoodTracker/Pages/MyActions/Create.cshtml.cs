@@ -12,7 +12,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyActions
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -33,11 +33,21 @@ namespace ProjetoFoodTracker.Pages.MyActions
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            var actionCheck = _context.Actions.FirstOrDefault(c => c.ActionName == Actions.ActionName);
+            if (actionCheck == null)
+            {
+                _context.Actions.Add(Actions);
+                await _context.SaveChangesAsync();
 
-            _context.Actions.Add(Actions);
-            await _context.SaveChangesAsync();
+                TempData["Success"] = "New Action created";
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                TempData["Failed"] = "That Action already Exist";
+                return RedirectToPage("./Create");
+            }
 
-            return RedirectToPage("./Index");
         }
     }
 }

@@ -8,7 +8,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyActions
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -41,32 +41,35 @@ namespace ProjetoFoodTracker.Pages.MyActions
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
-
-            _context.Attach(Actions).State = EntityState.Modified;
-
-            try
+            var categoryCheck = _context.Actions.FirstOrDefault(c => c.ActionName == Actions.ActionName);
+            if (categoryCheck == null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ActionsExists(Actions.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                _context.Attach(Actions).State = EntityState.Modified;
 
-            return RedirectToPage("./Index");
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ActionsExists(Actions.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                TempData["Success"] = "That Action has been updated";
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                TempData["Failed"] = "That Action already exists";
+                return RedirectToPage("./Index");
+            }
         }
-
         private bool ActionsExists(int id)
         {
             return _context.Actions.Any(e => e.Id == id);

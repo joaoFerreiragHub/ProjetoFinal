@@ -16,7 +16,6 @@
     </div>
     <br />
 }
-<form method="post">
     <div class="container">
         <div class="container-fluid p-0">
             <h1 class="h3 mb-3">My Meals</h1>
@@ -31,11 +30,14 @@
                                         <thead>
                                             <tr>
                                                 <th>Meal</th>
+                                                <th>Start</th>
+                                                <th>End</th>
                                                 <th>Foods</th>
                                                 <th>Categories</th>
                                                 <th>Actions</th>
                                                 <th>Type Portions</th>
                                                 <th>Quantity</th>
+                                                <th>Remove</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -44,6 +46,12 @@
                                                 <tr>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => meals.Meals.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Meals.MealStart)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Meals.MealEnded)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => meals.Food.FoodName)
@@ -61,7 +69,6 @@
                                                         @Html.DisplayFor(modelItem => meals.Quantity)
                                                     </td>
                                                     <td>
-
                                                         <form method="post" asp-route-sessioncount="15" asp-page-handler="RemoveMeal" asp-route-ID="@meals.MealId">
                                                             <button type="submit" class="btn btn-primary m-1">Remove Blacklisted</button>
                                                         </form>
@@ -79,4 +86,3 @@
             </div>
         </div>
     </div>
-</form>

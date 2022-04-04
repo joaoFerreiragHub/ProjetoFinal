@@ -2,19 +2,19 @@
 @model ProjetoFoodTracker.Pages.MealsModel
 @{
 }
-@if(TempData["Success"] != null)
+@if (TempData["Success"] != null)
 {
     <div class="alert alert-success">
-    <strong>Success! </strong> @TempData["Success"]
-</div>
+        <strong>Success! </strong> @TempData["Success"]
+    </div>
     <br />
 }
-@if(TempData["Failed"] != null)
+@if (TempData["Failed"] != null)
 {
     <div class="alert alert-danger">
-    <strong>Failed! </strong> @TempData["Failed"]
-</div>
-<br />
+        <strong>Failed! </strong> @TempData["Failed"]
+    </div>
+    <br />
 }
 <form method="post" asp-page-handler="AddFoodToMeal">
     <div class="container">
@@ -31,6 +31,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Meal</th>
+                                                <th>Start</th>
+                                                <th>End</th>
                                                 <th>Foods</th>
                                                 <th>Categories</th>
                                                 <th>Actions</th>
@@ -44,6 +46,12 @@
                                                 <tr>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => meals.Meals.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Meals.MealStart)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Meals.MealEnded)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => meals.Food.FoodName)
@@ -87,12 +95,12 @@
                                                 <span asp-validation-for="FoodMealsProp.Quantity" class="text-danger"></span>
                                             </div>
                                             <br />
-                                              <div>
+                                            <div>
                                                 <input type="submit" value="Add Food" class="btn btn-primary" />
                                             </div>
-                                            
+
                                         </td>
-                               </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,3 +108,4 @@
             </div>
         </div>
 </form>
+

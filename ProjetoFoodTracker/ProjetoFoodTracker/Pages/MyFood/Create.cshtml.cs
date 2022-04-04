@@ -8,7 +8,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyFood
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;
@@ -20,7 +20,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
         [BindProperty]
         public List<Actions> actionsList { get; set; } = new List<Actions>();
 
-       
+
         public List<FoodAction> foodActions { get; set; } = new List<FoodAction>();
         public List<SelectListItem> CategoryOptions { get; set; }
 
@@ -40,31 +40,41 @@ namespace ProjetoFoodTracker.Pages.MyFood
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync( )
+        public async Task<IActionResult> OnPostAsync()
         {
-            var actionList = Request.Form["actionsList"];
 
-            Actions newAction;
-            List<FoodAction> listFoodAction = new List<FoodAction>();
-            FoodAction newFoodAction;
-
-            var category = _ctx.Categories.FirstOrDefault(x => x.CategoryName == Food.Category.CategoryName).Id;
-            var newFood = new Food()
+            var foodCheck = _ctx.Foods.FirstOrDefault(c => c.FoodName == Food.FoodName);
+            if (foodCheck == null)
             {
-                FoodName = Food.FoodName,
-                CategoryId = category,
-            };
+                var actionList = Request.Form["actionsList"];
 
-            foreach (var actionName in actionList)
-            {
-                newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionName));
-                newFoodAction = new FoodAction() { Actions = newAction, ActionId = newAction.Id, Food = newFood, FoodId = Food.Id };
-                _ctx.FoodActions.Add(newFoodAction);
+                Actions newAction;
+                List<FoodAction> listFoodAction = new List<FoodAction>();
+                FoodAction newFoodAction;
+
+                var category = _ctx.Categories.FirstOrDefault(x => x.CategoryName == Food.Category.CategoryName).Id;
+                var newFood = new Food()
+                {
+                    FoodName = Food.FoodName,
+                    CategoryId = category,
+                };
+
+                foreach (var actionName in actionList)
+                {
+                    newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionName));
+                    newFoodAction = new FoodAction() { Actions = newAction, ActionId = newAction.Id, Food = newFood, FoodId = Food.Id };
+                    _ctx.FoodActions.Add(newFoodAction);
+                }
+
+                await _ctx.SaveChangesAsync();
+                TempData["Success"] = "New Food Added";
+                return RedirectToPage("./Index");
             }
-
-            await _ctx.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            else
+            {
+                TempData["Failed"] = "That Food already Exist";
+                return RedirectToPage("./Create");
+            }
         }
     }
 }

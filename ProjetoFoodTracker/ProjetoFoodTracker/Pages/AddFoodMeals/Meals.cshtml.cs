@@ -156,10 +156,11 @@ namespace ProjetoFoodTracker.Pages
         public IActionResult OnPostRemoveMeal(int ID,int sessionCount)
         {
             var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.Id == ID);
-
-            if (checkID.Id != null)
+            var mealCheck = _ctx.MealsList.FirstOrDefault(x=> x.MealsId == checkID.Id);
+            if (checkID != null)
             {
                 _ctx.FoodMealsList.Remove(checkID);
+                _ctx.MealsList.Remove(mealCheck);
                 _ctx.SaveChanges();
 
                 TempData["Success"] = "Meal Removed!";

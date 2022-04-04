@@ -20,32 +20,42 @@ namespace ProjetoFoodTracker.Pages.Fasting
             _foodService = foodService;
             _MealService = MealService;
             _ctx = ctx;
-            _userManager = userManager;    
+            _userManager = userManager;
         }
 
         [BindProperty]
-        public List<DateTime> allStarts{ get; set; } = new List<DateTime>();
+        public List<DateTime> allStarts { get; set; } = new List<DateTime>();
+        public List<TimeSpan> allStartz { get; set; } = new List<TimeSpan>();
         public List<DateTime> allEndingsFasting { get; set; } = new List<DateTime>();
         public void OnGet()
         {
             GetCurrentFast();
         }
 
-        public void GetCurrentFast()
+        public IActionResult GetCurrentFast()
         {
-            var x = _ctx.MealsList.OrderBy(x => x.MealStart).Last();
-            var z = x.MealStart;
-            var y = x.MealEnded;
-           
-            if (x.MealStart <= x.MealEnded)
-            {
-              var fast = y - DateTime.Now;
+           var  mealCheck = _ctx.MealsList.Any(x => x.MealsId >= 1);
 
-                
-                DateTime dt = DateTime.Now + fast;
-                allStarts.Add(dt);
+            if (mealCheck == true)
+            {
+                var x = _ctx.MealsList.OrderBy(x => x.MealStart).Last();
+                var z = x.MealStart;
+                var y = x.MealEnded;
+
+                if (x.MealStart <= x.MealEnded)
+                {
+                    var fast = DateTime.Now - y;
+                    allStartz.Add(fast);
+                }
+     
+                return RedirectToPage("./Fasting");
             }
-            
+            else
+            {
+                TempData["Failed"] = "No Meals registered";
+                return RedirectToPage("./Meals");
+            }
         }
     }
 }
+

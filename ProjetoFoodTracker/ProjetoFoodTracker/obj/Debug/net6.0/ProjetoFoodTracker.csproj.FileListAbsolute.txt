@@ -274,3 +274,5 @@ C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\Proje
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\refint\ProjetoFoodTracker.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.pdb
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.genruntimeconfig.cache
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.pdb
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ref\ProjetoFoodTracker.dll

@@ -7,7 +7,7 @@ using ProjetoFoodTracker.Services.UserServices;
 
 namespace ProjetoFoodTracker.Pages.MyDashBoards
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class DashboardModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;

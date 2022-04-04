@@ -8,7 +8,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyFood
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -51,7 +51,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
                 _context.Foods.Remove(Food);
                 await _context.SaveChangesAsync();
             }
-
+            TempData["Success"] = "That Food has been deleted";
             return RedirectToPage("./Index");
         }
     }

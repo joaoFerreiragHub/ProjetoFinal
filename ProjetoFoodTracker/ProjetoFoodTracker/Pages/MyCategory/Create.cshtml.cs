@@ -7,7 +7,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyCategory
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -28,15 +28,20 @@ namespace ProjetoFoodTracker.Pages.MyCategory
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
+            var categoryCheck = _context.Categories.FirstOrDefault(c => c.CategoryName == Category.CategoryName);
+            if(categoryCheck == null)
+            {
+                _context.Categories.Add(Category);
+                await _context.SaveChangesAsync();
 
-            _context.Categories.Add(Category);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+                TempData["Success"] = "New Category created";
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                TempData["Failed"] = "That Category already Exist";
+                return RedirectToPage("./Create");
+            }
         }
     }
 }

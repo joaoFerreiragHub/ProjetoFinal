@@ -8,7 +8,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyCategory
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -41,26 +41,34 @@ namespace ProjetoFoodTracker.Pages.MyCategory
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-
-            _context.Attach(Category).State = EntityState.Modified;
-
-            try
+            var categoryCheck = _context.Categories.FirstOrDefault(c => c.CategoryName == Category.CategoryName);
+            if (categoryCheck == null)            
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(Category.Id))
+                _context.Attach(Category).State = EntityState.Modified;
+                try
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return RedirectToPage("./Index");
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CategoryExists(Category.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                TempData["Success"] = "That Category has been updated";
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                TempData["Failed"] = "That Category already exists";
+                return RedirectToPage("./Index");
+            }
         }
 
         private bool CategoryExists(int id)

@@ -3,24 +3,24 @@
 @{
 }
 
-@if(TempData["Success"] != null)
+@if (TempData["Success"] != null)
 {
     <div class="alert alert-success">
-    <strong>Success! </strong> @TempData["Success"]
-</div>
+        <strong>Success! </strong> @TempData["Success"]
+    </div>
     <br />
 }
-@if(TempData["Failed"] != null)
+@if (TempData["Failed"] != null)
 {
     <div class="alert alert-danger">
-    <strong>Failed! </strong> @TempData["Failed"]
-</div>
-<br />
+        <strong>Failed! </strong> @TempData["Failed"]
+    </div>
+    <br />
 }
-<form method="post" asp-page-handler="AddFoodToMeal">
+<form method="post" asp-page-handler="GetCurrentFast">
     <div class="container">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">My Meals</h1>
+            <h1 class="h3 mb-3">My Fasting</h1>
             <br />
             <div class="row">
                 <div class="col-xl-12">
@@ -31,34 +31,32 @@
                                     <table class="table table-striped" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Meal</th>
-                                                <th>Foods</th>
-                                                <th>Categories</th>
-                                                <th>Actions</th>
-                                                <th>Type Portions</th>
-                                                <th>Quantity</th>
+                                                <th>Current Fast(minutes):</th>
+                                                <th>Current Fast(hours):</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var meals in Model.allStarts)
+                                            @foreach (var meals in Model.allStartz)
                                             {
                                                 <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Minute)
+                                                        @Html.DisplayFor(modelItem => meals.Minutes)
                                                     </td>
-       
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Hours)
+                                                    </td>
                                                 </tr>
                                             }
                                         </tbody>
                                     </table>
                                     <tr>
                                         <td>
-                                              <div>
+                                            <div>
                                                 <input type="submit" value="Add Food" class="btn btn-primary" />
                                             </div>
-                                            
+
                                         </td>
-                               </div>
+                                </div>
                             </div>
                         </div>
                     </div>
