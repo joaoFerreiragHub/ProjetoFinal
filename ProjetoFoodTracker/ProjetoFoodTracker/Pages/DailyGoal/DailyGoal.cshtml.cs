@@ -54,27 +54,28 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
         public List<FoodAction> actionOfFoods { get; set; } = new List<FoodAction>();
         public async Task OnGet()
         {
-            Foods = await _foodService.GetAllFoodsAsync();
+           // Foods = await _foodService.GetAllFoodsAsync();
             Categories = await _foodService.GetAllCategoriesAsync();
             Actions = await _foodService.GetAllActionsAsync();
             foodActions = _ctx.FoodActions.ToList();
             TypePorts = _ctx.portionTypes.ToList();
             Meal = await _mealService.GetAllMealsAsyn();
             AddDetails = await _mealService.GetAllFoodMealsAsyn();
-            //actionOfFoods = GetFoodByAction();
+            Foods = GetFoodByAction();
         }
 
-        //public List<List<FoodAction>> GetFoodByAction()
-        //{
-        //    var x = (from fm in _ctx.FoodMealsList
-        //             join food in _ctx.FoodActions on fm.FoodId equals food.Id
-        //             join actions in _ctx. on food.Id equals actions.FoodId
-        //             select actions.Food.FoodAction).ToList();
+        public List<Food> GetFoodByAction()
+        {
+            var x = (from fm in _ctx.FoodMealsList
+                     join food in _ctx.FoodActions on fm.FoodId equals food.Id
+                     join actions in _ctx.FoodActions on food.Id equals actions.FoodId
+                     select actions.Food).Distinct().ToList();
+            
             
 
-        //    return x;
-            
-        //}
+            return x;
+
+        }
 
     }
 }

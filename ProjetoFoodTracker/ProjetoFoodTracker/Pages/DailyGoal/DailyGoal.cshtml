@@ -5,8 +5,11 @@
 <form method="post">
     <div class="container">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">My Meals</h1>
+            <h1 class="h3 mb-3 text-success">My Daily Goal</h1>
+            <hr />
             <br />
+             <h5  class="text-primary">Goal: <small> The daily goal is to fill the whole table with 5 foods from each of the 5 categories. </small> </h5>
+                 <br />
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
@@ -24,41 +27,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var meals in Model.actionOfFoods)
+                                            @foreach (var meals in Model.Foods)
                                             {
-@*                                                <tr>
+                                                <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x=>x.Food.FoodAction == meals.FoodAction).Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Immunity").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.ActionName)
-                                                    </td>*@
-                                             @*       <td>
-                                                        @Html.DisplayFor(modelItem => meals.Meals.Name)
-                                                    </td>*@
-@*                                                    <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.FoodAction)
+                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "DNA Protection").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.Category.CategoryName)
+                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Regeneration").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.FoodAction.FirstOrDefault(x=>x.FoodId == meals.FoodId).Actions.ActionName)
+                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Angiogenesis").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.TypePortions.Type)
+                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Microbiome").Food.FoodName)
                                                     </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => meals.Quantity)
-                                                    </td>*@
-                                                @*</tr>*@
+                                                </tr>
                                             }
                                         </tbody>
                                     </table>
                                     <tr>
                                         <td>
-                                    <div>
-                                 </div>
+                                            <div>
+                                            </div>
                                 </div>
                             </div>
                         </div>
