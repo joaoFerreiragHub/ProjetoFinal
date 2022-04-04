@@ -1,11 +1,10 @@
+C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\appsettings.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.staticwebassets.runtime.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.exe
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.deps.json
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.runtimeconfig.json
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.dll
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\ProjetoFoodTracker.pdb
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\DotNetEd.CoreAdmin.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\CsvHelper.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\bin\Debug\net6.0\EPPlus.dll
@@ -275,4 +274,3 @@ C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\Proje
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\refint\ProjetoFoodTracker.dll
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.pdb
 C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ProjetoFoodTracker.genruntimeconfig.cache
-C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\obj\Debug\net6.0\ref\ProjetoFoodTracker.dll

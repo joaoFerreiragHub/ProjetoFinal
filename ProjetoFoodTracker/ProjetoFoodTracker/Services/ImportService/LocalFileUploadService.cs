@@ -1,14 +1,10 @@
-﻿using CsvHelper;
-using Microsoft.VisualBasic.FileIO;
+﻿using Microsoft.AspNetCore.Authorization;
 using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
-using System.Configuration;
-using System.Data;
-using System.Globalization;
-using System.Text;
 
 namespace ProjetoFoodTracker.Services
 {
+    [Authorize]
     public class LocalFileUploadService : IFileUploadService
     {
         private readonly ApplicationDbContext _ctx;
@@ -83,7 +79,7 @@ namespace ProjetoFoodTracker.Services
 }
 
 
-//           var stream = file.OpenReadStream();
+//var stream = file.OpenReadStream();
 //using (var reader = new StreamReader(stream))
 //using (CsvReader texto = new CsvReader(reader, CultureInfo.InvariantCulture))
 //{
@@ -199,8 +195,6 @@ namespace ProjetoFoodTracker.Services
 //foreach (var action in ActionsRecords)
 //    _ctx.Actions.Add(action);
 //_ctx.SaveChanges();
-
-
 
 
 //for (int j = 1; j < columns.Length; i++)

@@ -1,0 +1,82 @@
+﻿@page
+@model ProjetoFoodTracker.Pages.MealsModel
+@{
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success! </strong> @TempData["Success"]
+    </div>
+    <br />
+}
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Failed! </strong> @TempData["Failed"]
+    </div>
+    <br />
+}
+<form method="post">
+    <div class="container">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3">My Meals</h1>
+            <br />
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="card-actions float-right">
+                                <div class="card-body">
+                                    <table class="table table-striped" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Meal</th>
+                                                <th>Foods</th>
+                                                <th>Categories</th>
+                                                <th>Actions</th>
+                                                <th>Type Portions</th>
+                                                <th>Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var meals in Model.AddDetails)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Meals.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.FoodName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.Category.CategoryName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Food.FoodAction.FirstOrDefault(x=>x.FoodId == meals.FoodId).Actions.ActionName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.TypePortions.Type)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Quantity)
+                                                    </td>
+                                                    <td>
+
+                                                        <form method="post" asp-route-sessioncount="15" asp-page-handler="RemoveMeal" asp-route-ID="@meals.MealId">
+                                                            <button type="submit" class="btn btn-primary m-1">Remove Blacklisted</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

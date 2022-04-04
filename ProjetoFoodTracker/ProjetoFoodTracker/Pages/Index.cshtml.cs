@@ -15,8 +15,7 @@ namespace ProjetoFoodTracker.Pages
         private readonly UserManager<ApplicationUser> _userManager;
 
         public IndexModel( UserManager<ApplicationUser> userManager)
-        {
-         
+        {       
             _userManager = userManager;
         }
 

@@ -179,8 +179,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRm9vZE1lYWxzXE1lYWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/AddFoodMeals/RemoveMeal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRm9vZE1lYWxzXFJlbW92ZU1lYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/Fasting/Fasting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFzdGluZ1xGYXN0aW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gar_e/OneDrive/Imagens/Documentos/ProjetoFinal/ProjetoFoodTracker/ProjetoFoodTracker/Pages/FavoritesAndBlacklist/Blacklist.cshtml]

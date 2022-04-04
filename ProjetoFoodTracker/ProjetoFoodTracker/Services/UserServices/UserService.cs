@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoFoodTracker.Data;
 
 namespace ProjetoFoodTracker.Services.UserServices
 {
+    [Authorize]
     public class UserService : IUserService
     {
         private readonly ApplicationDbContext _ctx;
@@ -36,11 +38,9 @@ namespace ProjetoFoodTracker.Services.UserServices
         {
             var list = await Task.Run(() =>
             {
-                var maxValue = 10;
-                var topFoods = _ctx.FoodMealsList.GroupBy(f => f.FoodId).OrderByDescending(f => f.Count()).Take(maxValue);
+                var topFoods = _ctx.FoodMealsList.GroupBy(f => f.FoodId).OrderByDescending(f => f.Count()).Take(10);
                 var foodList = topFoods.Select(m => m.First().Food.FoodName).ToList();
                 var newlist = String.Join(" | ", foodList);
-
                 return newlist;
             });
 
@@ -50,8 +50,7 @@ namespace ProjetoFoodTracker.Services.UserServices
         {
             var list = await Task.Run(() =>
             {
-                var maxValue = 5;
-                var mealsByOrder = _ctx.MealsList.GroupBy(x => x.ApplicationUser.Id).OrderByDescending(x => x.Count()).Take(maxValue);
+                var mealsByOrder = _ctx.MealsList.GroupBy(x => x.ApplicationUser.Id).OrderByDescending(x => x.Count()).Take(5);
                 var usersName = mealsByOrder.Select(x => x.First().ApplicationUser.UserName);
                 return usersName.ToList();
             });

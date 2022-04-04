@@ -1,8 +1,5 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +8,12 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyCategory
 {
+    [Authorize(Roles = "ADMIN")]
     public class DetailsModel : PageModel
     {
-        private readonly ProjetoFoodTracker.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(ProjetoFoodTracker.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }

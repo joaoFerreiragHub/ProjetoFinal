@@ -1,16 +1,18 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
 using ProjetoFoodTracker.Services.FoodServices;
 
 namespace ProjetoFoodTracker.Pages
 {
+    [Authorize]
     public class FavoritesModel : PageModel
     {
+
         private readonly IFoodService _foodService;
         private readonly ApplicationDbContext _ctx;
         private readonly UserManager<ApplicationUser> _userManager;

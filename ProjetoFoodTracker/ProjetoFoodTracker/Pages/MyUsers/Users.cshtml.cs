@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjetoFoodTracker.Data;
@@ -6,6 +7,7 @@ using ProjetoFoodTracker.Data.Entities;
 
 namespace ProjetoFoodTracker.Pages.MyUsers
 {
+    [Authorize(Roles = "ADMIN")]
     public class UsersModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;
@@ -17,7 +19,6 @@ namespace ProjetoFoodTracker.Pages.MyUsers
 
         public IList<ApplicationUser> AppUser { get; set; }
         
-
         public void OnGet()
         {
             AppUser = _ctx.Users.ToList();
@@ -38,7 +39,6 @@ namespace ProjetoFoodTracker.Pages.MyUsers
                 TempData["Failed"] = "Can't Delete Admin";
                 return RedirectToPage("./Users");
             }
-
         }
     }
 }

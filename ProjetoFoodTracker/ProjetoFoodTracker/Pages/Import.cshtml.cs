@@ -1,16 +1,13 @@
-using CsvHelper;
-using CsvHelper.Configuration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
 using ProjetoFoodTracker.Services;
-using System.Data;
-using System.Globalization;
 
 namespace ProjetoFoodTracker.Pages
 {
+    [Authorize]
     public class ImportModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;

@@ -14,9 +14,7 @@ namespace ProjetoFoodTracker.Services.MealService
 
 
         void AddMeal(FoodMeals FoodMealsProp, string userId);
-        void RemoveMeal(int ID, string userId);
-        Task <IActionResult> AddFoodToMeal(int ID, string userId);
+ 
         void RemoveFoodFromMeal(int ID, string userId);
-        void MealDetails(int ID, string userId);
     }
 }

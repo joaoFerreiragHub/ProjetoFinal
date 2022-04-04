@@ -1,0 +1,68 @@
+﻿@page
+@model ProjetoFoodTracker.Pages.Fasting.FastingModel
+@{
+}
+
+@if(TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+    <strong>Success! </strong> @TempData["Success"]
+</div>
+    <br />
+}
+@if(TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">
+    <strong>Failed! </strong> @TempData["Failed"]
+</div>
+<br />
+}
+<form method="post" asp-page-handler="AddFoodToMeal">
+    <div class="container">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3">My Meals</h1>
+            <br />
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="card-actions float-right">
+                                <div class="card-body">
+                                    <table class="table table-striped" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Meal</th>
+                                                <th>Foods</th>
+                                                <th>Categories</th>
+                                                <th>Actions</th>
+                                                <th>Type Portions</th>
+                                                <th>Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var meals in Model.allStarts)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Minute)
+                                                    </td>
+       
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <tr>
+                                        <td>
+                                              <div>
+                                                <input type="submit" value="Add Food" class="btn btn-primary" />
+                                            </div>
+                                            
+                                        </td>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>

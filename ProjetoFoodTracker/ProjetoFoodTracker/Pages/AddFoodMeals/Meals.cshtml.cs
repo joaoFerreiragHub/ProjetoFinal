@@ -7,10 +7,11 @@ using ProjetoFoodTracker.Services.FoodServices;
 using ProjetoFoodTracker.Services.MealService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjetoFoodTracker.Pages
 {
+    [Authorize]
     public class MealsModel : PageModel
     {
         private readonly IFoodService _foodService;
@@ -103,11 +104,7 @@ namespace ProjetoFoodTracker.Pages
                 return RedirectToPage("./Meals");
             }
         }
-        public void OnPostRemoveMeals(int ID, int sessionCount)
-        {
-            var userId = _userManager.GetUserId(User);
-            _MealService.RemoveMeal(ID, userId);
-        }
+
         public IActionResult OnPostAddFoodToMeal(FoodMeals FoodMealsProp, TypePortion portionsType, Meals meals)
         {
 
@@ -133,6 +130,45 @@ namespace ProjetoFoodTracker.Pages
             {
                 TempData["Failed"] = "No data Inserted";
                 return RedirectToPage("./AddFoodToMeal");
+            }
+        }
+        //public IActionResult OnPostFoodFromMeal(int ID, int sessionCount)
+        //{
+
+        //    var checkMeal = _ctx.MealsList.FirstOrDefault(x => x.MealsId == meals.MealsId);
+        //    var checkportion = _ctx.portionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
+        //    var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.FoodId == ID);
+
+        //    if (checkID.Id != null)
+        //    {
+        //        _ctx.FoodMealsList.Remove(checkID);
+        //        _ctx.SaveChanges();
+
+        //        TempData["Success"] = "Meal Removed!";
+        //        return RedirectToPage("./AddFoodToMeal");
+        //    }
+        //    else
+        //    {
+        //        TempData["Failed"] = "Something Happened";
+        //        return RedirectToPage("./Meals");
+        //    }
+        //}
+        public IActionResult OnPostRemoveMeal(int ID,int sessionCount)
+        {
+            var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.Id == ID);
+
+            if (checkID.Id != null)
+            {
+                _ctx.FoodMealsList.Remove(checkID);
+                _ctx.SaveChanges();
+
+                TempData["Success"] = "Meal Removed!";
+                return RedirectToPage("./AddFoodToMeal");
+            }
+            else
+            {
+                TempData["Failed"] = "Something Happened";
+                return RedirectToPage("./Meals");
             }
         }
     }

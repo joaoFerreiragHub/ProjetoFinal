@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
-using ProjetoFoodTracker.Data;
+﻿using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Data.Entities;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjetoFoodTracker.Services.FoodServices
 {
+    [Authorize]
     public class FoodService : IFoodService
     {
         private readonly ApplicationDbContext _ctx;

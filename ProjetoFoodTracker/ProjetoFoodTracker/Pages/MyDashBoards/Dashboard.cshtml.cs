@@ -1,13 +1,13 @@
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjetoFoodTracker.Data;
-using ProjetoFoodTracker.Data.Entities;
 using ProjetoFoodTracker.Services.UserServices;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace ProjetoFoodTracker.Pages.MyDashBoards
 {
+    [Authorize(Roles = "ADMIN")]
     public class DashboardModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;
