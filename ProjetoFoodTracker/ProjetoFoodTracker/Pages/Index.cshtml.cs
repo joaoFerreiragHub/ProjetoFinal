@@ -11,15 +11,12 @@ namespace ProjetoFoodTracker.Pages
     [Authorize]
     public class IndexModel : PageModel
     {
-      
-        private readonly UserManager<ApplicationUser> _userManager;
-
-        public IndexModel( UserManager<ApplicationUser> userManager)
+        public IndexModel()
         {       
-            _userManager = userManager;
+       
         }
 
-        public async Task OnGet()
+        public void OnGet()
         {
             
         }

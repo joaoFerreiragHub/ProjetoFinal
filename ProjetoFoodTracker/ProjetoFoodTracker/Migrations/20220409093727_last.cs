@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoFoodTracker.Migrations
 {
-    public partial class test : Migration
+    public partial class last : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -80,7 +80,7 @@ namespace ProjetoFoodTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "portionTypes",
+                name: "PortionTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -89,7 +89,7 @@ namespace ProjetoFoodTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_portionTypes", x => x.Id);
+                    table.PrimaryKey("PK_PortionTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -353,9 +353,9 @@ namespace ProjetoFoodTracker.Migrations
                         principalColumn: "MealsId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FoodMealsList_portionTypes_TypePortionsId",
+                        name: "FK_FoodMealsList_PortionTypes_TypePortionsId",
                         column: x => x.TypePortionsId,
-                        principalTable: "portionTypes",
+                        principalTable: "PortionTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -502,7 +502,7 @@ namespace ProjetoFoodTracker.Migrations
                 name: "MealsList");
 
             migrationBuilder.DropTable(
-                name: "portionTypes");
+                name: "PortionTypes");
 
             migrationBuilder.DropTable(
                 name: "Categories");

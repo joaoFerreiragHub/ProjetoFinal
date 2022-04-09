@@ -12,8 +12,8 @@ using ProjetoFoodTracker.Data;
 namespace ProjetoFoodTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220404003258_test")]
-    partial class test
+    [Migration("20220409093727_last")]
+    partial class last
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -455,7 +455,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("portionTypes");
+                    b.ToTable("PortionTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

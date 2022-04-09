@@ -14,7 +14,6 @@ namespace ProjetoFoodTracker.Services.MealService
 
 
         void AddMeal(FoodMeals FoodMealsProp, string userId);
- 
         void RemoveFoodFromMeal(int ID, string userId);
     }
 }

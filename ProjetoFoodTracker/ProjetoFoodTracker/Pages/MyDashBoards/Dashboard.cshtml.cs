@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ProjetoFoodTracker.Data;
 using ProjetoFoodTracker.Services.UserServices;
 
 
@@ -10,11 +9,9 @@ namespace ProjetoFoodTracker.Pages.MyDashBoards
     [Authorize(Roles = "Admin")]
     public class DashboardModel : PageModel
     {
-        private readonly ApplicationDbContext _ctx;
         private readonly IUserService _userService;
-        public DashboardModel(ApplicationDbContext ctx, IUserService userService)
+        public DashboardModel(IUserService userService)
         {
-            _ctx = ctx;
             _userService = userService;
         }
 

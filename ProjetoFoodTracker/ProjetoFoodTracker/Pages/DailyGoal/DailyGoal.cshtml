@@ -8,8 +8,19 @@
             <h1 class="h3 mb-3 text-success">My Daily Goal</h1>
             <hr />
             <br />
-             <h5  class="text-primary">Goal: <small> The daily goal is to fill the whole table with 5 foods from each of the 5 categories. </small> </h5>
-                 <br />
+            <h5 class="text-primary">Goal: <small> The daily goal is to fill the whole table with 5 foods from each of the 5 categories. </small> </h5>
+            <h6>
+                Status:
+                @if (Model.SuccesOrFail == true)
+                {
+                    <span>Goal Completed</span>
+                }
+                else
+                {
+                    <span>You need to eat more</span>
+                }
+            </h6>
+            <br />
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
@@ -19,31 +30,77 @@
                                     <table class="table table-striped" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Angiogeneses</th>
-                                                <th>Regeneration</th>
-                                                <th>Microbiome</th>
-                                                <th>DNA Protection</th>
                                                 <th>Immunity</th>
+                                                <th>DNA Protection</th>
+                                                <th>Regeneration</th>
+                                                <th>Angiogenesis</th>
+                                                <th>Microbiome</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var meals in Model.Foods)
+                                            @foreach (var foods in Model.Foods)
                                             {
                                                 <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Immunity").Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foods.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Immunity").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "DNA Protection").Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foods.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "DNA Protection").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Regeneration").Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foods.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Regeneration").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Angiogenesis").Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foods.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Angiogenesis").Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Microbiome").Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foods.FoodAction.FirstOrDefault(x => x.Actions.ActionName == "Microbiome").Food.FoodName)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <tr>
+                                        <td>
+
+                                            <div>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post">
+    <div class="container">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3 text-success">Suggestions:</h1>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="card-actions float-right">
+                                <div class="card-body">
+                                    <table class="table table-striped" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Foods</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var foods in Model.FoodForDailyGoal)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => foods.FoodName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => foods.FoodAction.FirstOrDefault(x=>x.FoodId == foods.Id).Actions.ActionName)
                                                     </td>
                                                 </tr>
                                             }

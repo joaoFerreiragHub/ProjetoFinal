@@ -28,21 +28,23 @@ namespace ProjetoFoodTracker.Pages
             _userManager = userManager;
         }
 
-
         public List<Category> Categories { get; set; }
-        [BindProperty]
-        public List<Food> Foods { get; set; }
         public List<Actions> Actions { get; set; }
-        public TypePortion portionsType { get; set; } = new TypePortion();
+        public TypePortion PortionsType { get; set; } = new TypePortion();
         public IList<FoodMeals> FoodMeals { get; set; }
         public List<FoodMeals> AddDetails { get; set; } = new List<FoodMeals>();
         public List<TypePortion> TypePorts { get; set; }
-        [BindProperty]
-        public List<FoodAction> foodActions { get; set; }
 
 
+
         [BindProperty]
-        public Meals meals { get; set; } = new Meals();
+        public List<Food> Foods { get; set; }
+
+        [BindProperty]
+        public List<FoodAction> FoodActions { get; set; }
+
+        [BindProperty]
+        public Meals Meals { get; set; } = new Meals();
 
         [BindProperty]
         public FoodMeals FoodMealsProp { get; set; } = new FoodMeals();
@@ -50,22 +52,20 @@ namespace ProjetoFoodTracker.Pages
         [BindProperty]
         public List<Meals> Meal { get; set; } = new List<Meals>();
 
-        [BindProperty]
-        public List<FoodMeals> AddFoodsToMeals { get; set; } = new List<FoodMeals>();
 
         public async Task OnGet()
         {
             Foods = await _foodService.GetAllFoodsAsync();
             Categories = await _foodService.GetAllCategoriesAsync();
             Actions = await _foodService.GetAllActionsAsync();
-            foodActions = _ctx.FoodActions.ToList();
-            TypePorts = _ctx.portionTypes.ToList();
+            FoodActions = _ctx.FoodActions.ToList();
+            TypePorts = _ctx.PortionTypes.ToList();
             Meal = await _MealService.GetAllMealsAsyn();
             AddDetails = await _MealService.GetAllFoodMealsAsyn();
 
             ViewData["FoodId"] = new SelectList(_ctx.Foods, "Id", "FoodName");
             ViewData["MealName"] = new SelectList(_ctx.MealsList, "MealsId", "Name");
-            ViewData["Id"] = new SelectList(_ctx.portionTypes, "Id", "Type");
+            ViewData["Id"] = new SelectList(_ctx.PortionTypes, "Id", "Type");
 
             FoodMeals = await _ctx.FoodMealsList
             .Include(f => f.Food)
@@ -80,7 +80,7 @@ namespace ProjetoFoodTracker.Pages
 
             if (meals.Name != null)
             {
-                Meals newMeal = new Meals()
+                Meals newMeal = new()
                 {
                     ApplicationUser = user,
                     Name = meals.Name,
@@ -90,11 +90,9 @@ namespace ProjetoFoodTracker.Pages
                 _ctx.MealsList.Add(newMeal);
                 _ctx.SaveChanges();
 
-                var checkMealsID = _ctx.MealsList.FirstOrDefault(x => x.Name == meals.Name).MealsId;
-                var checkportion = _ctx.portionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
-                FoodMealsProp.MealId = checkMealsID;
-                FoodMealsProp.TypePortions = checkportion;
-
+                var checkPortion = _ctx.PortionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
+                FoodMealsProp.MealId = newMeal.MealsId;
+                FoodMealsProp.TypePortions = checkPortion;
 
                 _MealService.AddMeal(FoodMealsProp, userId);
                 TempData["Success"] = "Meal Created, Now add some food to it!";
@@ -109,19 +107,18 @@ namespace ProjetoFoodTracker.Pages
 
         public IActionResult OnPostAddFoodToMeal(FoodMeals FoodMealsProp, TypePortion portionsType, Meals meals)
         {
-
             var checkMeal = _ctx.MealsList.FirstOrDefault(x => x.MealsId == meals.MealsId);
-            var checkportion = _ctx.portionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
+            var checkPortion = _ctx.PortionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
 
             if (checkMeal != null)
             {
-                FoodMeals newAddFoodToMeal = new FoodMeals()
+                FoodMeals newAddFoodToMeal = new()
                 {
                     MealId = checkMeal.MealsId,
                     Food = FoodMealsProp.Food,
                     FoodId = FoodMealsProp.FoodId,
                     Quantity = FoodMealsProp.Quantity,
-                    TypePortions = checkportion,
+                    TypePortions = checkPortion,
                 };
                 _ctx.FoodMealsList.Add(newAddFoodToMeal);
                 _ctx.SaveChanges();
@@ -134,14 +131,12 @@ namespace ProjetoFoodTracker.Pages
                 return RedirectToPage("./AddFoodToMeal");
             }
         }
-        public IActionResult OnPostRemoveMeal(int ID,int sessionCount)
+        public IActionResult OnPostRemoveMeal(int ID)
         {
             var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.Id == ID);
-            var mealCheck = _ctx.MealsList.FirstOrDefault(x=> x.MealsId == checkID.Id);
             if (checkID != null)
             {
                 _ctx.FoodMealsList.Remove(checkID);
-                _ctx.MealsList.Remove(mealCheck);
                 _ctx.SaveChanges();
 
                 TempData["Success"] = "Meal Removed!";

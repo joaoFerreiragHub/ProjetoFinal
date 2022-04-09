@@ -26,16 +26,13 @@ namespace ProjetoFoodTracker.Pages
         public List<Food> Foods { get; set; }
         public List<Actions> Actions { get; set; }
         public List<Favorites> Favorites { get; set; } = new List<Favorites>();
-        public List<Blacklist> Blacklisted { get; set; } = new List<Blacklist> { };
+        public List<Blacklist> Blacklisted { get; set; } = new List<Blacklist>();
         public List<SelectListItem> CategoryOptions { get; set; }
         public List<SelectListItem> ActionsOptions { get; set; }
 
-        //public IEnumerable<Category> displayCategories { get; set; }
-        //public IEnumerable<Actions> displayActions { get; set; }
 
         [BindProperty]
         public List<FoodAction> FoodActions { get; set; }
-
 
         public async Task OnGet()
         {
@@ -69,7 +66,7 @@ namespace ProjetoFoodTracker.Pages
             return task;
         }
 
-        public async Task<IActionResult> OnPostAddBlacklist(int ID, int sessionCount)
+        public async Task<IActionResult> OnPostAddBlacklist(int ID)
         {
             var task = await Task.Run(() =>
             {
@@ -81,7 +78,7 @@ namespace ProjetoFoodTracker.Pages
 
             return task;
         }
-        public async Task<IActionResult> OnPostRemoveFromFavorites(int ID, int sessionCount)
+        public async Task<IActionResult> OnPostRemoveFromFavorites(int ID)
         {
             var task = await Task.Run(() =>
             {
@@ -93,7 +90,7 @@ namespace ProjetoFoodTracker.Pages
 
             return task;
         }
-        public async Task<IActionResult> OnPostRemoveFromBlacklist(int ID, int sessionCount)
+        public async Task<IActionResult> OnPostRemoveFromBlacklist(int ID)
         {
             var task = await Task.Run(() =>
             {
@@ -106,11 +103,10 @@ namespace ProjetoFoodTracker.Pages
             return task;
         }
 
-        public async Task<IActionResult> OnPostManageList(int ID, int sessionCount)
+        public async Task<IActionResult> OnPostManageList()
         {
             if (!ModelState.IsValid)
             {
-
                 return Page();
             }
 

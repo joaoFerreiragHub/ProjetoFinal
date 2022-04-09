@@ -18,7 +18,7 @@
 }
     <div class="container">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">My Meals</h1>
+            <h1 class="h3 mb-3 text-success">My Meals</h1>
             <br />
             <div class="row">
                 <div class="col-xl-12">
@@ -70,7 +70,7 @@
                                                     </td>
                                                     <td>
                                                         <form method="post" asp-route-sessioncount="15" asp-page-handler="RemoveMeal" asp-route-ID="@meals.MealId">
-                                                            <button type="submit" class="btn btn-primary m-1">Remove Blacklisted</button>
+                                                            <button type="submit" class="btn btn-danger m-1">Remove Meal</button>
                                                         </form>
                                                     </td>
                                                 </tr>

@@ -9,7 +9,6 @@ namespace ProjetoFoodTracker.Data.Entities
         public int? Age { get; set; }
         public int? Weight { get; set; }
         public DateTime? DateOfBirth { get; set; }
-
         public List<FoodMeals> FoodMeals{ get; set; }
 
     }

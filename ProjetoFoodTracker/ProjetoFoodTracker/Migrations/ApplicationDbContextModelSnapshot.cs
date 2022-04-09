@@ -453,7 +453,7 @@ namespace ProjetoFoodTracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("portionTypes");
+                    b.ToTable("PortionTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

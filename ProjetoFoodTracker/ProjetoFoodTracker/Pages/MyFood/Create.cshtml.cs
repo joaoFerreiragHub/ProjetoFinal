@@ -18,10 +18,10 @@ namespace ProjetoFoodTracker.Pages.MyFood
         }
 
         [BindProperty]
-        public List<Actions> actionsList { get; set; } = new List<Actions>();
+        public List<Actions> ActionsList { get; set; } = new List<Actions>();
 
 
-        public List<FoodAction> foodActions { get; set; } = new List<FoodAction>();
+        public List<FoodAction> FoodActions { get; set; } = new List<FoodAction>();
         public List<SelectListItem> CategoryOptions { get; set; }
 
         [BindProperty]
@@ -33,11 +33,9 @@ namespace ProjetoFoodTracker.Pages.MyFood
                          new SelectListItem
                          { Text = a.CategoryName }).ToList();
 
-            actionsList = _ctx.Actions.ToList();
+            ActionsList = _ctx.Actions.ToList();
             return Page();
         }
-
-
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -49,7 +47,7 @@ namespace ProjetoFoodTracker.Pages.MyFood
                 var actionList = Request.Form["actionsList"];
 
                 Actions newAction;
-                List<FoodAction> listFoodAction = new List<FoodAction>();
+                List<FoodAction> listFoodAction = new();
                 FoodAction newFoodAction;
 
                 var category = _ctx.Categories.FirstOrDefault(x => x.CategoryName == Food.Category.CategoryName).Id;

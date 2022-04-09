@@ -27,7 +27,7 @@ namespace ProjetoFoodTracker.Services.FoodServices
             var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
             var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
 
-            Favorites newFavorite = new Favorites()
+            Favorites newFavorite = new()
             {
                 ApplicationUser = user,
                 Food = food,
@@ -56,7 +56,7 @@ namespace ProjetoFoodTracker.Services.FoodServices
             var food = _ctx.Foods.FirstOrDefault(x => x.Id == ID);
             var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
 
-            Blacklist newblacklist = new Blacklist()
+            Blacklist newblacklist = new()
             {
                 ApplicationUser = user,
                 Food = food,

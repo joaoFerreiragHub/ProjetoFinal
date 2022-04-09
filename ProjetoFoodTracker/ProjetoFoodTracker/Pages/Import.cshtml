@@ -7,19 +7,17 @@
 
 <div class="row">
     <div class="jumbotron">
-        <h1 class="display-4">Bem-vindo!</h1>
-        <p class="lead">Aqui podes carregar ficheiros para ficarem guardados na App!</p>
+        <h1 class="display-4">Import the DataBase!</h1>
         <hr class="my-4">
     </div>
 
     @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
     {
-        <p>Se está a ver isto é porque é administrador, nada mau!</p>
+   
         <form asp-page-handler="UploadtoDb" asp-route-sessioncount="10" method="post" >
             <div class="for-group">
-                <input name="file" type="file" class="form-control" />
                 <br/>
-                <button type="submit" class="btn-primary btn-primary rounded-pill ">Import</button>
+                <button type="submit" class="w-100 btn-primary btn-primary rounded-pill ">Import</button>
             </div>
                <br/>
                 <br/>
@@ -27,9 +25,3 @@
     }
 </div>
 
-<div>
-    @if (string.IsNullOrWhiteSpace(Model.Filepath))
-    {
-        <img src="@Model.Filepath" alt="Alternate Text" />
-    }
-</div>

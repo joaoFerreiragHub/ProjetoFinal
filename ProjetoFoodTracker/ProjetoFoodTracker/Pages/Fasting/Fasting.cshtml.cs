@@ -17,15 +17,11 @@ namespace ProjetoFoodTracker.Pages.Fasting
         public FastingModel(ApplicationDbContext ctx)
         {
             _ctx = ctx;
-
         }
 
         [BindProperty]
         public List<TimeSpan> allStarts { get; set; } = new List<TimeSpan>();
-        [BindProperty]
-        public List<TimeSpan> allStartz { get; set; } = new List<TimeSpan>();
-        public List<DateTime> allEndingsFasting { get; set; } = new List<DateTime>();
-
+     
 
         public void OnGet()
         {
@@ -38,14 +34,13 @@ namespace ProjetoFoodTracker.Pages.Fasting
 
             if (mealCheck == true)
             {
-                var x = _ctx.MealsList.OrderBy(x => x.MealStart).Last();
-                var z = x.MealStart;
-                var y = x.MealEnded;
+                var lastMeal = _ctx.MealsList.OrderBy(x => x.MealStart).Last();
+                var endOfMeal = lastMeal.MealEnded;
 
-                if (x.MealStart <= x.MealEnded)
+                if (lastMeal.MealStart <= lastMeal.MealEnded)
                 {
-                    var fast = DateTime.Now - y;
-                    allStartz.Add(fast);
+                    var fasting = DateTime.Now - endOfMeal;
+                    allStarts.Add(fasting);
                 }
      
                 return RedirectToPage("./Fasting");
@@ -55,7 +50,6 @@ namespace ProjetoFoodTracker.Pages.Fasting
                 TempData["Failed"] = "No Meals registered";
                 return RedirectToPage("./Meals");
             }
-
         }
     }
 }

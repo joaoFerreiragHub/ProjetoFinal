@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bbgr1lOHzrzFuVwKwt7+aSqiNidpcE1fbT2IUF9bv9I=",
+  "Hash": "QuXJt75UNMD5eILt7r6iNoFE/6PkdujHaCcVFGaLxJI=",
   "Source": "ProjetoFoodTracker",
   "BasePath": "_content/ProjetoFoodTracker",
   "Mode": "Default",
@@ -1836,12 +1836,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\Alimentus.csv",
+      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\Alimentos.csv",
       "SourceId": "ProjetoFoodTracker",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
       "BasePath": "_content/ProjetoFoodTracker",
-      "RelativePath": "File/Alimentus.csv",
+      "RelativePath": "File/Alimentos.csv",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1850,24 +1850,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\File\\Alimentus.csv"
-    },
-    {
-      "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\file",
-      "SourceId": "ProjetoFoodTracker",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\",
-      "BasePath": "_content/ProjetoFoodTracker",
-      "RelativePath": "File/file",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\File\\file"
+      "OriginalItemSpec": "wwwroot\\File\\Alimentos.csv"
     },
     {
       "Identity": "C:\\Users\\gar_e\\OneDrive\\Imagens\\Documentos\\ProjetoFinal\\ProjetoFoodTracker\\ProjetoFoodTracker\\wwwroot\\File\\pexels-ella-olsson-1640773.jpg",

@@ -26,7 +26,7 @@ namespace ProjetoFoodTracker.Services
 
         public void UploadtoDb(IFormFile file)
         {
-            string path = @"C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\wwwroot\File\Alimentus.csv";
+            string path = @"C:\Users\gar_e\OneDrive\Imagens\Documentos\ProjetoFinal\ProjetoFoodTracker\ProjetoFoodTracker\wwwroot\File\Alimentos.csv";
    
             string[] text = File.ReadAllLines(path);
 
@@ -54,25 +54,22 @@ namespace ProjetoFoodTracker.Services
                     if (!_ctx.Actions.Any(x => x.ActionName.Equals(actionName)))
                     {
                         newAction = new Actions() { ActionName = actionName };
-                        _ctx.Actions.Add(newAction);
-                        
+                        _ctx.Actions.Add(newAction);                       
                     }
                     else
                         newAction = _ctx.Actions.FirstOrDefault(x => x.ActionName.Equals(actionName));
 
                     var newFoodAction= new FoodAction() { Actions = newAction, ActionId = newAction.Id, Food = food, FoodId = food.Id};
-                    _ctx.FoodActions.Add(newFoodAction);
-                    
+                    _ctx.FoodActions.Add(newFoodAction);                    
                 }
                 _ctx.SaveChanges();
             }
-
             string units = "Units";
             string grams = "Grams";
-            TypePortion newTypePortion = new TypePortion() { Type = units };
-            TypePortion secondTypePortion = new TypePortion() { Type = grams };
-            _ctx.portionTypes.Add(newTypePortion);
-            _ctx.portionTypes.Add(secondTypePortion);
+            TypePortion newTypePortion = new() { Type = units };
+            TypePortion secondTypePortion = new() { Type = grams };
+            _ctx.PortionTypes.Add(newTypePortion);
+            _ctx.PortionTypes.Add(secondTypePortion);
             _ctx.SaveChanges();
         }
     }

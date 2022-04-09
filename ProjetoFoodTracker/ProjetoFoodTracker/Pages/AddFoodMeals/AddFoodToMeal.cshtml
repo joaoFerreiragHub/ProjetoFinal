@@ -19,7 +19,7 @@
 <form method="post" asp-page-handler="AddFoodToMeal">
     <div class="container">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">My Meals</h1>
+            <h1 class="h3 mb-3 text-success">My Meals</h1>
             <br />
             <div class="row">
                 <div class="col-xl-12">
@@ -41,32 +41,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var meals in Model.AddDetails)
+                                            @foreach (var foodMeals in Model.AddDetails)
                                             {
                                                 <tr>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Meals.Name)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Meals.Name)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Meals.MealStart)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Meals.MealStart)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Meals.MealEnded)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Meals.MealEnded)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Food.FoodName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.Category.CategoryName)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Food.Category.CategoryName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.FoodAction.FirstOrDefault(x=>x.FoodId == meals.FoodId).Actions.ActionName)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Food.FoodAction.FirstOrDefault(x=>x.FoodId == foodMeals.FoodId).Actions.ActionName)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.TypePortions.Type)
+                                                        @Html.DisplayFor(modelItem => foodMeals.TypePortions.Type)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => meals.Quantity)
+                                                        @Html.DisplayFor(modelItem => foodMeals.Quantity)
                                                     </td>
                                                 </tr>
                                             }
@@ -76,8 +76,8 @@
                                         <td>
                                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                             <div class="form-group">
-                                                <label asp-for="meals.Name" class="control-label"> Meals</label>
-                                                <select asp-for="meals.MealsId" class="form-control" asp-items="ViewBag.MealName">
+                                                <label asp-for="Meals.Name" class="control-label"> Meals</label>
+                                                <select asp-for="Meals.MealsId" class="form-control" asp-items="ViewBag.MealName">
                                                     <option selected>Please select</option>
                                                 </select>
                                             </div>
@@ -86,8 +86,8 @@
                                                 <select asp-for="FoodMealsProp.FoodId" class="form-control" asp-items="ViewBag.FoodId"></select>
                                             </div>
                                             <div class="form-group">
-                                                <label asp-for="portionsType.Id" class="control-label"> Type Portion</label>
-                                                <select asp-for="portionsType.Id" class="form-control" asp-items="ViewBag.Id"></select>
+                                                <label asp-for="PortionsType.Id" class="control-label"> Type Portion</label>
+                                                <select asp-for="PortionsType.Id" class="form-control" asp-items="ViewBag.Id"></select>
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="FoodMealsProp.Quantity" class="control-label"> Quantity</label>
@@ -129,14 +129,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            @foreach (var meals in Model.foodActions)
+                                            @foreach (var foodActions in Model.FoodActions)
                                             {
                                             <tr>
                                                 <td>
-                                                        @Html.DisplayFor(modelItem => meals.Food.FoodName)
+                                                        @Html.DisplayFor(modelItem => foodActions.Food.FoodName)
                                                 </td>
                                                 <td>
-                                                        @Html.DisplayFor(modelItem => meals.Actions.ActionName)
+                                                        @Html.DisplayFor(modelItem => foodActions.Actions.ActionName)
                                                 </td>
                                             </tr>
                                             }
