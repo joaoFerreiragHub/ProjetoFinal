@@ -19,7 +19,6 @@ namespace ProjetoFoodTracker.Pages.MyDashBoards
         public int MealsCount { get; set; }
         public string TopFoods { get; set; }  
         public List<string> TopUsersMeals { get; set; }
-      
 
         public async Task<IActionResult> OnGet()
         {

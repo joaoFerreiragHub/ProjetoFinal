@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ProjetoFoodTracker.Pages
 {
-    [Authorize]
+    [Authorize(Roles ="Customer")]
     public class MealsModel : PageModel
     {
         private readonly IFoodService _foodService;
@@ -36,7 +36,6 @@ namespace ProjetoFoodTracker.Pages
         public List<TypePortion> TypePorts { get; set; }
 
 
-
         [BindProperty]
         public List<Food> Foods { get; set; }
 
@@ -51,7 +50,6 @@ namespace ProjetoFoodTracker.Pages
 
         [BindProperty]
         public List<Meals> Meal { get; set; } = new List<Meals>();
-
 
         public async Task OnGet()
         {
@@ -107,8 +105,8 @@ namespace ProjetoFoodTracker.Pages
 
         public IActionResult OnPostAddFoodToMeal(FoodMeals FoodMealsProp, TypePortion portionsType, Meals meals)
         {
-            var checkMeal = _ctx.MealsList.FirstOrDefault(x => x.MealsId == meals.MealsId);
-            var checkPortion = _ctx.PortionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
+            var checkMeal =  _ctx.MealsList.FirstOrDefault(x => x.MealsId == meals.MealsId);
+            var checkPortion =  _ctx.PortionTypes.FirstOrDefault(x => x.Id == portionsType.Id);
 
             if (checkMeal != null)
             {
@@ -133,7 +131,7 @@ namespace ProjetoFoodTracker.Pages
         }
         public IActionResult OnPostRemoveMeal(int ID)
         {
-            var checkID = _ctx.FoodMealsList.FirstOrDefault(x => x.Id == ID);
+            var checkID =  _ctx.FoodMealsList.FirstOrDefault(x => x.Id == ID);
             if (checkID != null)
             {
                 _ctx.FoodMealsList.Remove(checkID);

@@ -1,0 +1,65 @@
+﻿@page
+@model ProjetoFoodTracker.Pages.DailyGoal.DailyGoalModel
+@{
+}
+<form method="post">
+    <div class="container">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3 text-success">The Overall Success</h1>
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="card-actions float-right">
+                                <div class="card-body">
+                                    <table class="table table-striped" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Completed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var foods in Model.TrackSuccess)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => foods.Date)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => foods.IsSuccess)
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <tr>
+                                        <td>
+                                      <div>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post" asp-page-handler="SearchSuccess">
+    <label class="col-sm-3 col-form-label">Search Progress:</label>
+    <br />
+
+    Day: <div class="col-sm-6"><input type="date" class="form-control" asp-for="Track.Date"></div>
+    <br />
+    <button type="submit" class="btn btn-primary mr-2">Search</button>
+</form>
+
+<div class="alert alert-info">
+    @foreach (var item in @Model.ShowSuccess)
+    {
+            <strong>Results: </strong> @item.IsSuccess
+    }
+</div>

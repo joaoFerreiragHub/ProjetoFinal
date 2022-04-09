@@ -4,6 +4,5 @@
     {
         Task<string> UploadFileAsync(IFormFile ufile);
         void UploadtoDb(IFormFile file);
-
     }
 }

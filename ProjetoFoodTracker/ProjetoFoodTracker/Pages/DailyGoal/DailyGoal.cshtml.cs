@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjetoFoodTracker.Data;
@@ -7,16 +9,19 @@ using ProjetoFoodTracker.Services.MealService;
 
 namespace ProjetoFoodTracker.Pages.DailyGoal
 {
+    [Authorize(Roles = "Customer")]
     public class DailyGoalModel : PageModel
     {
+        
         private readonly IFoodService _foodService;
         private readonly IMealService _mealService;
         private readonly ApplicationDbContext _ctx;
-
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public DailyGoalModel(IFoodService foodService, IMealService MealService,
-            ApplicationDbContext ctx)
+            ApplicationDbContext ctx, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _foodService = foodService;
             _mealService = MealService;
             _ctx = ctx;
@@ -28,7 +33,14 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
 
         public List<TypePortion> TypePorts { get; set; }
 
+        [BindProperty]
+        public TrackSuccess Track { get; set; }
 
+        [BindProperty]
+        public List<TrackSuccess> ShowSuccess { get; set; } = new List<TrackSuccess>();
+
+        [BindProperty]
+        public List<TrackSuccess> TrackSuccess { get; set; } = new List<TrackSuccess>();
 
         [BindProperty]
         public List<Food> Foods { get; set; }
@@ -55,15 +67,19 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
             TypePorts = _ctx.PortionTypes.ToList();
             Meal = await _mealService.GetAllMealsAsyn();
             AddDetails = await _mealService.GetAllFoodMealsAsyn();
-            Foods = GetFoodByAction();
+            Foods =  GetFoodByAction();
             SuccesOrFail = SuccessORFail(GetFoodByAction());
             FoodForDailyGoal = SuggestFoods(Foods);
+            TrackSuccess = await _foodService.GetAllSuccessesAsync();
+
+            SaveProgress(SuccesOrFail);
         }
 
         public List<Food> GetFoodByAction()
         {
             DateTime tomorrow = DateTime.Now.AddDays(1);
-            var foods = (from fm in _ctx.FoodMealsList
+
+            var foods =  (from fm in _ctx.FoodMealsList
                          where (fm.Meals.MealEnded >= DateTime.Today && fm.Meals.MealEnded <= tomorrow)
                          join food in _ctx.FoodActions on fm.FoodId equals food.Id
                          join actions in _ctx.FoodActions on food.Id equals actions.FoodId
@@ -80,6 +96,7 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
             var sumDnaProtection = 0;
             var sumImmunity = 0;
             var sumRegeneration = 0;
+
             foreach (var item in foods)
             {
                 var angiogenesis = item.FoodAction.Count(x => x.Actions.ActionName == "Angiogenesis");
@@ -96,9 +113,63 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
             }
 
             if (sumAngiogenesis >= 5 && sumMicrobiome >= 5 && sumDnaProtection >= 5 && sumImmunity >= 5 && sumRegeneration >= 5)
+            {
                 return true;
+            }
             else
                 return false;
+        }
+
+        public void SaveProgress(bool isSuccess)
+        {
+            var checkIfExists = _ctx.TrackSuccesses.FirstOrDefault(x => x.Date == DateTime.Today);
+
+            if(checkIfExists == null)
+            {
+                if (isSuccess == true)
+                {
+                    TrackSuccess today = new()
+                    {
+                        Date = DateTime.Today,
+                        IsSuccess = true
+                    };
+                    _ctx.TrackSuccesses.Add(today);
+                    _ctx.SaveChanges();
+
+                }
+                else if (isSuccess == false)
+                {
+                    TrackSuccess today = new()
+                    {
+                        Date = DateTime.Today,
+                        IsSuccess = false
+                    };
+                    _ctx.TrackSuccesses.Add(today);
+                    _ctx.SaveChanges();
+                }
+            }
+            else
+            {
+                if(isSuccess == true)
+                {
+                    checkIfExists.IsSuccess = true;
+                    _ctx.SaveChanges();
+
+                }
+                else if (isSuccess == false)
+                {
+                    var cgetTrack = _ctx.TrackSuccesses.FirstOrDefault(x => x.Id == checkIfExists.Id);
+                    if(cgetTrack.Date == DateTime.Today)
+                    {
+                         _ctx.SaveChanges();
+                    }
+                    else
+                    {
+                        cgetTrack.IsSuccess = false;
+                        _ctx.SaveChanges();
+                    }
+                }
+            }
         }
 
         public List<Food> SuggestFoods(List<Food> foods)
@@ -130,26 +201,56 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
                 List<Food> foodSugestions = new();
 
                 var getFoods = (from actions in _ctx.FoodActions
-                                    where (actions.Actions.ActionName == "Angiogenesis" || actions.Actions.ActionName == "Microbiome"
-                                    || actions.Actions.ActionName == "DNA Protection" || actions.Actions.ActionName == "Immunity" 
-                                    || actions.Actions.ActionName == "Regeneration")
-                                    join food in _ctx.Foods on actions.Id equals food.Id
-                                    select actions.Food).Take(15).ToList();
+                                where (actions.Actions.ActionName == "Angiogenesis" || actions.Actions.ActionName == "Microbiome"
+                                || actions.Actions.ActionName == "DNA Protection" || actions.Actions.ActionName == "Immunity"
+                                || actions.Actions.ActionName == "Regeneration")
+                                join food in _ctx.Foods on actions.Id equals food.Id
+                                select actions.Food).Take(15).ToList();
 
                 foreach (var food in getFoods)
                 {
                     var checkBlacklist = _ctx.BlackLists.Any(x => x.Food.FoodName == food.FoodName);
-                    var checkMeals = _ctx.FoodMealsList.Any(x=>x.Food.FoodName == food.FoodName);
+                    var checkMeals = _ctx.FoodMealsList.Any(x => x.Food.FoodName == food.FoodName);
                     if (checkBlacklist == false && checkMeals == false)
                     {
                         foodSugestions.Add(food);
                     }
-                }         
+                }
                 return foodSugestions;
             }
 
             return FoodForDailyGoal.ToList();
         }
+
+        public IActionResult OnPostSearchSuccess()
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = _ctx.Users.FirstOrDefault(x => x.Id == userId);
+
+            var checkSuccess = _ctx.TrackSuccesses.FirstOrDefault(x => x.Date == Track.Date);
+            if (checkSuccess != null)
+            {
+                ShowSuccess.Add(checkSuccess);
+            }
+            else
+            {
+                TempData["Failed"] = "No Results for that day";
+                return RedirectToPage("./Progress");
+            }
+
+            return Page();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
         //else if (sumamicrobiome < 5)
         //{
@@ -498,5 +599,3 @@ namespace ProjetoFoodTracker.Pages.DailyGoal
         //    return foodForDailyGoal.Distinct().ToList();
         //}
 
-    }
-}

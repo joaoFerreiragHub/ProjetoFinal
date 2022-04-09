@@ -24,6 +24,7 @@ namespace ProjetoFoodTracker.Data
         public DbSet<Meals> MealsList{ get; set; }
         public DbSet<FoodAction> FoodActions { get; set; }
         public DbSet<FoodMeals> FoodMealsList { get; set; }
+        public DbSet<TrackSuccess> TrackSuccesses { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public DbSet<TypePortion> PortionTypes { get; set; }

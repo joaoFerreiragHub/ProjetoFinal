@@ -21,9 +21,9 @@ namespace ProjetoFoodTracker.Services.UserServices
                 var customerCount = _ctx.Roles.Where(u => u.Name == "Customer").Count();
                 return customerCount;
             });
-
             return list;
         }
+
         public async Task<int> GetTotalMealsCount()
         {
             var list = await Task.Run(() =>
@@ -31,9 +31,9 @@ namespace ProjetoFoodTracker.Services.UserServices
                 var meals = _ctx.MealsList.Count(m => m.MealsId >= 0);
                 return meals;
             });
-
             return list;
         }
+
         public async Task<string> GetTopFoods()
         {
             var list = await Task.Run(() =>
@@ -43,9 +43,9 @@ namespace ProjetoFoodTracker.Services.UserServices
                 var newlist = String.Join(" | ", foodList);
                 return newlist;
             });
-
             return list;
         }
+
         public async Task<List<string>> GetTopUsersMeals()
         {
             var list = await Task.Run(() =>
@@ -54,7 +54,6 @@ namespace ProjetoFoodTracker.Services.UserServices
                 var usersName = mealsByOrder.Select(x => x.First().ApplicationUser.UserName);
                 return usersName.ToList();
             });
-
             return list;
         }
     }

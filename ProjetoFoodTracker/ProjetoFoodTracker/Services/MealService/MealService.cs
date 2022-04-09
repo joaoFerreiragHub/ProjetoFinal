@@ -29,10 +29,5 @@ namespace ProjetoFoodTracker.Services.MealService
             _ctx.FoodMealsList.Add(FoodMealsProp);
             _ctx.SaveChanges();            
         }
-
-        public void RemoveFoodFromMeal(int ID, string userId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

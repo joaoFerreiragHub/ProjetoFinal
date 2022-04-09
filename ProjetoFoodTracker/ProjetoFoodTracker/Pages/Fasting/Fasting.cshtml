@@ -58,3 +58,47 @@
             </div>
         </div>
 </form>
+
+<form method="post" asp-page-handler="GetCurrentFast">
+    <div class="container">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3">All Fasts Today</h1>
+            <br />
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="card-actions float-right">
+                                <div class="card-body">
+                                    <table class="table table-striped" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Between Meal 1 and Meal 2:</th>
+                                                <th>Between Meal 2 and Meal 3:</th>
+                                                <th>Between Meal 3 and Meal 4:</th>
+                                                <th>Between Meal 4 and Meal 5:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var meals in Model.allmeals)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Minutes) <p>Minutes</p>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => meals.Hours)<p>Hours</p>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <tr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>

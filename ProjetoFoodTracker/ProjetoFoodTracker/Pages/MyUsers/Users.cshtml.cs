@@ -24,21 +24,25 @@ namespace ProjetoFoodTracker.Pages.MyUsers
             AppUser = _ctx.Users.ToList();
         }
 
-        public IActionResult OnPostDeleteUser(string id)
-        {     
-            var userCheck = _ctx.Users.FirstOrDefault(x=>x.Id == id);
-            if (userCheck.UserName != "Admin@admin.com")
-            {
-                _ctx.Users.Remove(userCheck);
-                _ctx.SaveChanges();
-                TempData["Success"] = "Removed from Users List";
-                return RedirectToPage("./Users");
-            }
-            else
-            {
-                TempData["Failed"] = "Can't Delete Admin";
-                return RedirectToPage("./Users");
-            }
+        public async Task<IActionResult> OnPostDeleteUser(string id)
+        {
+            var task = await Task.Run(() =>
+             {
+               var userCheck = _ctx.Users.FirstOrDefault(x => x.Id == id);
+               if (userCheck.UserName != "Admin@admin.com")
+               {
+                   _ctx.Users.Remove(userCheck);
+                   _ctx.SaveChanges();
+                   TempData["Success"] = "Removed from Users List";
+                   return RedirectToPage("./Users");
+               }
+               else
+               {
+                   TempData["Failed"] = "Can't Delete Admin";
+                   return RedirectToPage("./Users");
+               }
+           });
+            return task;
         }
     }
 }

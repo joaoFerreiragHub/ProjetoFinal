@@ -9,7 +9,8 @@ using ProjetoFoodTracker.Services.FoodServices;
 
 namespace ProjetoFoodTracker.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "Customer")]
+
     public class FavoritesModel : PageModel
     {
 
@@ -30,7 +31,6 @@ namespace ProjetoFoodTracker.Pages
         public List<SelectListItem> CategoryOptions { get; set; }
         public List<SelectListItem> ActionsOptions { get; set; }
 
-
         [BindProperty]
         public List<FoodAction> FoodActions { get; set; }
 
@@ -50,7 +50,6 @@ namespace ProjetoFoodTracker.Pages
             ActionsOptions = _ctx.Actions.Select(a =>
                                   new SelectListItem
                                   { Text = a.ActionName }).ToList();
-
         }
 
         public async Task<IActionResult> OnPostAddFavorite(int ID)
@@ -105,6 +104,7 @@ namespace ProjetoFoodTracker.Pages
 
         public async Task<IActionResult> OnPostManageList()
         {
+
             if (!ModelState.IsValid)
             {
                 return Page();

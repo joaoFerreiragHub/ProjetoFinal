@@ -20,7 +20,7 @@ namespace ProjetoFoodTracker.Services.FoodServices
         public async Task<List<Actions>> GetAllActionsAsync() => await Task.Run(() => _ctx.Actions.ToList());
         public async Task<List<Favorites>> GetAllFavoritesAsync() => await Task.Run(() => _ctx.FavoriteList.ToList());
         public async Task<List<Blacklist>> GetAllBlacklistAsync() => await Task.Run(() => _ctx.BlackLists.ToList());
-
+        public async Task<List<TrackSuccess>> GetAllSuccessesAsync() => await Task.Run(() => _ctx.TrackSuccesses.ToList());
 
         public void AddToFavorites(int ID, string userId)
         {
@@ -109,6 +109,8 @@ namespace ProjetoFoodTracker.Services.FoodServices
             else
                 _ctx.SaveChanges();
         }
+
+
     }
 }
 
