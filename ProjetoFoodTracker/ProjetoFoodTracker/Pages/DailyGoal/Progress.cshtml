@@ -2,6 +2,21 @@
 @model ProjetoFoodTracker.Pages.DailyGoal.DailyGoalModel
 @{
 }
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success! </strong> @TempData["Success"]
+    </div>
+    <br />
+}
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Failed! </strong> @TempData["Failed"]
+    </div>
+    <br />
+}
 <form method="post">
     <div class="container">
         <div class="container-fluid p-0">
@@ -57,7 +72,8 @@
     <button type="submit" class="btn btn-primary mr-2">Search</button>
 </form>
 
-<div class="alert alert-info">
+<div class="alert alert-warning">
+     <h1 class="h3 mb-3 text-info">Success = True and Failed = False</h1>
     @foreach (var item in @Model.ShowSuccess)
     {
             <strong>Results: </strong> @item.IsSuccess
